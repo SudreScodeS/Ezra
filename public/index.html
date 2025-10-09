@@ -12,25 +12,23 @@
   </head>
   <body>
     <!-- Header -->
-    <header id="main-header">
-      <div class="container">
-        <!-- Logo -->
-        <div class="logo">
-          <img src="/img/log.svg" alt="Ezra Logo" />
-        </div>
-
-        <!-- Navigation -->
-        <nav>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="vagas.html">Vagas</a></li>
-            <li><a href="cursos.html">Cursos</a></li>
-            <li><a href="artigos.html">Artigos</a></li>
-            <li><a href="contato.html">Contato</a></li>
-          </ul>
-        </nav>
-
-        <!-- Account/Login -->
+    <header class="premium-header" id="premium-header">
+      <nav class="premium-nav" aria-label="Menu principal">
+        <a href="index.html">Home</a>
+        <a href="vagas.html">Vagas</a>
+        <a href="cursos.html">Cursos</a>
+        <a href="artigos.html">Artigos</a>
+      </nav>
+      <div class="logo">
+        <img src="/FUTURE---TESTE/img/logo.svg" alt="Logo Ezra" />
+      </div>
+      <div class="premium-actions">
+        <a href="https://linkedin.com" title="LinkedIn" target="_blank"
+          ><i class="fa-brands fa-linkedin"></i
+        ></a>
+        <a href="https://instagram.com" title="Instagram" target="_blank"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
         <div class="account-icon">
           <a href="cadastro.html" title="Login / Criar conta">
             <i class="fa-solid fa-user"></i>
@@ -46,7 +44,7 @@
     <!-- Hero / Bem-vindo -->
     <section class="hero">
       <div class="hero-content">
-        <h1>Bem-vindo à Ezra</h1>
+        <h1>Vire o Jogo</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed
           nisl vitae odio varius egestas. Integer facilisis purus nec dolor
@@ -56,18 +54,23 @@
       </div>
     </section>
 
-    <section class="about" id="about" style="background: var(--color-white);">
+    <section class="about" id="about" style="background: var(--color-white)">
       <div class="about-container">
         <div class="about-text">
           <h2>Sobre a Ezra</h2>
           <p>
-            Somos uma plataforma de empregos comprometida com a inclusão real, acessibilidade e inovação. 
-            Nossa missão é conectar pessoas de diferentes origens a oportunidades que transformam vidas e empresas.
-            Como B-Corp, promovemos práticas sustentáveis e responsabilidade social.
+            Somos uma plataforma de empregos comprometida com a inclusão real,
+            acessibilidade e inovação. Nossa missão é conectar pessoas de
+            diferentes origens a oportunidades que transformam vidas e empresas.
+            Como B-Corp, promovemos práticas sustentáveis e responsabilidade
+            social.
           </p>
         </div>
         <div class="about-img">
-          <img src="/img/about-illustration.svg" alt="Inclusão e Inovação Ezra" />
+          <img
+            src="/img/about-illustration.svg"
+            alt="Inclusão e Inovação Ezra"
+          />
         </div>
       </div>
     </section>
@@ -195,13 +198,19 @@
       <div class="testimonial-carousel">
         <div class="testimonial-card">
           <img src="/img/profile1.jpg" alt="Maria, Desenvolvedora" />
-          <p>“A Ezra me ajudou a encontrar uma vaga que respeita minha diversidade. Recomendo!”</p>
+          <p>
+            “A Ezra me ajudou a encontrar uma vaga que respeita minha
+            diversidade. Recomendo!”
+          </p>
           <span class="testimonial-name">Maria Souza</span>
           <span class="testimonial-role">Desenvolvedora</span>
         </div>
         <div class="testimonial-card">
           <img src="/img/profile2.jpg" alt="João, RH" />
-          <p>“Com a Ezra, nossa empresa contratou profissionais incríveis e diversos.”</p>
+          <p>
+            “Com a Ezra, nossa empresa contratou profissionais incríveis e
+            diversos.”
+          </p>
           <span class="testimonial-name">João Lima</span>
           <span class="testimonial-role">RH, InovaSocial</span>
         </div>
@@ -255,7 +264,7 @@
     <script>
       // Header shrink on scroll
       window.addEventListener("scroll", function () {
-        const header = document.getElementById("main-header");
+        const header = document.getElementById("premium-header");
         if (window.scrollY > 50) {
           header.classList.add("scrolled");
         } else {
@@ -314,17 +323,17 @@
         }
         update();
       }
-      document.querySelectorAll('.impact-number').forEach(el => {
-        const target = parseInt(el.getAttribute('data-count'), 10);
+      document.querySelectorAll(".impact-number").forEach((el) => {
+        const target = parseInt(el.getAttribute("data-count"), 10);
         animateCountUp(el, target);
       });
 
       // Simple testimonial carousel
       let testimonialIndex = 0;
-      const testimonials = document.querySelectorAll('.testimonial-card');
+      const testimonials = document.querySelectorAll(".testimonial-card");
       function showTestimonial(idx) {
         testimonials.forEach((card, i) => {
-          card.style.display = i === idx ? 'flex' : 'none';
+          card.style.display = i === idx ? "flex" : "none";
         });
       }
       showTestimonial(testimonialIndex);
