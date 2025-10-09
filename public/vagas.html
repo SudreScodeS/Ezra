@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vagas — Ezra | Conecte-se a Oportunidades com Impacto</title>
+  <meta name="description" content="Encontre vagas inclusivas e sustentáveis na Ezra. Conecte-se com empresas comprometidas com diversidade, acessibilidade e impacto social." />
+  <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+</head>
+<body>
+  <!-- Header -->
+  <header id="main-header">
+    <div class="container">
+      <!-- Logo -->
+      <div class="logo">
+        <img src="/img/log.svg" alt="Ezra Logo" />
+      </div>
+      <!-- Navigation -->
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="vagas.html" class="active">Vagas</a></li>
+          <li><a href="cursos.html">Cursos</a></li>
+          <li><a href="artigos.html">Artigos</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+      <!-- Account/Login -->
+      <div class="account-icon">
+        <a href="cadastro.html" title="Login / Criar conta">
+          <i class="fa-solid fa-user"></i>
+          <span class="account-text-roller">
+            <span class="roller-text roller-cadastrar">Cadastrar</span>
+            <span class="roller-text roller-entrar">Entrar</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero / Intro Section -->
+  <section class="hero vagas-hero">
+    <div class="hero-content">
+      <h1 id="vagas-heading" class="vagas-title">Encontre a vaga ideal para você</h1>
+      <p>
+        Na Ezra, conectamos talentos a empresas comprometidas com inclusão, diversidade e responsabilidade social. Explore nossas oportunidades e dê o próximo passo na sua carreira.
+      </p>
+    </div>
+  </section>
+
+  <!-- Filtros de busca -->
+  <section class="about vagas-filters">
+    <div class="about-container">
+      <form class="filters" aria-label="Filtros de vagas">
+        <div class="filter-group">
+          <label for="area" class="filter-label">Área</label>
+          <select id="area" name="area" class="filter-select">
+            <option value="">Todas</option>
+            <option value="tecnologia">Tecnologia</option>
+            <option value="administrativo">Administrativo</option>
+            <option value="marketing">Marketing</option>
+            <option value="serviços">Serviços</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="tipo" class="filter-label">Tipo de contrato</label>
+          <select id="tipo" name="tipo" class="filter-select">
+            <option value="">Todos</option>
+            <option value="clt">CLT</option>
+            <option value="pj">PJ</option>
+            <option value="freelancer">Freelancer</option>
+            <option value="estagio">Estágio</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="local" class="filter-label">Localidade</label>
+          <input type="text" id="local" name="local" placeholder="Digite uma cidade" class="filter-input" />
+        </div>
+        <button class="btn">Buscar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Lista de vagas -->
+  <section class="jobs vagas-list">
+    <h2>Vagas em Destaque</h2>
+    <div class="jobs-grid">
+      <div class="job-card">
+        <h3>Desenvolvedor Front-End Júnior</h3>
+        <span class="job-company">Tech4All</span>
+        <p><strong>Local:</strong> São Paulo, SP (Híbrido)</p>
+        <p><strong>Descrição:</strong> Desenvolvimento de interfaces acessíveis e responsivas. Valorizamos diversidade e inovação.</p>
+        <a href="#" class="see-more btn">Ver detalhes</a>
+      </div>
+      <div class="job-card">
+        <h3>Analista de Marketing Digital</h3>
+        <span class="job-company">GreenGrow</span>
+        <p><strong>Local:</strong> Remoto</p>
+        <p><strong>Descrição:</strong> Planejamento de campanhas online com foco em impacto social e responsabilidade ambiental.</p>
+        <a href="#" class="see-more btn">Ver detalhes</a>
+      </div>
+      <div class="job-card">
+        <h3>Assistente Administrativo</h3>
+        <span class="job-company">Inclusiva RH</span>
+        <p><strong>Local:</strong> Belo Horizonte, MG</p>
+        <p><strong>Descrição:</strong> Apoio em processos internos. Vaga afirmativa para pessoas com deficiência (PcD).</p>
+        <a href="#" class="see-more btn">Ver detalhes</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="/img/logo branca.svg" alt="Ezra Logo" />
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="vagas.html">Vagas</a>
+        <a href="artigos.html">Artigos</a>
+        <a href="contato.html">Contato</a>
+      </div>
+      <div class="footer-social">
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+      </div>
+      <div class="footer-cert">
+        <img src="/img/bcorp-badge.svg" alt="B-Corp Certificado" />
+        <span>B-Corp & Sustentabilidade</span>
+      </div>
+    </div>
+    <div class="footer-copy">
+      &copy; 2025 Ezra. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <script src="js/auth.js"></script>
+  <script src="js/jobs.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+      // Header shrink on scroll
+      window.addEventListener("scroll", function () {
+        const header = document.getElementById("main-header");
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      const accountIcon = document.querySelector(".account-icon a");
+      const rollerCadastrar = document.querySelector(".roller-cadastrar");
+      const rollerEntrar = document.querySelector(".roller-entrar");
+      const roller = document.querySelector(".account-text-roller");
+      let intervalId;
+      let showingCadastrar = true;
+
+      function rollText() {
+        if (showingCadastrar) {
+          rollerCadastrar.style.transform = "translateY(0)";
+          rollerEntrar.style.transform = "translateY(100%)";
+        } else {
+          rollerCadastrar.style.transform = "translateY(-100%)";
+          rollerEntrar.style.transform = "translateY(0)";
+        }
+        showingCadastrar = !showingCadastrar;
+      }
+
+      accountIcon.addEventListener("mouseenter", () => {
+        roller.style.opacity = 1;
+        rollerCadastrar.style.transition =
+          "transform 0.5s cubic-bezier(.77,0,.18,1)";
+        rollerEntrar.style.transition =
+          "transform 0.5s cubic-bezier(.77,0,.18,1)";
+        rollText(); // Start immediately
+        intervalId = setInterval(rollText, 2000);
+      });
+
+      accountIcon.addEventListener("mouseleave", () => {
+        clearInterval(intervalId);
+        roller.style.opacity = 0;
+        rollerCadastrar.style.transform = "translateY(0)";
+        rollerEntrar.style.transform = "translateY(100%)";
+        showingCadastrar = true;
+      });
+
+      // Initialize positions
+      rollerCadastrar.style.transform = "translateY(0)";
+      rollerEntrar.style.transform = "translateY(100%)";
+
+      function animateCountUp(el, target) {
+        let count = 0;
+        const speed = Math.ceil(target / 60);
+        function update() {
+          count += speed;
+          if (count > target) count = target;
+          el.textContent = "+" + count.toLocaleString();
+          if (count < target) requestAnimationFrame(update);
+        }
+        update();
+      }
+      document.querySelectorAll('.impact-number').forEach(el => {
+        const target = parseInt(el.getAttribute('data-count'), 10);
+        animateCountUp(el, target);
+      });
+
+      // Simple testimonial carousel
+      let testimonialIndex = 0;
+      const testimonials = document.querySelectorAll('.testimonial-card');
+      function showTestimonial(idx) {
+        testimonials.forEach((card, i) => {
+          card.style.display = i === idx ? 'flex' : 'none';
+        });
+      }
+      showTestimonial(testimonialIndex);
+      setInterval(() => {
+        testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+        showTestimonial(testimonialIndex);
+      }, 4000);
+    </script>
+</body>
+</html>

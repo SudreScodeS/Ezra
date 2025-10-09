@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login/Cadastro - TrampoFácil</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header role="banner">
+      <nav role="navigation" aria-label="Menu principal">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="vagas.html">Vagas</a></li>
+          <li><a href="artigos.html">Artigos</a></li>
+          <li><a href="cadastro.html">Login/Cadastro</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main role="main">
+      <h1>Acesse Sua Conta</h1>
+
+      <div style="display: flex; gap: 2rem; flex-wrap: wrap">
+        <section aria-labelledby="login" style="flex: 1; min-width: 300px">
+          <h2 id="login">Login</h2>
+          <form id="login-form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required />
+
+            <button type="submit" class="btn">Entrar</button>
+          </form>
+        </section>
+
+        <section aria-labelledby="register" style="flex: 1; min-width: 300px">
+          <h2 id="register">Cadastro</h2>
+          <form id="register-form">
+            <label for="nome">Nome Completo:</label>
+            <input type="text" id="nome" name="nome" required />
+
+            <label for="email-cadastro">Email:</label>
+            <input type="email" id="email-cadastro" name="email" required />
+
+            <label for="senha-cadastro">Senha:</label>
+            <input type="password" id="senha-cadastro" name="senha" required />
+
+            <label for="skills">Habilidades (separadas por vírgula):</label>
+            <input
+              type="text"
+              id="skills"
+              name="skills"
+              placeholder="Ex: JavaScript, Design, Marketing"
+            />
+
+            <label for="experiencia">Experiência:</label>
+            <select id="experiencia" name="experiencia">
+              <option value="">Selecione</option>
+              <option value="Iniciante">Iniciante (0-2 anos)</option>
+              <option value="Intermediário">Intermediário (3-5 anos)</option>
+              <option value="Experiente">Experiente (5+ anos)</option>
+            </select>
+
+            <button type="submit" class="btn">Cadastrar</button>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <footer role="contentinfo">
+      <p>&copy; 2024 TrampoFácil - Todos os direitos reservados</p>
+      <p>Empresa certificada B-Corp</p>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

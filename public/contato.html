@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato - TrampoFácil</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header role="banner">
+    <nav role="navigation" aria-label="Menu principal">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="vagas.html">Vagas</a></li>
+        <li><a href="artigos.html">Artigos</a></li>
+        <li><a href="cadastro.html">Login/Cadastro</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main role="main">
+    <h1>Entre em Contato</h1>
+
+    <section aria-labelledby="contact-form">
+      <h2 id="contact-form">Formulário de Contato</h2>
+      <form id="contact-form" action="/api/contact" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="assunto">Assunto:</label>
+        <select id="assunto" name="assunto" required>
+          <option value="">Selecione</option>
+          <option value="Dúvida">Dúvida</option>
+          <option value="Sugestão">Sugestão</option>
+          <option value="Reclamação">Reclamação</option>
+          <option value="Parceria">Parceria</option>
+        </select>
+        
+        <label for="mensagem">Mensagem:</label>
+        <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+        
+        <button type="submit" class="btn">Enviar Mensagem</button>
+      </form>
+    </section>
+
+    <section aria-labelledby="contact-info">
+      <h2 id="contact-info">Informações de Contato</h2>
+      <p><strong>Email:</strong> contato@trampofacil.com</p>
+      <p><strong>Telefone:</strong> (11) 9999-9999</p>
+      <p><strong>Endereço:</strong> Av. Paulista, 1000 - São Paulo/SP</p>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>&copy; 2024 TrampoFácil - Todos os direitos reservados</p>
+    <p>Empresa certificada B-Corp</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ezra - Plataforma de Empregos</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="main-header">
+      <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+          <img src="/img/log.svg" alt="Ezra Logo" />
+        </div>
+
+        <!-- Navigation -->
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="vagas.html">Vagas</a></li>
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="artigos.html">Artigos</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </nav>
+
+        <!-- Account/Login -->
+        <div class="account-icon">
+          <a href="cadastro.html" title="Login / Criar conta">
+            <i class="fa-solid fa-user"></i>
+            <span class="account-text-roller">
+              <span class="roller-text roller-cadastrar">Cadastrar</span>
+              <span class="roller-text roller-entrar">Entrar</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero / Bem-vindo -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Bem-vindo à Ezra</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed
+          nisl vitae odio varius egestas. Integer facilisis purus nec dolor
+          tincidunt, vel ullamcorper lorem egestas.
+        </p>
+        <a href="vagas.html" class="btn">Explorar Vagas</a>
+      </div>
+    </section>
+
+    <section class="about" id="about" style="background: var(--color-white);">
+      <div class="about-container">
+        <div class="about-text">
+          <h2>Sobre a Ezra</h2>
+          <p>
+            Somos uma plataforma de empregos comprometida com a inclusão real, acessibilidade e inovação. 
+            Nossa missão é conectar pessoas de diferentes origens a oportunidades que transformam vidas e empresas.
+            Como B-Corp, promovemos práticas sustentáveis e responsabilidade social.
+          </p>
+        </div>
+        <div class="about-img">
+          <img src="/img/about-illustration.svg" alt="Inclusão e Inovação Ezra" />
+        </div>
+      </div>
+    </section>
+
+    <section class="values">
+      <h2>Nossos Valores</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <i class="fa-solid fa-universal-access"></i>
+          <span>Inclusão Real</span>
+        </div>
+        <div class="value-card">
+          <i class="fa-solid fa-eye"></i>
+          <span>Transparência</span>
+        </div>
+        <div class="value-card">
+          <i class="fa-solid fa-leaf"></i>
+          <span>Sustentabilidade</span>
+        </div>
+        <div class="value-card">
+          <i class="fa-solid fa-lightbulb"></i>
+          <span>Inovação</span>
+        </div>
+        <div class="value-card">
+          <i class="fa-solid fa-hand-holding-heart"></i>
+          <span>Responsabilidade Social</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="impact">
+      <h2>Impacto Social</h2>
+      <div class="impact-numbers">
+        <div class="impact-card">
+          <span class="impact-number" data-count="5000">0</span>
+          <span class="impact-label">Pessoas contratadas</span>
+        </div>
+        <div class="impact-card">
+          <span class="impact-number" data-count="300">0</span>
+          <span class="impact-label">Empresas parceiras</span>
+        </div>
+        <div class="impact-card">
+          <span class="impact-number" data-count="200">0</span>
+          <span class="impact-label">Jovens capacitados</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Jobs -->
+    <section class="jobs" id="jobs">
+      <h2>Vagas em Destaque</h2>
+      <div class="jobs-grid">
+        <div class="job-card">
+          <h3>Desenvolvedor Front-End</h3>
+          <span class="job-company">Tech4Good</span>
+          <a href="#" class="see-more">Ver mais</a>
+        </div>
+        <div class="job-card">
+          <h3>Analista de Inclusão</h3>
+          <span class="job-company">InovaSocial</span>
+          <a href="#" class="see-more">Ver mais</a>
+        </div>
+        <div class="job-card">
+          <h3>Gestor de Sustentabilidade</h3>
+          <span class="job-company">EcoCorp</span>
+          <a href="#" class="see-more">Ver mais</a>
+        </div>
+        <div class="job-card">
+          <h3>Instrutor de Acessibilidade</h3>
+          <span class="job-company">EducaLivre</span>
+          <a href="#" class="see-more">Ver mais</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Courses & Articles -->
+    <section class="content-section" id="courses">
+      <h2>Cursos & Artigos</h2>
+      <div class="content-carousel">
+        <div class="content-card">
+          <img src="/img/course1.jpg" alt="Curso 1" />
+          <h3>Curso: Acessibilidade Digital</h3>
+          <p>Aprenda práticas inclusivas para web e apps.</p>
+        </div>
+        <div class="content-card">
+          <img src="/img/article1.jpg" alt="Artigo 1" />
+          <h3>Artigo: Diversidade no Trabalho</h3>
+          <p>Como equipes diversas inovam mais.</p>
+        </div>
+        <div class="content-card">
+          <img src="/img/course2.jpg" alt="Curso 2" />
+          <h3>Curso: Liderança Inclusiva</h3>
+          <p>Desenvolva habilidades para liderar com empatia.</p>
+        </div>
+        <div class="content-card">
+          <img src="/img/article2.jpg" alt="Artigo 2" />
+          <h3>Artigo: Sustentabilidade Corporativa</h3>
+          <p>Estratégias para empresas responsáveis.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accessibility Features -->
+    <section class="accessibility">
+      <h2>Recursos de Acessibilidade</h2>
+      <div class="accessibility-grid">
+        <div class="access-feature">
+          <i class="fa-solid fa-volume-high"></i>
+          <span>Suporte a leitores de tela</span>
+        </div>
+        <div class="access-feature">
+          <i class="fa-solid fa-hands-asl-interpreting"></i>
+          <span>Tradução em Libras</span>
+        </div>
+        <div class="access-feature">
+          <i class="fa-solid fa-closed-captioning"></i>
+          <span>Legendas automáticas</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+      <h2>Depoimentos</h2>
+      <div class="testimonial-carousel">
+        <div class="testimonial-card">
+          <img src="/img/profile1.jpg" alt="Maria, Desenvolvedora" />
+          <p>“A Ezra me ajudou a encontrar uma vaga que respeita minha diversidade. Recomendo!”</p>
+          <span class="testimonial-name">Maria Souza</span>
+          <span class="testimonial-role">Desenvolvedora</span>
+        </div>
+        <div class="testimonial-card">
+          <img src="/img/profile2.jpg" alt="João, RH" />
+          <p>“Com a Ezra, nossa empresa contratou profissionais incríveis e diversos.”</p>
+          <span class="testimonial-name">João Lima</span>
+          <span class="testimonial-role">RH, InovaSocial</span>
+        </div>
+        <div class="testimonial-card">
+          <img src="/img/profile3.jpg" alt="Ana, Gestora" />
+          <p>“A plataforma é intuitiva e acessível. A Ezra faz a diferença!”</p>
+          <span class="testimonial-name">Ana Martins</span>
+          <span class="testimonial-role">Gestora de Projetos</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Call-to-Action -->
+    <section class="final-cta">
+      <div class="cta-content">
+        <h2>Junte-se à mudança. Conecte-se a oportunidades.</h2>
+        <div class="cta-buttons">
+          <a href="#account" class="btn btn-light">Criar Conta</a>
+          <a href="#jobs" class="btn btn-dark">Ver Vagas</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="/img/logo branca.svg" alt="Ezra Logo" />
+        </div>
+        <div class="footer-links">
+          <a href="#">Home</a>
+          <a href="#jobs">Vagas</a>
+          <a href="#articles">Artigos</a>
+          <a href="#contact">Contato</a>
+        </div>
+        <div class="footer-social">
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+        <div class="footer-cert">
+          <img src="/img/bcorp-badge.svg" alt="B-Corp Certificado" />
+          <span>B-Corp & Sustentabilidade</span>
+        </div>
+      </div>
+      <div class="footer-copy">
+        &copy; 2025 Ezra. Todos os direitos reservados.
+      </div>
+    </footer>
+
+    <script>
+      // Header shrink on scroll
+      window.addEventListener("scroll", function () {
+        const header = document.getElementById("main-header");
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      const accountIcon = document.querySelector(".account-icon a");
+      const rollerCadastrar = document.querySelector(".roller-cadastrar");
+      const rollerEntrar = document.querySelector(".roller-entrar");
+      const roller = document.querySelector(".account-text-roller");
+      let intervalId;
+      let showingCadastrar = true;
+
+      function rollText() {
+        if (showingCadastrar) {
+          rollerCadastrar.style.transform = "translateY(0)";
+          rollerEntrar.style.transform = "translateY(100%)";
+        } else {
+          rollerCadastrar.style.transform = "translateY(-100%)";
+          rollerEntrar.style.transform = "translateY(0)";
+        }
+        showingCadastrar = !showingCadastrar;
+      }
+
+      accountIcon.addEventListener("mouseenter", () => {
+        roller.style.opacity = 1;
+        rollerCadastrar.style.transition =
+          "transform 0.5s cubic-bezier(.77,0,.18,1)";
+        rollerEntrar.style.transition =
+          "transform 0.5s cubic-bezier(.77,0,.18,1)";
+        rollText(); // Start immediately
+        intervalId = setInterval(rollText, 2000);
+      });
+
+      accountIcon.addEventListener("mouseleave", () => {
+        clearInterval(intervalId);
+        roller.style.opacity = 0;
+        rollerCadastrar.style.transform = "translateY(0)";
+        rollerEntrar.style.transform = "translateY(100%)";
+        showingCadastrar = true;
+      });
+
+      // Initialize positions
+      rollerCadastrar.style.transform = "translateY(0)";
+      rollerEntrar.style.transform = "translateY(100%)";
+
+      function animateCountUp(el, target) {
+        let count = 0;
+        const speed = Math.ceil(target / 60);
+        function update() {
+          count += speed;
+          if (count > target) count = target;
+          el.textContent = "+" + count.toLocaleString();
+          if (count < target) requestAnimationFrame(update);
+        }
+        update();
+      }
+      document.querySelectorAll('.impact-number').forEach(el => {
+        const target = parseInt(el.getAttribute('data-count'), 10);
+        animateCountUp(el, target);
+      });
+
+      // Simple testimonial carousel
+      let testimonialIndex = 0;
+      const testimonials = document.querySelectorAll('.testimonial-card');
+      function showTestimonial(idx) {
+        testimonials.forEach((card, i) => {
+          card.style.display = i === idx ? 'flex' : 'none';
+        });
+      }
+      showTestimonial(testimonialIndex);
+      setInterval(() => {
+        testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+        showTestimonial(testimonialIndex);
+      }, 4000);
+    </script>
+  </body>
+</html>
