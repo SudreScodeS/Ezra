@@ -23,26 +23,26 @@
   --radius: 8px;
   --shadow: 0 4px 24px rgba(107, 76, 37, 0.08);
   --font-title: "Montserrat", "Segoe UI", Arial, sans-serif;
-  --font-body: "Inter", "Segoe UI", Arial, sans-serif;
+  --font-body: "Playfair Display", "Segoe UI", Arial, sans-serif;
+  --font-header: "Inter", "Segoe UI", Arial, sans-serif;
 }
 
 body {
   margin: 0;
-  font-family: var(--font-body);
+  font-family: var(--font-header);
   background: var(--white);
   color: var(--black);
   font-size: 1rem;
   line-height: 1.6;
 }
 /* Header */
-.premium-header {
+/* .premium-header {
   font-family: "Montserrat", "Poppins", Arial, sans-serif;
-  background: rgba(5, 5, 5, 0.842);
+  background: #000;
   color: #fff;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 40px;
+  justify-content: space-around; 
   height: 80px;
   position: sticky;
   top: 0;
@@ -52,6 +52,32 @@ body {
   transition: background 0.3s, backdrop-filter 0.3s, box-shadow 0.3s,
     height 0.3s, padding 0.3s;
   backdrop-filter: blur(0px);
+} */
+
+.premium-header {
+  position: sticky; /* necessário para a logo absoluta */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* menu à esquerda, ações à direita */
+  padding: 0 24px; /* espaço lateral */
+  height: 80px;
+  background: #000;
+  color: #fff;
+  font-header : "Inter", "Segoe UI", Arial, sans-serif;
+  z-index: 1000;
+  width: 100%;
+  top: 0;
+  box-sizing: border-box;
+  transition: background 0.3s, backdrop-filter 0.3s, box-shadow 0.3s, height 0.3s, padding 0.3s;
+  backdrop-filter: blur(0px);
+}
+
+/* Logo centralizada */
+.premium-header .logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
 }
 
 .premium-header.scrolled {
@@ -168,7 +194,7 @@ body {
 
 nav {
   display: flex;
-  justify-content: center;
+  justify-content: center ;
 }
 
 /* Nav Menu */
@@ -284,17 +310,33 @@ nav ul li a:hover {
 
 /* Hero Section */
 .hero {
+  position: relative;
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   text-align: center;
-  background-image: url(/FUTURE---TESTE/img/image_20251009_085715\ \(1\).png);
-  background-size: cover;
-  padding: 0 20px;
+  background-color: #000;
+  overflow: hidden;
+  padding-top: 120px;
 }
 
+.hero-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.4); /* opcional: escurece o vídeo pra destacar o texto */
+}
+
+
 .hero-content {
+  position: top;
+  z-index: 1;
   max-width: 700px;
 }
 
@@ -302,8 +344,9 @@ nav ul li a:hover {
   font-size: 6.5rem;
   color: #ffffff;
   text-wrap: balance;
-  margin-bottom: 20px;
-  animation: fadeInUp 1s ease forwards;
+  margin-bottom: 10px;
+  animation: fadeInUp 1s ease forwards; 
+  font-family: var(--font-body);
 }
 
 .hero p {

@@ -1,82 +1,198 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login/Cadastro - TrampoFácil</title>
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="css/cadastro.css">
+</head>
+<body>
+    <a href="#main" class="skip-to-content">Pular para o conteúdo principal</a>
+    
     <header role="banner">
-      <nav role="navigation" aria-label="Menu principal">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
-          <li><a href="vagas.html">Vagas</a></li>
-          <li><a href="artigos.html">Artigos</a></li>
-          <li><a href="cadastro.html">Login/Cadastro</a></li>
-          <li><a href="contato.html">Contato</a></li>
-        </ul>
-      </nav>
+        <nav role="navigation" aria-label="Menu principal">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="vagas.html">Vagas</a></li>
+                <li><a href="artigos.html">Artigos</a></li>
+                <li><a href="cadastro.html" aria-current="page">Login/Cadastro</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main role="main">
-      <h1>Acesse Sua Conta</h1>
+    <main role="main" id="main">
+        <h1>Acesse Sua Conta</h1>
 
-      <div style="display: flex; gap: 2rem; flex-wrap: wrap">
-        <section aria-labelledby="login" style="flex: 1; min-width: 300px">
-          <h2 id="login">Login</h2>
-          <form id="login-form">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required />
+        <div class="form-container">
+            <section class="form-section" aria-labelledby="login">
+                <h2 id="login">Login</h2>
+                <div class="success-message" id="login-success">
+                    Login realizado com sucesso! Redirecionando...
+                </div>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="seu@email.com"
+                            required 
+                            aria-required="true"
+                            autocomplete="email"
+                        />
+                    </div>
 
-            <label for="senha">Senha:</label>
-            <input type="password" id="senha" name="senha" required />
+                    <div class="form-group">
+                        <label for="senha">Senha:</label>
+                        <input 
+                            type="password" 
+                            id="senha" 
+                            name="senha" 
+                            placeholder="Digite sua senha"
+                            required 
+                            aria-required="true"
+                            autocomplete="current-password"
+                        />
+                        <span class="helper-text">Esqueceu sua senha? <a href="#" style="color: var(--gold);">Clique aqui</a></span>
+                    </div>
 
-            <button type="submit" class="btn">Entrar</button>
-          </form>
-        </section>
+                    <button type="submit" class="btn">Entrar</button>
+                </form>
 
-        <section aria-labelledby="register" style="flex: 1; min-width: 300px">
-          <h2 id="register">Cadastro</h2>
-          <form id="register-form">
-            <label for="nome">Nome Completo:</label>
-            <input type="text" id="nome" name="nome" required />
+                <div class="divider">
+                    <span>ou</span>
+                </div>
 
-            <label for="email-cadastro">Email:</label>
-            <input type="email" id="email-cadastro" name="email" required />
+                <p style="text-align: center; color: var(--gray-light);">
+                    Novo por aqui? Crie sua conta ao lado →
+                </p>
+            </section>
 
-            <label for="senha-cadastro">Senha:</label>
-            <input type="password" id="senha-cadastro" name="senha" required />
+            <section class="form-section" aria-labelledby="register">
+                <h2 id="register">Cadastro</h2>
+                <div class="success-message" id="register-success">
+                    Cadastro realizado com sucesso! Bem-vindo ao TrampoFácil!
+                </div>
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo:</label>
+                        <input 
+                            type="text" 
+                            id="nome" 
+                            name="nome" 
+                            placeholder="João da Silva"
+                            required 
+                            aria-required="true"
+                            autocomplete="name"
+                        />
+                    </div>
 
-            <label for="skills">Habilidades (separadas por vírgula):</label>
-            <input
-              type="text"
-              id="skills"
-              name="skills"
-              placeholder="Ex: JavaScript, Design, Marketing"
-            />
+                    <div class="form-group">
+                        <label for="email-cadastro">Email:</label>
+                        <input 
+                            type="email" 
+                            id="email-cadastro" 
+                            name="email" 
+                            placeholder="seu@email.com"
+                            required 
+                            aria-required="true"
+                            autocomplete="email"
+                        />
+                    </div>
 
-            <label for="experiencia">Experiência:</label>
-            <select id="experiencia" name="experiencia">
-              <option value="">Selecione</option>
-              <option value="Iniciante">Iniciante (0-2 anos)</option>
-              <option value="Intermediário">Intermediário (3-5 anos)</option>
-              <option value="Experiente">Experiente (5+ anos)</option>
-            </select>
+                    <div class="form-group">
+                        <label for="senha-cadastro">Senha:</label>
+                        <input 
+                            type="password" 
+                            id="senha-cadastro" 
+                            name="senha" 
+                            placeholder="Mínimo 8 caracteres"
+                            required 
+                            aria-required="true"
+                            autocomplete="new-password"
+                            minlength="8"
+                        />
+                        <span class="helper-text">Use letras, números e caracteres especiais</span>
+                    </div>
 
-            <button type="submit" class="btn">Cadastrar</button>
-          </form>
-        </section>
-      </div>
+                    <div class="form-group">
+                        <label for="skills">Habilidades (separadas por vírgula):</label>
+                        <input 
+                            type="text" 
+                            id="skills" 
+                            name="skills" 
+                            placeholder="Ex: JavaScript, Design, Marketing"
+                            aria-describedby="skills-help"
+                        />
+                        <span class="helper-text" id="skills-help">Isso nos ajuda a encontrar as melhores vagas para você</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experiencia">Experiência:</label>
+                        <select id="experiencia" name="experiencia" aria-required="true">
+                            <option value="">Selecione seu nível</option>
+                            <option value="Iniciante">Iniciante (0-2 anos)</option>
+                            <option value="Intermediário">Intermediário (3-5 anos)</option>
+                            <option value="Experiente">Experiente (5+ anos)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn">Cadastrar</button>
+                </form>
+
+                <div class="divider">
+                    <span>ou</span>
+                </div>
+
+                <p style="text-align: center; color: var(--gray-light);">
+                    Já tem conta? Faça login ao lado ←
+                </p>
+            </section>
+        </div>
     </main>
 
     <footer role="contentinfo">
-      <p>&copy; 2024 TrampoFácil - Todos os direitos reservados</p>
-      <p>Empresa certificada B-Corp</p>
+        <p>&copy; 2025 TrampoFácil - Todos os direitos reservados</p>
+        <p>Empresa certificada B-Corp ⭐⭐⭐⭐⭐</p>
     </footer>
 
-    <script src="js/auth.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+    <script>
+        // Form handling with loading states
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('.btn');
+            btn.classList.add('loading');
+            
+            // Simulate API call
+            setTimeout(() => {
+                btn.classList.remove('loading');
+                document.getElementById('login-success').classList.add('show');
+                // Redirect logic here
+            }, 2000);
+        });
+
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('.btn');
+            btn.classList.add('loading');
+            
+            // Simulate API call
+            setTimeout(() => {
+                btn.classList.remove('loading');
+                document.getElementById('register-success').classList.add('show');
+                // Redirect logic here
+            }, 2000);
+        });
+
+        // Auto-hide success messages
+        setTimeout(() => {
+            document.querySelectorAll('.success-message').forEach(msg => {
+                msg.classList.remove('show');
+            });
+        }, 5000);
+    </script>
+</body>
 </html>
