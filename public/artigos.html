@@ -3,22 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Artigos - TrampoFácil</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>Artigos - Ezra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/artigos.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
 </head>
 <body>
-  <header role="banner">
-    <nav role="navigation" aria-label="Menu principal">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="sobre.html">Sobre</a></li>
-        <li><a href="vagas.html">Vagas</a></li>
-        <li><a href="artigos.html">Artigos</a></li>
-        <li><a href="cadastro.html">Login/Cadastro</a></li>
-        <li><a href="contato.html">Contato</a></li>
-      </ul>
-    </nav>
-  </header>
+<header class="premium-header" id="premium-header">
+      <nav class="premium-nav" aria-label="Menu principal">
+        <a href="index.html">Home</a>
+        <a href="vagas.html">Vagas</a>
+        <a href="cursos.html">Cursos</a>
+        <a href="artigos.html">Artigos</a>
+      </nav>
+      <div class="logo">
+        <img src="/img/logo.svg" alt="Logo Ezra" />
+      </div>
+      <div class="premium-actions">
+        <a href="https://linkedin.com" title="LinkedIn" target="_blank"
+          ><i class="fa-brands fa-linkedin"></i
+        ></a>
+        <a href="https://instagram.com" title="Instagram" target="_blank"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
+        <div class="account-icon">
+          <a href="cadastro.html" title="Login / Criar conta">
+            <i class="fa-solid fa-user"></i>
+            <span class="account-text-roller">
+              <span class="roller-text roller-cadastrar">Cadastrar</span>
+              <span class="roller-text roller-entrar">Entrar</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </header>
 
   <main role="main">
     <h1>Artigos e Dicas</h1>
@@ -62,11 +88,126 @@
     </div>
   </main>
 
-  <footer role="contentinfo">
-    <p>&copy; 2024 TrampoFácil - Todos os direitos reservados</p>
-    <p>Empresa certificada B-Corp</p>
-  </footer>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="img/logo branca.svg" alt="Ezra Logo" />
+        </div>
+        <div class="footer-links">
+          <a href="#">Home</a>
+          <a href="#jobs">Vagas</a>
+          <a href="#articles">Artigos</a>
+          <a href="#contact">Contato</a>
+        </div>
+        <div class="footer-social">
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+        <div class="footer-cert">
+          <img src="img/Design sem nome.png" alt="B-Corp Certificado" />
+          <span>B-Corp & Sustentabilidade</span>
+        </div>
+      </div>
+      <div class="footer-copy">
+        &copy; 2025 Ezra. Todos os direitos reservados.
+      </div>
+    </footer>
 
-  <script src="js/main.js"></script>
+  <script>
+  // Header shrink on scroll
+  window.addEventListener("scroll", function () {
+    const header = document.getElementById("premium-header");
+    if (window.scrollY > 50) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
+
+  const accountIcon = document.querySelector(".account-icon a");
+  const rollerCadastrar = document.querySelector(".roller-cadastrar");
+  const rollerEntrar = document.querySelector(".roller-entrar");
+  const roller = document.querySelector(".account-text-roller");
+  let intervalId;
+  let showingCadastrar = true;
+
+  function rollText() {
+    if (showingCadastrar) {
+      rollerCadastrar.style.transform = "translateY(0)";
+      rollerEntrar.style.transform = "translateY(100%)";
+    } else {
+      rollerCadastrar.style.transform = "translateY(-100%)";
+      rollerEntrar.style.transform = "translateY(0)";
+    }
+    showingCadastrar = !showingCadastrar;
+  }
+
+  accountIcon.addEventListener("mouseenter", () => {
+    roller.style.opacity = 1;
+    rollerCadastrar.style.transition = "transform 0.5s cubic-bezier(.77,0,.18,1)";
+    rollerEntrar.style.transition = "transform 0.5s cubic-bezier(.77,0,.18,1)";
+    rollText(); // Start immediately
+    intervalId = setInterval(rollText, 2000);
+  });
+
+  accountIcon.addEventListener("mouseleave", () => {
+    clearInterval(intervalId);
+    roller.style.opacity = 0;
+    rollerCadastrar.style.transform = "translateY(0)";
+    rollerEntrar.style.transform = "translateY(100%)";
+    showingCadastrar = true;
+  });
+
+  // Initialize positions
+  rollerCadastrar.style.transform = "translateY(0)";
+  rollerEntrar.style.transform = "translateY(100%)";
+
+  function animateCountUp(el, target) {
+    let count = 0;
+    const speed = Math.ceil(target / 60);
+    function update() {
+      count += speed;
+      if (count > target) count = target;
+      el.textContent = "+" + count.toLocaleString();
+      if (count < target) requestAnimationFrame(update);
+    }
+    update();
+  }
+
+  document.querySelectorAll(".impact-number").forEach((el) => {
+    const target = parseInt(el.getAttribute("data-count"), 10);
+    animateCountUp(el, target);
+  });
+
+  // Acessibilidade popup
+  const popup = document.getElementById("accessibility-popup");
+  const openBtn = document.getElementById("accessibility-btn");
+  const closeBtn = document.getElementById("close-popup");
+
+  openBtn.addEventListener("click", () => {
+    popup.classList.remove("hidden");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    popup.classList.add("hidden");
+  });
+
+  popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+      popup.classList.add("hidden");
+    }
+  });
+
+  // Google Translate
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'pt',
+      includedLanguages: 'en,es,fr,de',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>

@@ -25,7 +25,7 @@
         <a href="cursos.html">Cursos</a>
         <a href="artigos.html">Artigos</a>
       </nav>
-      <div class="logo">
+      <div class="logo" >
         <img src="/img/logo.svg" alt="Logo Ezra" />
       </div>
       <div class="premium-actions">
@@ -50,12 +50,14 @@
     <!-- Hero / Bem-vindo -->
     <section class="hero">
       <video class="hero-bg" autoplay muted loop playsinline>
-        <source src="img/A_cinematic_video_202510131249 (1).mp4" type="video/mp4" />
+        <source src="img/A_cinematic_video_202510131316.mp4" type="video/mp4" />
         Seu navegador não suporta vídeos HTML5.
       </video>
       <div class="hero-content">
-        <h1>Vire o Jogo</h1>
-        <p>Lorem ipsum dolor sit amet...</p>
+        <div class="roller">
+          <span id="roller-text">Ezra</span>
+        </div>
+        <p>Vagas de estágio nas melhores do mercado.</p>
         <a href="vagas.html" class="btn">Explorar Vagas</a>
       </div>
     </section>
@@ -74,7 +76,7 @@
         </div>
         <div class="about-img">
           <img
-            src="/img/about-illustration.svg"
+            src="/img/pexels-fauxels-3184418.jpg"
             alt="Inclusão e Inovação Ezra"
           />
         </div>
@@ -157,66 +159,72 @@
       <h2>Cursos & Artigos</h2>
       <div class="content-carousel">
         <div class="content-card">
-          <img src="/img/course1.jpg" alt="Curso 1" />
+          <img src="img/Atendimento_Logo.svg" alt="Curso 1" />
           <h3>Curso: Acessibilidade Digital</h3>
           <p>Aprenda práticas inclusivas para web e apps.</p>
         </div>
         <div class="content-card">
-          <img src="/img/article1.jpg" alt="Artigo 1" />
+          <img src="img/ArtigoDiversidade.png" alt="Artigo 1" />
           <h3>Artigo: Diversidade no Trabalho</h3>
-          <p>Como equipes diversas inovam mais.</p>
+          <a target="_blank" href="https://www.bing.com/ck/a?!&&p=e406d72d2690f24fec8e6cf1234a43d9467a2c554bf06898a059575a52b21422JmltdHM9MTc2MDU3MjgwMA&ptn=3&ver=2&hsh=4&fclid=2bc5e13b-b185-6e59-39d6-f7bcb0fc6f1f&psq=artigo+diversidade+no+trabalho&u=a1aHR0cHM6Ly93d3cuanVzYnJhc2lsLmNvbS5ici9hcnRpZ29zL3BvbGl0aWNhcy1kZS1kaXZlcnNpZGFkZS1lLWluY2x1c2FvLW5vLWxvY2FsLWRlLXRyYWJhbGhvLzI1OTcyMDk3MzU_bXNvY2tpZD0yYmM1ZTEzYmIxODU2ZTU5MzlkNmY3YmNiMGZjNmYxZg">Como equipes diversas inovam mais.</a>
         </div>
         <div class="content-card">
-          <img src="/img/course2.jpg" alt="Curso 2" />
+          <img src="img/Introducao_Logo.svg" alt="Curso 2" />
           <h3>Curso: Liderança Inclusiva</h3>
           <p>Desenvolva habilidades para liderar com empatia.</p>
         </div>
         <div class="content-card">
-          <img src="/img/article2.jpg" alt="Artigo 2" />
+          <img src="img/ArtigoSustentabilidade.png" alt="Artigo 2" />
           <h3>Artigo: Sustentabilidade Corporativa</h3>
-          <p>Estratégias para empresas responsáveis.</p>
+          <a target="_blank" href="https://www.jusbrasil.com.br/artigos/esg-e-sustentabilidade-corporativa/2774189810?msockid=2bc5e13bb1856e5939d6f7bcb0fc6f1f">Estratégias para empresas responsáveis.</a>
         </div>
       </div>
     </section>
 
     <!-- Accessibility Features -->
-    <section class="accessibility">
-      <h2>Recursos de Acessibilidade</h2>
-      <div class="accessibility-grid">
-        <div class="access-feature">
-          <i class="fa-solid fa-volume-high"></i>
-          <span>Suporte a leitores de tela</span>
-        </div>
-        <div class="access-feature">
-          <i class="fa-solid fa-hands-asl-interpreting"></i>
-          <span>Tradução em Libras</span>
-        </div>
-        <div class="access-feature">
-          <i class="fa-solid fa-closed-captioning"></i>
-          <span>Legendas automáticas</span>
+    <button
+      id="accessibility-btn"
+      aria-label="Abrir recursos de acessibilidade"
+    >
+      <i class="fa-solid fa-universal-access"></i>
+    </button>
+
+    <div id="accessibility-popup" class="accessibility-popup hidden">
+      <div class="popup-content">
+        <button id="close-popup" aria-label="Fechar popup">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <h2>Recursos de Acessibilidade</h2>
+        <div class="accessibility-grid">
+          <div class="access-feature">
+            <i class="fa-solid fa-volume-high"></i>
+            <span>Suporte a leitores de tela</span>
+          </div>
+          <div class="access-feature">
+            <i class="fa-solid fa-hands-asl-interpreting"></i>
+            <span>Tradução em Libras</span>
+          </div>
+          <div class="access-feature">
+            <i class="fa-solid fa-language"></i>
+            <span></span>
+            <div id="google_translate_element"></div>
+          </div>
         </div>
       </div>
-    </section>
-
+    </div>
     <!-- Testimonials -->
     <section class="testimonials">
       <h2>Depoimentos</h2>
       <div class="testimonial-carousel">
         <div class="testimonial-card">
           <img src="/img/profile1.jpg" alt="Maria, Desenvolvedora" />
-          <p>
-            “A Ezra me ajudou a encontrar uma vaga que respeita minha
-            diversidade. Recomendo!”
-          </p>
+          <p>“A Ezra me ajudou a encontrar uma vaga que respeita minha diversidade. Recomendo!”</p>
           <span class="testimonial-name">Maria Souza</span>
           <span class="testimonial-role">Desenvolvedora</span>
         </div>
         <div class="testimonial-card">
           <img src="/img/profile2.jpg" alt="João, RH" />
-          <p>
-            “Com a Ezra, nossa empresa contratou profissionais incríveis e
-            diversos.”
-          </p>
+          <p>“Com a Ezra, nossa empresa contratou profissionais incríveis e diversos.”</p>
           <span class="testimonial-name">João Lima</span>
           <span class="testimonial-role">RH, InovaSocial</span>
         </div>
@@ -234,7 +242,7 @@
       <div class="cta-content">
         <h2>Junte-se à mudança. Conecte-se a oportunidades.</h2>
         <div class="cta-buttons">
-          <a href="#account" class="btn btn-light">Criar Conta</a>
+          <a href="/cadastro.html" class="btn btn-light">Criar Conta</a>
           <a href="#jobs" class="btn btn-dark">Ver Vagas</a>
         </div>
       </div>
@@ -248,17 +256,17 @@
         </div>
         <div class="footer-links">
           <a href="#">Home</a>
-          <a href="#jobs">Vagas</a>
-          <a href="#articles">Artigos</a>
-          <a href="#contact">Contato</a>
+          <a href="vagas.html">Vagas</a>
+          <a href="artigos.html">Artigos</a>
+          <a href="contato.html">Contato</a>
         </div>
         <div class="footer-social">
-          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a target="_blank" href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a target="_blank" href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a target="_blank" href="#"><i class="fa-brands fa-facebook"></i></a>
         </div>
         <div class="footer-cert">
-          <img src="/img/bcorp-badge.svg" alt="B-Corp Certificado" />
+          <img src="img/Design sem nome.png" alt="B-Corp Certificado" />
           <span>B-Corp & Sustentabilidade</span>
         </div>
       </div>
@@ -267,86 +275,135 @@
       </div>
     </footer>
 
-    <script>
-      // Header shrink on scroll
-      window.addEventListener("scroll", function () {
-        const header = document.getElementById("premium-header");
-        if (window.scrollY > 50) {
-          header.classList.add("scrolled");
-        } else {
-          header.classList.remove("scrolled");
-        }
-      });
+<script>
+  // Header shrink on scroll
+  window.addEventListener("scroll", function () {
+    const header = document.getElementById("premium-header");
+    if (window.scrollY > 50) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
+  // hero roller
+  const rollerText = document.getElementById("roller-text");
+const words = ["Ezra", "EFICIENTES", "MODERNOS", "PROFISSIONAIS"];
+let index = 0;
+let isChanging = false;
 
-      const accountIcon = document.querySelector(".account-icon a");
-      const rollerCadastrar = document.querySelector(".roller-cadastrar");
-      const rollerEntrar = document.querySelector(".roller-entrar");
-      const roller = document.querySelector(".account-text-roller");
-      let intervalId;
-      let showingCadastrar = true;
+function changeWord() {
+  if (isChanging) return; // evita sobreposição de animações
+  isChanging = true;
 
-      function rollText() {
-        if (showingCadastrar) {
-          rollerCadastrar.style.transform = "translateY(0)";
-          rollerEntrar.style.transform = "translateY(100%)";
-        } else {
-          rollerCadastrar.style.transform = "translateY(-100%)";
-          rollerEntrar.style.transform = "translateY(0)";
-        }
-        showingCadastrar = !showingCadastrar;
-      }
+  rollerText.classList.remove("fade-in");
+  rollerText.classList.add("fade-out");
 
-      accountIcon.addEventListener("mouseenter", () => {
-        roller.style.opacity = 1;
-        rollerCadastrar.style.transition =
-          "transform 0.5s cubic-bezier(.77,0,.18,1)";
-        rollerEntrar.style.transition =
-          "transform 0.5s cubic-bezier(.77,0,.18,1)";
-        rollText(); // Start immediately
-        intervalId = setInterval(rollText, 2000);
-      });
+  setTimeout(() => {
+    index = (index + 1) % words.length;
+    rollerText.textContent = words[index];
+    rollerText.classList.remove("fade-out");
+    rollerText.classList.add("fade-in");
 
-      accountIcon.addEventListener("mouseleave", () => {
-        clearInterval(intervalId);
-        roller.style.opacity = 0;
-        rollerCadastrar.style.transform = "translateY(0)";
-        rollerEntrar.style.transform = "translateY(100%)";
-        showingCadastrar = true;
-      });
+    // tempo especial para "Ezra" (fica mais tempo na tela)
+    const delay = words[index] === "Ezra" ? 5000 : 2500;
 
-      // Initialize positions
+    setTimeout(() => {
+      isChanging = false;
+      changeWord();
+    }, delay);
+
+  }, 800); // tempo da animação de saída
+}
+
+// inicia a rotação
+setTimeout(() => {
+  rollerText.classList.add("fade-in");
+  setTimeout(changeWord, 4000); // Ezra inicial já começa com delay maior
+}, 500);
+  // account icon roller
+  const accountIcon = document.querySelector(".account-icon a");
+  const rollerCadastrar = document.querySelector(".roller-cadastrar");
+  const rollerEntrar = document.querySelector(".roller-entrar");
+  const roller = document.querySelector(".account-text-roller");
+  let intervalId;
+  let showingCadastrar = true;
+
+  function rollText() {
+    if (showingCadastrar) {
       rollerCadastrar.style.transform = "translateY(0)";
       rollerEntrar.style.transform = "translateY(100%)";
+    } else {
+      rollerCadastrar.style.transform = "translateY(-100%)";
+      rollerEntrar.style.transform = "translateY(0)";
+    }
+    showingCadastrar = !showingCadastrar;
+  }
 
-      function animateCountUp(el, target) {
-        let count = 0;
-        const speed = Math.ceil(target / 60);
-        function update() {
-          count += speed;
-          if (count > target) count = target;
-          el.textContent = "+" + count.toLocaleString();
-          if (count < target) requestAnimationFrame(update);
-        }
-        update();
-      }
-      document.querySelectorAll(".impact-number").forEach((el) => {
-        const target = parseInt(el.getAttribute("data-count"), 10);
-        animateCountUp(el, target);
-      });
+  accountIcon.addEventListener("mouseenter", () => {
+    roller.style.opacity = 1;
+    rollerCadastrar.style.transition = "transform 0.5s cubic-bezier(.77,0,.18,1)";
+    rollerEntrar.style.transition = "transform 0.5s cubic-bezier(.77,0,.18,1)";
+    rollText(); // Start immediately
+    intervalId = setInterval(rollText, 2000);
+  });
 
-      // Simple testimonial carousel
-      let testimonialIndex = 0;
-      const testimonials = document.querySelectorAll(".testimonial-card");
-      function showTestimonial(idx) {
-        testimonials.forEach((card, i) => {
-          card.style.display = i === idx ? "flex" : "none";
-        });
-      }
-      showTestimonial(testimonialIndex);
-      setInterval(() => {
-        testimonialIndex = (testimonialIndex + 1) % testimonials.length;
-        showTestimonial(testimonialIndex);
-      }, 4000);
-    </script>
+  accountIcon.addEventListener("mouseleave", () => {
+    clearInterval(intervalId);
+    roller.style.opacity = 0;
+    rollerCadastrar.style.transform = "translateY(0)";
+    rollerEntrar.style.transform = "translateY(100%)";
+    showingCadastrar = true;
+  });
+
+  // Initialize positions
+  rollerCadastrar.style.transform = "translateY(0)";
+  rollerEntrar.style.transform = "translateY(100%)";
+
+  function animateCountUp(el, target) {
+    let count = 0;
+    const speed = Math.ceil(target / 60);
+    function update() {
+      count += speed;
+      if (count > target) count = target;
+      el.textContent = "+" + count.toLocaleString();
+      if (count < target) requestAnimationFrame(update);
+    }
+    update();
+  }
+
+  document.querySelectorAll(".impact-number").forEach((el) => {
+    const target = parseInt(el.getAttribute("data-count"), 10);
+    animateCountUp(el, target);
+  });
+
+  // Acessibilidade popup
+  const popup = document.getElementById("accessibility-popup");
+  const openBtn = document.getElementById("accessibility-btn");
+  const closeBtn = document.getElementById("close-popup");
+
+  openBtn.addEventListener("click", () => {
+    popup.classList.remove("hidden");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    popup.classList.add("hidden");
+  });
+
+  popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+      popup.classList.add("hidden");
+    }
+  });
+
+  // Google Translate
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'pt',
+      includedLanguages: 'en,es,fr,de',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   </body>
 </html>

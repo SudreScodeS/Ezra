@@ -1,198 +1,224 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login/Cadastro - TrampoFácil</title>
-    <link rel="stylesheet" href="css/cadastro.css">
-</head>
-<body>
-    <a href="#main" class="skip-to-content">Pular para o conteúdo principal</a>
-    
-    <header role="banner">
-        <nav role="navigation" aria-label="Menu principal">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
-                <li><a href="vagas.html">Vagas</a></li>
-                <li><a href="artigos.html">Artigos</a></li>
-                <li><a href="cadastro.html" aria-current="page">Login/Cadastro</a></li>
-                <li><a href="contato.html">Contato</a></li>
-            </ul>
-        </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login/Cadastro - Ezra</title>
+    <link rel="stylesheet" href="css/cadastro.css" />
+    <!-- use CDN CSS do Font Awesome para garantir os ícones -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <!-- NAVBAR PREMIUM -->
+    <header class="premium-header" id="premium-header">
+      <nav class="premium-nav" aria-label="Menu principal">
+        <a href="index.html">Home</a>
+        <a href="vagas.html">Vagas</a>
+        <a href="cursos.html">Cursos</a>
+        <a href="artigos.html">Artigos</a>
+      </nav>
+      <div class="logo">
+        <img src="/img/logo.svg" alt="Logo Ezra" />
+      </div>
+      <div class="premium-actions">
+        <a href="https://linkedin.com" title="LinkedIn" target="_blank"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+        <a href="https://instagram.com" title="Instagram" target="_blank"
+          ><i class="fab fa-instagram"></i
+        ></a>
+      </div>
     </header>
 
     <main role="main" id="main">
-        <h1>Acesse Sua Conta</h1>
+      <h1>Acesse Sua Conta</h1>
 
-        <div class="form-container">
-            <section class="form-section" aria-labelledby="login">
-                <h2 id="login">Login</h2>
-                <div class="success-message" id="login-success">
-                    Login realizado com sucesso! Redirecionando...
-                </div>
-                <form id="login-form">
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input 
-                            type="email" 
-                            id="email" 
-                            name="email" 
-                            placeholder="seu@email.com"
-                            required 
-                            aria-required="true"
-                            autocomplete="email"
-                        />
-                    </div>
+      <div class="form-container">
+        <section class="form-section" aria-labelledby="login">
+          <h2 id="login">Login</h2>
+          <form id="login-form" novalidate>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="seu@email.com"
+                required
+                aria-required="true"
+                autocomplete="email"
+              />
+            </div>
 
-                    <div class="form-group">
-                        <label for="senha">Senha:</label>
-                        <input 
-                            type="password" 
-                            id="senha" 
-                            name="senha" 
-                            placeholder="Digite sua senha"
-                            required 
-                            aria-required="true"
-                            autocomplete="current-password"
-                        />
-                        <span class="helper-text">Esqueceu sua senha? <a href="#" style="color: var(--gold);">Clique aqui</a></span>
-                    </div>
+            <div class="form-group">
+              <label for="senha">Senha:</label>
+              <input
+                type="password"
+                id="senha"
+                name="senha"
+                placeholder="Digite sua senha"
+                required
+                aria-required="true"
+                autocomplete="current-password"
+              />
+              <span class="helper-text"
+                >Esqueceu sua senha?
+                <a href="#" style="color: var(--gold)">Clique aqui</a></span
+              >
+            </div>
 
-                    <button type="submit" class="btn">Entrar</button>
-                </form>
+            <button type="submit" class="btn">Entrar</button>
+          </form>
 
-                <div class="divider">
-                    <span>ou</span>
-                </div>
+          <p class="muted">Novo por aqui? Crie sua conta ao lado →</p>
+        </section>
 
-                <p style="text-align: center; color: var(--gray-light);">
-                    Novo por aqui? Crie sua conta ao lado →
-                </p>
-            </section>
+        <section class="form-section" aria-labelledby="register">
+          <h2 id="register">Cadastro</h2>
+          <form id="register-form" novalidate>
+            <div class="form-group">
+              <label for="nome">Nome Completo:</label>
+              <input
+                type="text"
+                id="nome"
+                name="nome"
+                placeholder="João da Silva"
+                required
+                aria-required="true"
+                autocomplete="name"
+              />
+            </div>
 
-            <section class="form-section" aria-labelledby="register">
-                <h2 id="register">Cadastro</h2>
-                <div class="success-message" id="register-success">
-                    Cadastro realizado com sucesso! Bem-vindo ao TrampoFácil!
-                </div>
-                <form id="register-form">
-                    <div class="form-group">
-                        <label for="nome">Nome Completo:</label>
-                        <input 
-                            type="text" 
-                            id="nome" 
-                            name="nome" 
-                            placeholder="João da Silva"
-                            required 
-                            aria-required="true"
-                            autocomplete="name"
-                        />
-                    </div>
+            <div class="form-group">
+              <label for="email-cadastro">Email:</label>
+              <input
+                type="email"
+                id="email-cadastro"
+                name="email"
+                placeholder="seu@email.com"
+                required
+                aria-required="true"
+                autocomplete="email"
+              />
+            </div>
 
-                    <div class="form-group">
-                        <label for="email-cadastro">Email:</label>
-                        <input 
-                            type="email" 
-                            id="email-cadastro" 
-                            name="email" 
-                            placeholder="seu@email.com"
-                            required 
-                            aria-required="true"
-                            autocomplete="email"
-                        />
-                    </div>
+            <div class="form-group">
+              <label for="senha-cadastro">Senha:</label>
+              <input
+                type="password"
+                id="senha-cadastro"
+                name="senha"
+                placeholder="Mínimo 8 caracteres"
+                required
+                aria-required="true"
+                autocomplete="new-password"
+                minlength="8"
+              />
+              <span class="helper-text"
+                >Use letras, números e caracteres especiais</span
+              >
+            </div>
 
-                    <div class="form-group">
-                        <label for="senha-cadastro">Senha:</label>
-                        <input 
-                            type="password" 
-                            id="senha-cadastro" 
-                            name="senha" 
-                            placeholder="Mínimo 8 caracteres"
-                            required 
-                            aria-required="true"
-                            autocomplete="new-password"
-                            minlength="8"
-                        />
-                        <span class="helper-text">Use letras, números e caracteres especiais</span>
-                    </div>
+            <div class="form-group">
+              <label for="skills">Habilidades (separadas por vírgula):</label>
+              <input
+                type="text"
+                id="skills"
+                name="skills"
+                placeholder="Ex: JavaScript, Design, Marketing"
+                aria-describedby="skills-help"
+              />
+              <span class="helper-text" id="skills-help"
+                >Isso nos ajuda a encontrar as melhores vagas para você</span
+              >
+            </div>
 
-                    <div class="form-group">
-                        <label for="skills">Habilidades (separadas por vírgula):</label>
-                        <input 
-                            type="text" 
-                            id="skills" 
-                            name="skills" 
-                            placeholder="Ex: JavaScript, Design, Marketing"
-                            aria-describedby="skills-help"
-                        />
-                        <span class="helper-text" id="skills-help">Isso nos ajuda a encontrar as melhores vagas para você</span>
-                    </div>
+            <div class="form-group">
+              <label for="experiencia">Experiência:</label>
+              <select id="experiencia" name="experiencia" aria-required="true">
+                <option value="">Selecione seu nível</option>
+                <option value="Iniciante">Iniciante (0-2 anos)</option>
+                <option value="Intermediário">Intermediário (3-5 anos)</option>
+                <option value="Experiente">Experiente (5+ anos)</option>
+              </select>
+            </div>
 
-                    <div class="form-group">
-                        <label for="experiencia">Experiência:</label>
-                        <select id="experiencia" name="experiencia" aria-required="true">
-                            <option value="">Selecione seu nível</option>
-                            <option value="Iniciante">Iniciante (0-2 anos)</option>
-                            <option value="Intermediário">Intermediário (3-5 anos)</option>
-                            <option value="Experiente">Experiente (5+ anos)</option>
-                        </select>
-                    </div>
+            <button type="submit" class="btn">Cadastrar</button>
+          </form>
 
-                    <button type="submit" class="btn">Cadastrar</button>
-                </form>
-
-                <div class="divider">
-                    <span>ou</span>
-                </div>
-
-                <p style="text-align: center; color: var(--gray-light);">
-                    Já tem conta? Faça login ao lado ←
-                </p>
-            </section>
-        </div>
+          <p class="muted">Já tem conta? Faça login ao lado ←</p>
+        </section>
+      </div>
     </main>
 
-    <footer role="contentinfo">
-        <p>&copy; 2025 TrampoFácil - Todos os direitos reservados</p>
-        <p>Empresa certificada B-Corp ⭐⭐⭐⭐⭐</p>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="img/logo branca.svg" alt="Ezra Logo" />
+        </div>
+        <div class="footer-links">
+          <a href="#">Home</a>
+          <a href="#jobs">Vagas</a>
+          <a href="#articles">Artigos</a>
+          <a href="#contact">Contato</a>
+        </div>
+        <div class="footer-social">
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+        <div class="footer-cert">
+          <img src="img/Design sem nome.png" alt="B-Corp Certificado" />
+          <span>B-Corp & Sustentabilidade</span>
+        </div>
+      </div>
+      <div class="footer-copy">
+        &copy; 2025 Ezra. Todos os direitos reservados.
+      </div>
     </footer>
 
     <script>
-        // Form handling with loading states
-        document.getElementById('login-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = this.querySelector('.btn');
-            btn.classList.add('loading');
-            
-            // Simulate API call
-            setTimeout(() => {
-                btn.classList.remove('loading');
-                document.getElementById('login-success').classList.add('show');
-                // Redirect logic here
-            }, 2000);
+      document
+        .getElementById("login-form")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const email = document.getElementById("email").value;
+          const senha = document.getElementById("senha").value;
+
+          const res = await fetch("/api/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, senha }),
+          });
+
+          const data = await res.json();
+          alert(data.message || data.error);
         });
 
-        document.getElementById('register-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = this.querySelector('.btn');
-            btn.classList.add('loading');
-            
-            // Simulate API call
-            setTimeout(() => {
-                btn.classList.remove('loading');
-                document.getElementById('register-success').classList.add('show');
-                // Redirect logic here
-            }, 2000);
-        });
+      document
+        .getElementById("register-form")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const nome = document.getElementById("nome").value;
+          const email = document.getElementById("email-cadastro").value;
+          const senha = document.getElementById("senha-cadastro").value;
+          const skills = document.getElementById("skills").value;
+          const experiencia = document.getElementById("experiencia").value;
 
-        // Auto-hide success messages
-        setTimeout(() => {
-            document.querySelectorAll('.success-message').forEach(msg => {
-                msg.classList.remove('show');
-            });
-        }, 5000);
+          const res = await fetch("/api/auth/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nome, email, senha, skills, experiencia }),
+          });
+
+          const data = await res.json();
+          alert(data.message || data.error);
+        });
     </script>
-</body>
+  </body>
 </html>

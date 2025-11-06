@@ -4,43 +4,48 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vagas — Ezra | Conecte-se a Oportunidades com Impacto</title>
-  <meta name="description" content="Encontre vagas inclusivas e sustentáveis na Ezra. Conecte-se com empresas comprometidas com diversidade, acessibilidade e impacto social." />
-  <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/vagas.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-</head>
-<body>
-  <!-- Header -->
-  <header id="main-header">
-    <div class="container">
-      <!-- Logo -->
-      <div class="logo">
-        <img src="/img/log.svg" alt="Ezra Logo" />
-      </div>
-      <!-- Navigation -->
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="vagas.html" class="active">Vagas</a></li>
-          <li><a href="cursos.html">Cursos</a></li>
-          <li><a href="artigos.html">Artigos</a></li>
-          <li><a href="contato.html">Contato</a></li>
-        </ul>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="premium-header" id="premium-header">
+      <nav class="premium-nav" aria-label="Menu principal">
+        <a href="index.html">Home</a>
+        <a href="vagas.html">Vagas</a>
+        <a href="cursos.html">Cursos</a>
+        <a href="artigos.html">Artigos</a>
       </nav>
-      <!-- Account/Login -->
-      <div class="account-icon">
-        <a href="cadastro.html" title="Login / Criar conta">
-          <i class="fa-solid fa-user"></i>
-          <span class="account-text-roller">
-            <span class="roller-text roller-cadastrar">Cadastrar</span>
-            <span class="roller-text roller-entrar">Entrar</span>
-          </span>
-        </a>
+      <div class="logo">
+        <img src="/img/logo.svg" alt="Logo Ezra" />
       </div>
-    </div>
-  </header>
+      <div class="premium-actions">
+        <a href="https://linkedin.com" title="LinkedIn" target="_blank"
+          ><i class="fa-brands fa-linkedin"></i
+        ></a>
+        <a href="https://instagram.com" title="Instagram" target="_blank"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
+        <div class="account-icon">
+          <a href="cadastro.html" title="Login / Criar conta">
+            <i class="fa-solid fa-user"></i>
+            <span class="account-text-roller">
+              <span class="roller-text roller-cadastrar">Cadastrar</span>
+              <span class="roller-text roller-entrar">Entrar</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </header>
 
   <!-- Hero / Intro Section -->
   <section class="hero vagas-hero">
@@ -117,7 +122,7 @@
   <footer>
     <div class="footer-container">
       <div class="footer-logo">
-        <img src="/img/logo branca.svg" alt="Ezra Logo" />
+        <img src="img/logo branca.svg" alt="Ezra Logo" />
       </div>
       <div class="footer-links">
         <a href="index.html">Home</a>
@@ -131,7 +136,7 @@
         <a href="#"><i class="fa-brands fa-facebook"></i></a>
       </div>
       <div class="footer-cert">
-        <img src="/img/bcorp-badge.svg" alt="B-Corp Certificado" />
+        <img src="img/Design sem nome.png" alt="B-Corp Certificado" />
         <span>B-Corp & Sustentabilidade</span>
       </div>
     </div>
@@ -142,7 +147,6 @@
 
   <script src="js/auth.js"></script>
   <script src="js/jobs.js"></script>
-  <script src="js/main.js"></script>
   <script>
       // Header shrink on scroll
       window.addEventListener("scroll", function () {
