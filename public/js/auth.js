@@ -1,139 +1,121 @@
 class AuthManager {
   constructor() {
-    this.token = localStorage.getItem('authToken');
-    this.user = JSON.parse(localStorage.getItem('user')) || null;
+    this.token = localStorage.getItem("authToken");
+    this.nome = localStorage.getItem("userName") || "Visitante";
   }
 
   async login(email, senha) {
-    try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, senha })
-      });
-      
-      if (!response.ok) throw new Error('Credenciais inválidas');
-      
-      const data = await response.json();
-      this.token = data.token;
-      this.user = data.user;
-      
-      localStorage.setItem('authToken', this.token);
-      localStorage.setItem('user', JSON.stringify(this.user));
-      
-      return data;
-    } catch (error) {
-      console.error('Erro no login:', error);
-      throw error;
-    }
+    const res = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, senha }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) throw new Error(data.error || "Falha no login");
+
+    localStorage.setItem("authToken", data.token);
+    localStorage.setItem("userName", data.nome);
+    this.token = data.token;
+    this.nome = data.nome;
+
+    this.updateUserUI();
+    alert(data.message);
   }
 
   async register(userData) {
-    try {
-      const response = await fetch('/api/auth/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(userData)
-      });
-      
-      if (!response.ok) throw new Error('Erro no cadastro');
-      
-      const data = await response.json();
-      this.token = data.token;
-      this.user = data.user;
-      
-      localStorage.setItem('authToken', this.token);
-      localStorage.setItem('user', JSON.stringify(this.user));
-      
-      return data;
-    } catch (error) {
-      console.error('Erro no cadastro:', error);
-      throw error;
-    }
+    const res = await fetch("/api/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) throw new Error(data.error || "Erro ao cadastrar");
+
+    localStorage.setItem("authToken", data.token);
+    localStorage.setItem("userName", data.nome);
+    this.token = data.token;
+    this.nome = data.nome;
+
+    this.updateUserUI();
+    alert(data.message);
   }
 
   logout() {
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("userName");
     this.token = null;
-    this.user = null;
-    localStorage.removeItem('authToken');
-    localStorage.removeItem('user');
-    window.location.href = '/';
+    this.nome = "Visitante";
+    this.updateUserUI();
   }
 
-  isAuthenticated() {
-    return this.token !== null;
-  }
+  updateUserUI() {
+    const nomeEl = document.querySelector("#user-nome");
+    const popup = document.querySelector(".user-popup");
+    if (nomeEl) nomeEl.textContent = this.nome.toUpperCase();
 
-  getAuthHeaders() {
-    return {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.token}`
-    };
+    if (popup) popup.style.display = "none";
   }
 }
 
-// Instância global
 const auth = new AuthManager();
 
-// Formulários de login/cadastro
-document.addEventListener('DOMContentLoaded', function() {
-  // Login
-  const loginForm = document.getElementById('login-form');
+// Inicialização
+document.addEventListener("DOMContentLoaded", () => {
+  auth.updateUserUI();
+
+  // LOGIN
+  const loginForm = document.getElementById("login-form");
   if (loginForm) {
-    loginForm.addEventListener('submit', async function(e) {
+    loginForm.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const email = this.querySelector('#email').value;
-      const senha = this.querySelector('#senha').value;
-      
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
       try {
         await auth.login(email, senha);
-        window.location.href = '/vagas.html';
-      } catch (error) {
-        alert('Erro no login: ' + error.message);
+      } catch (err) {
+        alert(err.message);
       }
     });
   }
 
-  // Cadastro
-  const registerForm = document.getElementById('register-form');
+  // CADASTRO
+  const registerForm = document.getElementById("register-form");
   if (registerForm) {
-    registerForm.addEventListener('submit', async function(e) {
+    registerForm.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const formData = new FormData(this);
-      const userData = {
-        nome: formData.get('nome'),
-        email: formData.get('email'),
-        senha: formData.get('senha'),
-        skills: formData.get('skills').split(',').map(s => s.trim()),
-        experiencia: formData.get('experiencia')
-      };
-      
+      const nome = document.getElementById("nome").value;
+      const email = document.getElementById("email-cadastro").value;
+      const senha = document.getElementById("senha-cadastro").value;
+      const skills = document.getElementById("skills").value;
+      const experiencia = document.getElementById("experiencia").value;
+
       try {
-        await auth.register(userData);
-        window.location.href = '/vagas.html';
-      } catch (error) {
-        alert('Erro no cadastro: ' + error.message);
+        await auth.register({ nome, email, senha, skills, experiencia });
+      } catch (err) {
+        alert(err.message);
       }
     });
   }
 
-  // Logout
-  const logoutBtn = document.getElementById('logout-btn');
-  if (logoutBtn) {
-    logoutBtn.addEventListener('click', () => auth.logout());
+  // POP-UP PERFIL
+  const userInfo = document.getElementById("user-info");
+  if (userInfo) {
+    userInfo.addEventListener("mouseenter", () => {
+      const popup = document.querySelector(".user-popup");
+      if (popup) popup.style.display = "block";
+    });
+
+    userInfo.addEventListener("mouseleave", () => {
+      const popup = document.querySelector(".user-popup");
+      if (popup) popup.style.display = "none";
+    });
   }
 
-  // Mostrar/ocultar forms baseado na autenticação
-  updateAuthUI();
+  // BOTÃO LOGOUT
+  const logoutBtn = document.getElementById("logout-btn");
+  if (logoutBtn) logoutBtn.addEventListener("click", () => auth.logout());
 });
-
-function updateAuthUI() {
-  const authElements = document.querySelectorAll('[data-auth]');
-  authElements.forEach(el => {
-    const shouldShow = auth.isAuthenticated() ? 
-      el.getAttribute('data-auth') === 'authenticated' :
-      el.getAttribute('data-auth') === 'anonymous';
-    
-    el.style.display = shouldShow ? 'block' : 'none';
-  });
-}
