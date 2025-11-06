@@ -631,6 +631,7 @@ nav ul li a:hover {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 32px;
   max-width: 1000px;
+  align-items: stretch; 
   margin: 0 auto;
 }
 .job-card {
@@ -643,6 +644,7 @@ nav ul li a:hover {
   align-items: flex-start;
   gap: 14px;
   font-family: var(--font-title);
+  justify-content: space-between;
   font-weight: 600;
   color: var(--brown-dark);
   font-size: 1.1rem;
@@ -663,20 +665,23 @@ nav ul li a:hover {
   margin-bottom: 12px;
 }
 .see-more {
-  display: inline-block;
+  margin-top: 10px;
+  align-self: flex-start;
   padding: 8px 18px;
-  background: var(--gold-light);
+  background: transparent;
   color: var(--brown-dark);
+  border: 1px solid var(--gold-light);
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
-  transition: background 0.3s, color 0.3s;
-  margin-top: 8px;
+  box-shadow: none;
+  transition: background 0.2s, color 0.2s, border 0.2s;
 }
 .see-more:hover {
   background: var(--gold);
   color: var(--white);
+  border-color: var(--gold);
 }
 
 /* Courses & Articles */

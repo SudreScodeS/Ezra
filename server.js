@@ -51,32 +51,45 @@ app.post("/api/auth/register", async (req, res) => {
   try {
     const { nome, email, senha, skills, experiencia } = req.body;
 
-    if (!nome || !email || !senha) {
-      return res.status(400).json({ error: "Preencha todos os campos obrigatórios!" });
-    }
-
-    const userExists = await User.findOne({ email });
-    if (userExists) {
+    // Verifica se o e-mail já existe
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
       return res.status(400).json({ error: "Email já cadastrado!" });
     }
 
-    const hashedPassword = await bcrypt.hash(senha, 10);
+    // Cria o hash da senha
+    const hashedSenha = await bcrypt.hash(senha, 10);
 
+    // Cria o usuário
     const newUser = new User({
       nome,
       email,
-      senha: hashedPassword,
+      senha: hashedSenha,
       skills,
-      experiencia
+      experiencia,
     });
 
     await newUser.save();
-    res.json({ message: "✅ Cadastro realizado com sucesso!" });
+
+    // Gera o token para login automático
+    const token = jwt.sign(
+      { id: newUser._id, email: newUser.email },
+      process.env.JWT_SECRET,
+      { expiresIn: "2h" }
+    );
+
+    // Retorna o nome e token igual o login faz
+    res.status(201).json({
+      message: `🎉 Conta criada com sucesso! Bem-vindo(a), ${newUser.nome}!`,
+      token,
+      nome: newUser.nome
+    });
   } catch (error) {
     console.error("Erro no cadastro:", error);
     res.status(500).json({ error: "Erro no servidor ao cadastrar." });
   }
 });
+
 
 app.post("/api/auth/login", async (req, res) => {
   try {
@@ -100,7 +113,8 @@ app.post("/api/auth/login", async (req, res) => {
 
     res.json({
       message: `👋 Bem-vindo(a), ${user.nome}!`,
-      token
+      token,
+      nome: user.nome
     });
   } catch (error) {
     console.error("Erro no login:", error);

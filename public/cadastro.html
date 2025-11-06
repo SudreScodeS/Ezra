@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login/Cadastro - Ezra</title>
     <link rel="stylesheet" href="css/cadastro.css" />
+    <link rel="icon" href="/img/logo icone.svg" />
     <!-- use CDN CSS do Font Awesome para garantir os ícones -->
     <link
       rel="stylesheet"
@@ -32,6 +33,10 @@
         <a href="https://instagram.com" title="Instagram" target="_blank"
           ><i class="fab fa-instagram"></i
         ></a>
+        <div id="user-info" class="user-info">
+          <img src="img/icon-user.png" alt="Usuário" />
+          <span id="user-nome">Visitante</span>
+        </div>
       </div>
     </header>
 
@@ -183,6 +188,7 @@
     </footer>
 
     <script>
+      // --- LOGIN ---
       document
         .getElementById("login-form")
         .addEventListener("submit", async (e) => {
@@ -197,9 +203,23 @@
           });
 
           const data = await res.json();
-          alert(data.message || data.error);
+
+          if (res.ok) {
+            // Salva o token e o nome no localStorage
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("nome", data.nome);
+
+            // Atualiza o nome imediatamente
+            const nomeEl = document.querySelector("#user-nome");
+            nomeEl.textContent = data.nome.toUpperCase();
+
+            alert(`Bem-vindo(a), ${data.nome}!`);
+          } else {
+            alert(data.error || "Falha no login");
+          }
         });
 
+      // --- CADASTRO ---
       document
         .getElementById("register-form")
         .addEventListener("submit", async (e) => {
@@ -217,8 +237,50 @@
           });
 
           const data = await res.json();
-          alert(data.message || data.error);
+
+          if (res.ok) {
+            // Salva o token e o nome para login automático
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("nome", data.nome);
+
+            // Atualiza o nome imediatamente no header
+            const nomeEl = document.querySelector("#user-nome");
+            nomeEl.textContent = data.nome.toUpperCase();
+
+            alert(data.message);
+          } else {
+            alert(data.error || "Erro ao cadastrar");
+          }
         });
+
+      // --- MOSTRAR USUÁRIO AO CARREGAR A PÁGINA ---
+      async function carregarUsuario() {
+        const token = localStorage.getItem("token");
+        const nomeEl = document.querySelector("#user-nome");
+
+        if (!token) {
+          nomeEl.textContent = "Visitante";
+          return;
+        }
+
+        try {
+          const resposta = await fetch("/api/perfil", {
+            headers: { Authorization: `Bearer ${token}` },
+          });
+
+          const user = await resposta.json();
+
+          if (resposta.ok && user.nome) {
+            nomeEl.textContent = user.nome.toUpperCase();
+          } else {
+            nomeEl.textContent = "Erro ao carregar";
+          }
+        } catch (err) {
+          nomeEl.textContent = "Erro";
+        }
+      }
+
+      carregarUsuario();
     </script>
   </body>
 </html>

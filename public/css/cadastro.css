@@ -176,6 +176,20 @@ body {
   }
 }
 
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #00f2aa;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.user-info img {
+  width: 22px;
+  height: 22px;
+}
+
 nav {
   display: flex;
   justify-content: center ;

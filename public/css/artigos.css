@@ -375,6 +375,7 @@ main h1{
 .article-card .btn {
   align-self: flex-end;
   margin-top: auto;
+  text-decoration: none;
   font-size: 1rem;
   padding: 0.7rem 1.5rem;
   border-radius: 6px;
