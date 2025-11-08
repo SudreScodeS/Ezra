@@ -12,7 +12,6 @@ class AuthManager {
     });
 
     const data = await res.json();
-
     if (!res.ok) throw new Error(data.error || "Falha no login");
 
     localStorage.setItem("authToken", data.token);
@@ -32,7 +31,6 @@ class AuthManager {
     });
 
     const data = await res.json();
-
     if (!res.ok) throw new Error(data.error || "Erro ao cadastrar");
 
     localStorage.setItem("authToken", data.token);
@@ -54,16 +52,12 @@ class AuthManager {
 
   updateUserUI() {
     const nomeEl = document.querySelector("#user-nome");
-    const popup = document.querySelector(".user-popup");
     if (nomeEl) nomeEl.textContent = this.nome.toUpperCase();
-
-    if (popup) popup.style.display = "none";
   }
 }
 
 const auth = new AuthManager();
 
-// Inicialização
 document.addEventListener("DOMContentLoaded", () => {
   auth.updateUserUI();
 
@@ -101,21 +95,55 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // POP-UP PERFIL
-  const userInfo = document.getElementById("user-info");
-  if (userInfo) {
-    userInfo.addEventListener("mouseenter", () => {
-      const popup = document.querySelector(".user-popup");
-      if (popup) popup.style.display = "block";
-    });
-
-    userInfo.addEventListener("mouseleave", () => {
-      const popup = document.querySelector(".user-popup");
-      if (popup) popup.style.display = "none";
-    });
-  }
-
-  // BOTÃO LOGOUT
+  // --- POP-UP DE PERFIL ---
+  const userNome = document.getElementById("user-nome");
   const logoutBtn = document.getElementById("logout-btn");
-  if (logoutBtn) logoutBtn.addEventListener("click", () => auth.logout());
+
+  // Abrir pop-up ao clicar no nome
+  userNome.addEventListener("click", async () => {
+    const token = localStorage.getItem("authToken");
+    if (!token) return;
+
+    try {
+      const resposta = await fetch("/api/perfil", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      const user = await resposta.json();
+
+      if (resposta.ok) {
+        document.getElementById("perfil-nome").textContent = user.nome;
+        document.getElementById("perfil-email").textContent = user.email;
+        document.getElementById("perfil-skills").textContent =
+          user.skills || "Não informado";
+        document.getElementById("perfil-experiencia").textContent =
+          user.experiencia || "Não informado";
+
+        document.getElementById("perfil-modal").style.display = "flex";
+      }
+    } catch (err) {
+      console.error("Erro ao carregar perfil:", err);
+    }
+  });
+
+  // Fechar modal
+  document.getElementById("close-modal").addEventListener("click", () => {
+    document.getElementById("perfil-modal").style.display = "none";
+  });
+
+  // Fechar modal ao clicar fora
+  window.addEventListener("click", (e) => {
+    if (e.target === document.getElementById("perfil-modal")) {
+      document.getElementById("perfil-modal").style.display = "none";
+    }
+  });
+
+document.getElementById("logout-btn").addEventListener("click", () => {
+  localStorage.removeItem("authToken");
+  localStorage.removeItem("userName");
+  auth.logout();
+  document.getElementById("perfil-modal").style.display = "none";
+  alert("Você saiu da conta.");
 });
+});
+

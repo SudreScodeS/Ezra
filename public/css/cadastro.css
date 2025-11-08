@@ -176,19 +176,102 @@ body {
   }
 }
 
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #00f2aa;
-  font-weight: 600;
-  font-size: 15px;
+#user-container {
+  position: relative;
 }
 
-.user-info img {
-  width: 22px;
-  height: 22px;
+#user-nome {
+  cursor: pointer;
+  font-weight: 600;
+  color: #fff;
+  transition: color 0.3s;
 }
+
+
+#user-container:hover #user-menu {
+  display: block;
+}
+/* ===== Menu de Logout ===== */
+#user-menu {
+  display: none;
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Só mostra o menu se o usuário NÃO for visitante */
+#user-container.logged-in:hover #user-menu {
+  display: block;
+}
+
+#logout-btn {
+  border: none;
+  background: none;
+  color: #d9534f;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  padding: 8px 0;
+  border-radius: 10px;
+  transition: background 0.3s;
+}
+
+#logout-btn:hover {
+  background-color: #f8d7da;
+}
+
+/* ===== Pop-up de Perfil ===== */
+.perfil-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.perfil-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 350px;
+  text-align: center;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.logout-btn {
+  margin-top: 15px;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #c9302c;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+
 
 nav {
   display: flex;
