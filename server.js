@@ -1,25 +1,40 @@
-require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const path = require('path');
-const { GoogleGenerativeAI } = require('@google/generative-ai');
-const recommendRoutes = require('./routes/recommend');
-
+require("dotenv").config();
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const path = require("path");
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+const recommendRoutes = require("./routes/recommend");
 
 const app = express();
 const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(
+  session({
+    secret: "minha-chave-super-secreta",
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: "mongodb+srv://beni_db_user:MfHg59W.u85..dR@clustergood.7xzlpal.mongodb.net/?retryWrites=true&w=majority&appName=ClusterGood", // <--- AQUI VOCÊ COLOCA SUA URL
+      ttl: 60 * 60, // 1 hora
+    }),
+    cookie: {
+      maxAge: 1000 * 60 * 60, // 1 hora
+    },
+  })
+);
+app.use(express.static(path.join(__dirname, "public")));
 
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('MongoDB conectado com sucesso!'))
-  .catch(err => console.error('Erro ao conectar MongoDB:', err));
-
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => console.log("MongoDB conectado com sucesso!"))
+  .catch((err) => console.error("Erro ao conectar MongoDB:", err));
 
 const UserSchema = new mongoose.Schema({
   nome: { type: String, required: true },
@@ -27,24 +42,24 @@ const UserSchema = new mongoose.Schema({
   senha: { type: String, required: true },
   skills: { type: String },
   experiencia: { type: String },
-  criadoEm: { type: Date, default: Date.now }
+  criadoEm: { type: Date, default: Date.now },
 });
 
 const User = mongoose.model("User", UserSchema);
 
 const authenticateToken = (req, res, next) => {
-  const token = req.headers['authorization']?.split(' ')[1];
-  if (!token) return res.status(401).json({ error: 'Token requerido' });
+  const token = req.headers["authorization"]?.split(" ")[1];
+  if (!token) return res.status(401).json({ error: "Token requerido" });
 
   jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-    if (err) return res.status(403).json({ error: 'Token inválido' });
+    if (err) return res.status(403).json({ error: "Token inválido" });
     req.user = user;
     next();
   });
 };
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'login.html'));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "login.html"));
 });
 
 app.post("/api/auth/register", async (req, res) => {
@@ -82,14 +97,13 @@ app.post("/api/auth/register", async (req, res) => {
     res.status(201).json({
       message: `🎉 Conta criada com sucesso! Bem-vindo(a), ${newUser.nome}!`,
       token,
-      nome: newUser.nome
+      nome: newUser.nome,
     });
   } catch (error) {
     console.error("Erro no cadastro:", error);
     res.status(500).json({ error: "Erro no servidor ao cadastrar." });
   }
 });
-
 
 app.post("/api/auth/login", async (req, res) => {
   try {
@@ -105,6 +119,12 @@ app.post("/api/auth/login", async (req, res) => {
       return res.status(401).json({ error: "Senha incorreta!" });
     }
 
+    req.session.user = {
+      id: user._id,
+      nome: user.nome,
+      email: user.email,
+    };
+
     const token = jwt.sign(
       { id: user._id, email: user.email },
       process.env.JWT_SECRET,
@@ -114,7 +134,7 @@ app.post("/api/auth/login", async (req, res) => {
     res.json({
       message: `👋 Bem-vindo(a), ${user.nome}!`,
       token,
-      nome: user.nome
+      nome: user.nome,
     });
   } catch (error) {
     console.error("Erro no login:", error);
@@ -125,7 +145,8 @@ app.post("/api/auth/login", async (req, res) => {
 app.get("/api/perfil", authenticateToken, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-senha");
-    if (!user) return res.status(404).json({ error: "Usuário não encontrado!" });
+    if (!user)
+      return res.status(404).json({ error: "Usuário não encontrado!" });
     res.json(user);
   } catch (err) {
     res.status(500).json({ error: "Erro ao carregar perfil." });
@@ -147,7 +168,7 @@ app.post("/api/chatbot", async (req, res) => {
   }
 });
 
-app.use('/api/recommend', recommendRoutes);
+app.use("/api/recommend", recommendRoutes);
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);

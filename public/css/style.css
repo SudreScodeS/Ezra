@@ -193,6 +193,100 @@ body {
   }
 }
 
+#user-container {
+  position: relative;
+}
+
+#user-nome {
+  cursor: pointer;
+  font-weight: 600;
+  color: #fff;
+  transition: color 0.3s;
+}
+
+
+#user-container:hover #user-menu {
+  display: block;
+}
+/* ===== Menu de Logout ===== */
+#user-menu {
+  display: none;
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* Só mostra o menu se o usuário NÃO for visitante */
+#user-container.logged-in:hover #user-menu {
+  display: block;
+}
+
+#logout-btn {
+  border: none;
+  background: none;
+  color: #d9534f;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  padding: 8px 0;
+  border-radius: 10px;
+  transition: background 0.3s;
+}
+
+#logout-btn:hover {
+  background-color: #f8d7da;
+}
+
+perfil-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.perfil-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 350px;
+  text-align: center;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.logout-btn {
+  margin-top: 15px;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #c9302c;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
 nav {
   display: flex;
   justify-content: center;
@@ -858,6 +952,178 @@ nav ul li a:hover {
 
 .access-feature:hover {
   transform: scale(1.05);
+}
+
+/* Accessibility Features */
+#accessibility-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #96754d;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  font-size: 1.4rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  z-index: 2000;
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#accessibility-btn:hover {
+  background: #c0a583;
+  transform: scale(1.1);
+}
+
+/* Remove o quadrado branco */
+#accessibility-btn:focus,
+#accessibility-btn:active {
+  outline: none;
+  background: #96754d;
+}
+
+/* Popup overlay (fundo escurecido) */
+.accessibility-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1500;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+.accessibility-popup.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Conteúdo central */
+.popup-content {
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  color: #222;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Botão de fechar */
+#close-popup {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #222;
+  transition: color 0.3s ease;
+}
+
+#close-popup:hover {
+  color: #96754d;
+}
+
+/* Itens */
+.accessibility-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.access-feature {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  color: #373643;
+  font-weight: 500;
+  transition: transform 0.3s ease;
+}
+
+.access-feature i {
+  color: #96754d;
+  font-size: 1.5rem;
+}
+
+.access-feature:hover {
+  transform: scale(1.05);
+}
+
+/* --- BLOCO DE LEITURA --- */
+
+.audio-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #ffffff15;
+  padding: 15px;
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+  border: 1px solid #ffffff25;
+}
+
+.audio-controls i {
+  font-size: 24px;
+  margin-bottom: -5px;
+}
+
+.audio-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.audio-buttons button {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: #ffffff20;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.2s ease;
+}
+
+/* Hover */
+.audio-buttons button:hover {
+  background: #ffffff35;
+  transform: translateY(-3px);
+}
+
+/* Clique */
+.audio-buttons button:active {
+  transform: scale(0.85);
+}
+
+/* Acessibilidade – foco */
+.audio-buttons button:focus {
+  outline: 2px solid #00aaff;
 }
 
 /* Testimonials */

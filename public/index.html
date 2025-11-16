@@ -26,7 +26,7 @@
         <a href="cursos.html">Cursos</a>
         <a href="artigos.html">Artigos</a>
       </nav>
-      <div class="logo" >
+      <div class="logo">
         <img src="/img/logo.svg" alt="Logo Ezra" />
       </div>
       <div class="premium-actions">
@@ -47,7 +47,20 @@
         </div>
       </div>
     </header>
+          <div id="perfil-modal" class="perfil-modal">
+        <div class="perfil-content">
+          <span id="close-modal" class="close">&times;</span>
+          <h2>Perfil do Usuário</h2>
+          <p><strong>Nome:</strong> <span id="perfil-nome"></span></p>
+          <p><strong>Email:</strong> <span id="perfil-email"></span></p>
+          <p><strong>Skills:</strong> <span id="perfil-skills"></span></p>
+          <p>
+            <strong>Experiência:</strong> <span id="perfil-experiencia"></span>
+          </p>
 
+          <button id="logout-btn" class="logout-btn">Sair da Conta</button>
+        </div>
+      </div>
     <!-- Hero / Bem-vindo -->
     <section class="hero">
       <video class="hero-bg" autoplay muted loop playsinline>
@@ -167,7 +180,11 @@
         <div class="content-card">
           <img src="img/ArtigoDiversidade.png" alt="Artigo 1" />
           <h3>Artigo: Diversidade no Trabalho</h3>
-          <a target="_blank" href="https://www.bing.com/ck/a?!&&p=e406d72d2690f24fec8e6cf1234a43d9467a2c554bf06898a059575a52b21422JmltdHM9MTc2MDU3MjgwMA&ptn=3&ver=2&hsh=4&fclid=2bc5e13b-b185-6e59-39d6-f7bcb0fc6f1f&psq=artigo+diversidade+no+trabalho&u=a1aHR0cHM6Ly93d3cuanVzYnJhc2lsLmNvbS5ici9hcnRpZ29zL3BvbGl0aWNhcy1kZS1kaXZlcnNpZGFkZS1lLWluY2x1c2FvLW5vLWxvY2FsLWRlLXRyYWJhbGhvLzI1OTcyMDk3MzU_bXNvY2tpZD0yYmM1ZTEzYmIxODU2ZTU5MzlkNmY3YmNiMGZjNmYxZg">Como equipes diversas inovam mais.</a>
+          <a
+            target="_blank"
+            href="https://www.bing.com/ck/a?!&&p=e406d72d2690f24fec8e6cf1234a43d9467a2c554bf06898a059575a52b21422JmltdHM9MTc2MDU3MjgwMA&ptn=3&ver=2&hsh=4&fclid=2bc5e13b-b185-6e59-39d6-f7bcb0fc6f1f&psq=artigo+diversidade+no+trabalho&u=a1aHR0cHM6Ly93d3cuanVzYnJhc2lsLmNvbS5ici9hcnRpZ29zL3BvbGl0aWNhcy1kZS1kaXZlcnNpZGFkZS1lLWluY2x1c2FvLW5vLWxvY2FsLWRlLXRyYWJhbGhvLzI1OTcyMDk3MzU_bXNvY2tpZD0yYmM1ZTEzYmIxODU2ZTU5MzlkNmY3YmNiMGZjNmYxZg"
+            >Como equipes diversas inovam mais.</a
+          >
         </div>
         <div class="content-card">
           <img src="img/Introducao_Logo.svg" alt="Curso 2" />
@@ -177,7 +194,11 @@
         <div class="content-card">
           <img src="img/ArtigoSustentabilidade.png" alt="Artigo 2" />
           <h3>Artigo: Sustentabilidade Corporativa</h3>
-          <a target="_blank" href="https://www.jusbrasil.com.br/artigos/esg-e-sustentabilidade-corporativa/2774189810?msockid=2bc5e13bb1856e5939d6f7bcb0fc6f1f">Estratégias para empresas responsáveis.</a>
+          <a
+            target="_blank"
+            href="https://www.jusbrasil.com.br/artigos/esg-e-sustentabilidade-corporativa/2774189810?msockid=2bc5e13bb1856e5939d6f7bcb0fc6f1f"
+            >Estratégias para empresas responsáveis.</a
+          >
         </div>
       </div>
     </section>
@@ -197,13 +218,16 @@
         </button>
         <h2>Recursos de Acessibilidade</h2>
         <div class="accessibility-grid">
-          <div class="access-feature">
-            <i class="fa-solid fa-volume-high"></i>
-            <span>Suporte a leitores de tela</span>
-          </div>
-          <div class="access-feature">
-            <i class="fa-solid fa-hands-asl-interpreting"></i>
-            <span>Tradução em Libras</span>
+          <div class="access-feature audio-controls">
+            <i class="fa-solid fa-headphones"></i>
+            <span>Leitura em Áudio</span>
+
+            <div class="audio-buttons">
+              <button id="audio-start" aria-label="Iniciar"><i class="fa-solid fa-play"></i></button>
+              <button id="audio-pause" aria-label="Pausar"><i class="fa-solid fa-pause"></i></button>
+              <button id="audio-resume" aria-label="Continuar"><i class="fa-solid fa-forward"></i></button>
+              <button id="audio-stop" aria-label="Parar"><i class="fa-solid fa-stop"></i></button>
+            </div>
           </div>
           <div class="access-feature">
             <i class="fa-solid fa-language"></i>
@@ -219,13 +243,19 @@
       <div class="testimonial-carousel">
         <div class="testimonial-card">
           <img src="/img/profile1.jpg" alt="Maria, Desenvolvedora" />
-          <p>“A Ezra me ajudou a encontrar uma vaga que respeita minha diversidade. Recomendo!”</p>
+          <p>
+            “A Ezra me ajudou a encontrar uma vaga que respeita minha
+            diversidade. Recomendo!”
+          </p>
           <span class="testimonial-name">Maria Souza</span>
           <span class="testimonial-role">Desenvolvedora</span>
         </div>
         <div class="testimonial-card">
           <img src="/img/profile2.jpg" alt="João, RH" />
-          <p>“Com a Ezra, nossa empresa contratou profissionais incríveis e diversos.”</p>
+          <p>
+            “Com a Ezra, nossa empresa contratou profissionais incríveis e
+            diversos.”
+          </p>
           <span class="testimonial-name">João Lima</span>
           <span class="testimonial-role">RH, InovaSocial</span>
         </div>
@@ -274,137 +304,190 @@
       <div class="footer-copy">
         &copy; 2025 Ezra. Todos os direitos reservados.
       </div>
+      <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+      </div>
     </footer>
 
-<script>
-  // Header shrink on scroll
-  window.addEventListener("scroll", function () {
-    const header = document.getElementById("premium-header");
-    if (window.scrollY > 50) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
-  });
-  // hero roller
-  const rollerText = document.getElementById("roller-text");
-const words = ["Ezra", "EFICIENTES", "MODERNOS", "PROFISSIONAIS"];
-let index = 0;
-let isChanging = false;
+    <script>
+      // Header shrink on scroll
+      window.addEventListener("scroll", function () {
+        const header = document.getElementById("premium-header");
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+      // hero roller
+      const rollerText = document.getElementById("roller-text");
+      const words = ["Ezra", "EFICIENTES", "MODERNOS", "PROFISSIONAIS"];
+      let index = 0;
+      let isChanging = false;
 
-function changeWord() {
-  if (isChanging) return; // evita sobreposição de animações
-  isChanging = true;
+      function changeWord() {
+        if (isChanging) return; // evita sobreposição de animações
+        isChanging = true;
 
-  rollerText.classList.remove("fade-in");
-  rollerText.classList.add("fade-out");
+        rollerText.classList.remove("fade-in");
+        rollerText.classList.add("fade-out");
 
-  setTimeout(() => {
-    index = (index + 1) % words.length;
-    rollerText.textContent = words[index];
-    rollerText.classList.remove("fade-out");
-    rollerText.classList.add("fade-in");
+        setTimeout(() => {
+          index = (index + 1) % words.length;
+          rollerText.textContent = words[index];
+          rollerText.classList.remove("fade-out");
+          rollerText.classList.add("fade-in");
 
-    // tempo especial para "Ezra" (fica mais tempo na tela)
-    const delay = words[index] === "Ezra" ? 5000 : 2500;
+          // tempo especial para "Ezra" (fica mais tempo na tela)
+          const delay = words[index] === "Ezra" ? 5000 : 2500;
 
-    setTimeout(() => {
-      isChanging = false;
-      changeWord();
-    }, delay);
+          setTimeout(() => {
+            isChanging = false;
+            changeWord();
+          }, delay);
+        }, 800); // tempo da animação de saída
+      }
 
-  }, 800); // tempo da animação de saída
-}
+      // inicia a rotação
+      setTimeout(() => {
+        rollerText.classList.add("fade-in");
+        setTimeout(changeWord, 4000); // Ezra inicial já começa com delay maior
+      }, 500);
+      // account icon roller
+      const accountIcon = document.querySelector(".account-icon a");
+      const rollerCadastrar = document.querySelector(".roller-cadastrar");
+      const rollerEntrar = document.querySelector(".roller-entrar");
+      const roller = document.querySelector(".account-text-roller");
+      let intervalId;
+      let showingCadastrar = true;
 
-// inicia a rotação
-setTimeout(() => {
-  rollerText.classList.add("fade-in");
-  setTimeout(changeWord, 4000); // Ezra inicial já começa com delay maior
-}, 500);
-  // account icon roller
-  const accountIcon = document.querySelector(".account-icon a");
-  const rollerCadastrar = document.querySelector(".roller-cadastrar");
-  const rollerEntrar = document.querySelector(".roller-entrar");
-  const roller = document.querySelector(".account-text-roller");
-  let intervalId;
-  let showingCadastrar = true;
+      function rollText() {
+        if (showingCadastrar) {
+          rollerCadastrar.style.transform = "translateY(0)";
+          rollerEntrar.style.transform = "translateY(100%)";
+        } else {
+          rollerCadastrar.style.transform = "translateY(-100%)";
+          rollerEntrar.style.transform = "translateY(0)";
+        }
+        showingCadastrar = !showingCadastrar;
+      }
 
-  function rollText() {
-    if (showingCadastrar) {
+      accountIcon.addEventListener("mouseenter", () => {
+        roller.style.opacity = 1;
+        rollerCadastrar.style.transition =
+          "transform 0.5s cubic-bezier(.77,0,.18,1)";
+        rollerEntrar.style.transition =
+          "transform 0.5s cubic-bezier(.77,0,.18,1)";
+        rollText(); // Start immediately
+        intervalId = setInterval(rollText, 2000);
+      });
+
+      accountIcon.addEventListener("mouseleave", () => {
+        clearInterval(intervalId);
+        roller.style.opacity = 0;
+        rollerCadastrar.style.transform = "translateY(0)";
+        rollerEntrar.style.transform = "translateY(100%)";
+        showingCadastrar = true;
+      });
+
+      // Initialize positions
       rollerCadastrar.style.transform = "translateY(0)";
       rollerEntrar.style.transform = "translateY(100%)";
-    } else {
-      rollerCadastrar.style.transform = "translateY(-100%)";
-      rollerEntrar.style.transform = "translateY(0)";
-    }
-    showingCadastrar = !showingCadastrar;
-  }
 
-  accountIcon.addEventListener("mouseenter", () => {
-    roller.style.opacity = 1;
-    rollerCadastrar.style.transition = "transform 0.5s cubic-bezier(.77,0,.18,1)";
-    rollerEntrar.style.transition = "transform 0.5s cubic-bezier(.77,0,.18,1)";
-    rollText(); // Start immediately
-    intervalId = setInterval(rollText, 2000);
-  });
+      function animateCountUp(el, target) {
+        let count = 0;
+        const speed = Math.ceil(target / 60);
+        function update() {
+          count += speed;
+          if (count > target) count = target;
+          el.textContent = "+" + count.toLocaleString();
+          if (count < target) requestAnimationFrame(update);
+        }
+        update();
+      }
 
-  accountIcon.addEventListener("mouseleave", () => {
-    clearInterval(intervalId);
-    roller.style.opacity = 0;
-    rollerCadastrar.style.transform = "translateY(0)";
-    rollerEntrar.style.transform = "translateY(100%)";
-    showingCadastrar = true;
-  });
+      document.querySelectorAll(".impact-number").forEach((el) => {
+        const target = parseInt(el.getAttribute("data-count"), 10);
+        animateCountUp(el, target);
+      });
 
-  // Initialize positions
-  rollerCadastrar.style.transform = "translateY(0)";
-  rollerEntrar.style.transform = "translateY(100%)";
+      // Acessibilidade popup
+      const popup = document.getElementById("accessibility-popup");
+      const openBtn = document.getElementById("accessibility-btn");
+      const closeBtn = document.getElementById("close-popup");
 
-  function animateCountUp(el, target) {
-    let count = 0;
-    const speed = Math.ceil(target / 60);
-    function update() {
-      count += speed;
-      if (count > target) count = target;
-      el.textContent = "+" + count.toLocaleString();
-      if (count < target) requestAnimationFrame(update);
-    }
-    update();
-  }
+      openBtn.addEventListener("click", () => {
+        popup.classList.remove("hidden");
+      });
 
-  document.querySelectorAll(".impact-number").forEach((el) => {
-    const target = parseInt(el.getAttribute("data-count"), 10);
-    animateCountUp(el, target);
-  });
+      closeBtn.addEventListener("click", () => {
+        popup.classList.add("hidden");
+      });
 
-  // Acessibilidade popup
-  const popup = document.getElementById("accessibility-popup");
-  const openBtn = document.getElementById("accessibility-btn");
-  const closeBtn = document.getElementById("close-popup");
+      popup.addEventListener("click", (e) => {
+        if (e.target === popup) {
+          popup.classList.add("hidden");
+        }
+      });
 
-  openBtn.addEventListener("click", () => {
-    popup.classList.remove("hidden");
-  });
+      // Google Translate
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "pt",
+            includedLanguages: "en,es,fr,de",
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          },
+          "google_translate_element"
+        );
+      }
+    </script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget("https://vlibras.gov.br/app");
+    </script>
+    <script>
+      let falaAtual = null;
 
-  closeBtn.addEventListener("click", () => {
-    popup.classList.add("hidden");
-  });
+      function iniciarLeitura() {
+        speechSynthesis.cancel();
+        const texto = document.body.innerText;
 
-  popup.addEventListener("click", (e) => {
-    if (e.target === popup) {
-      popup.classList.add("hidden");
-    }
-  });
+        falaAtual = new SpeechSynthesisUtterance(texto);
+        falaAtual.lang = "pt-BR";
+        falaAtual.rate = 1;
+        falaAtual.pitch = 1;
 
-  // Google Translate
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'pt',
-      includedLanguages: 'en,es,fr,de',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-    }, 'google_translate_element');
-  }
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        speechSynthesis.speak(falaAtual);
+      }
+
+      function pausarLeitura() {
+        if (speechSynthesis.speaking && !speechSynthesis.paused) {
+          speechSynthesis.pause();
+        }
+      }
+
+      function continuarLeitura() {
+        if (speechSynthesis.paused) {
+          speechSynthesis.resume();
+        }
+      }
+
+      function pararLeitura() {
+        speechSynthesis.cancel();
+      }
+
+      document.getElementById("audio-start").addEventListener("click", iniciarLeitura);
+      document.getElementById("audio-pause").addEventListener("click", pausarLeitura);
+      document.getElementById("audio-resume").addEventListener("click", continuarLeitura);
+      document.getElementById("audio-stop").addEventListener("click", pararLeitura);
+    </script>
+    <script
+      type="text/javascript"
+      src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    ></script>
   </body>
 </html>
