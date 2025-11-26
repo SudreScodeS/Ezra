@@ -1,69 +1,69 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ezra - Plataforma de Empregos</title>
-    <link rel="icon" href="/img/logo icone.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-  </head>
-  <body>
-    <!-- Header -->
-    <header class="premium-header" id="premium-header">
-      <nav class="premium-nav" aria-label="Menu principal">
-        <a href="index.html">Home</a>
-        <a href="vagas.html">Vagas</a>
-        <a href="cursos.html">Cursos</a>
-        <a href="artigos.html">Artigos</a>
-      </nav>
-      <div class="logo">
-        <img src="/img/logo.svg" alt="Logo Ezra" />
-      </div>
-      <div class="premium-actions">
-        <a href="https://linkedin.com" title="LinkedIn" target="_blank"
-          ><i class="fa-brands fa-linkedin"></i
-        ></a>
-        <a href="https://instagram.com" title="Instagram" target="_blank"
-          ><i class="fa-brands fa-instagram"></i
-        ></a>
-        <div class="account-icon">
-          <a href="cadastro.html" title="Login / Criar conta">
-            <i class="fa-solid fa-user"></i>
-            <span class="account-text-roller">
-              <span class="roller-text roller-cadastrar">Cadastrar</span>
-              <span class="roller-text roller-entrar">Entrar</span>
-            </span>
-          </a>
-        </div>
-      </div>
-    </header>
-          <div id="perfil-modal" class="perfil-modal">
-        <div class="perfil-content">
-          <span id="close-modal" class="close">&times;</span>
-          <h2>Perfil do Usuário</h2>
-          <p><strong>Nome:</strong> <span id="perfil-nome"></span></p>
-          <p><strong>Email:</strong> <span id="perfil-email"></span></p>
-          <p><strong>Skills:</strong> <span id="perfil-skills"></span></p>
-          <p>
-            <strong>Experiência:</strong> <span id="perfil-experiencia"></span>
-          </p>
 
-          <button id="logout-btn" class="logout-btn">Sair da Conta</button>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ezra - Plataforma de Empregos</title>
+  <link rel="icon" href="/img/logo icone.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="premium-header" id="premium-header" aria-hidden="true">
+    <nav class="premium-nav" aria-label="Menu principal">
+      <a href="index.html">Home</a>
+      <a href="vagas.html">Vagas</a>
+      <a href="cursos.html">Cursos</a>
+      <a href="artigos.html">Artigos</a>
+    </nav>
+    <div class="logo">
+      <img src="/img/logo.svg" alt="Logo Ezra" />
+    </div>
+    <div class="premium-actions">
+      <a href="https://linkedin.com" title="LinkedIn" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://instagram.com" title="Instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <div class="account-icon">
+        <a id="account-link">
+          <i class="fa-solid fa-user" id="account-icon-user"></i>
+
+          <!-- Nome do usuário (esconde até logar) -->
+          <span id="user-nome" class="user-nome-text" style="display: none;"></span>
+
+          <!-- Texto animado (mostra apenas se não estiver logado) -->
+          <span class="account-text-roller" id="login-roller">
+            <span class="roller-text roller-cadastrar">Cadastrar</span>
+            <span class="roller-text roller-entrar">Entrar</span>
+          </span>
+        </a>
       </div>
+
+    </div>
+  </header>
+  <main>
+    <div id="perfil-modal" class="perfil-modal">
+      <div class="perfil-content">
+        <span id="close-modal" class="close">&times;</span>
+        <h2>Perfil do Usuário</h2>
+        <p><strong>Nome:</strong> <span id="perfil-nome"></span></p>
+        <p><strong>Email:</strong> <span id="perfil-email"></span></p>
+        <p><strong>Skills:</strong> <span id="perfil-skills"></span></p>
+        <p>
+          <strong>Experiência:</strong> <span id="perfil-experiencia"></span>
+        </p>
+
+        <button id="logout-btn" class="logout-btn">Sair da Conta</button>
+      </div>
+    </div>
     <!-- Hero / Bem-vindo -->
     <section class="hero">
-      <video class="hero-bg" autoplay muted loop playsinline>
+      <video class="hero-bg no-read" autoplay muted loop playsinline >
         <source src="img/A_cinematic_video_202510131316.mp4" type="video/mp4" />
         Seu navegador não suporta vídeos HTML5.
       </video>
@@ -89,10 +89,7 @@
           </p>
         </div>
         <div class="about-img">
-          <img
-            src="/img/pexels-fauxels-3184418.jpg"
-            alt="Inclusão e Inovação Ezra"
-          />
+          <img src="/img/pexels-fauxels-3184418.jpg" alt="Inclusão e Inovação Ezra" />
         </div>
       </div>
     </section>
@@ -180,11 +177,9 @@
         <div class="content-card">
           <img src="img/ArtigoDiversidade.png" alt="Artigo 1" />
           <h3>Artigo: Diversidade no Trabalho</h3>
-          <a
-            target="_blank"
-            href="https://www.bing.com/ck/a?!&&p=e406d72d2690f24fec8e6cf1234a43d9467a2c554bf06898a059575a52b21422JmltdHM9MTc2MDU3MjgwMA&ptn=3&ver=2&hsh=4&fclid=2bc5e13b-b185-6e59-39d6-f7bcb0fc6f1f&psq=artigo+diversidade+no+trabalho&u=a1aHR0cHM6Ly93d3cuanVzYnJhc2lsLmNvbS5ici9hcnRpZ29zL3BvbGl0aWNhcy1kZS1kaXZlcnNpZGFkZS1lLWluY2x1c2FvLW5vLWxvY2FsLWRlLXRyYWJhbGhvLzI1OTcyMDk3MzU_bXNvY2tpZD0yYmM1ZTEzYmIxODU2ZTU5MzlkNmY3YmNiMGZjNmYxZg"
-            >Como equipes diversas inovam mais.</a
-          >
+          <a target="_blank"
+            href="https://www.bing.com/ck/a?!&&p=e406d72d2690f24fec8e6cf1234a43d9467a2c554bf06898a059575a52b21422JmltdHM9MTc2MDU3MjgwMA&ptn=3&ver=2&hsh=4&fclid=2bc5e13b-b185-6e59-39d6-f7bcb0fc6f1f&psq=artigo+diversidade+no+trabalho&u=a1aHR0cHM6Ly93d3cuanVzYnJhc2lsLmNvbS5ici9hcnRpZ29zL3BvbGl0aWNhcy1kZS1kaXZlcnNpZGFkZS1lLWluY2x1c2FvLW5vLWxvY2FsLWRlLXRyYWJhbGhvLzI1OTcyMDk3MzU_bXNvY2tpZD0yYmM1ZTEzYmIxODU2ZTU5MzlkNmY3YmNiMGZjNmYxZg">Como
+            equipes diversas inovam mais.</a>
         </div>
         <div class="content-card">
           <img src="img/Introducao_Logo.svg" alt="Curso 2" />
@@ -194,20 +189,18 @@
         <div class="content-card">
           <img src="img/ArtigoSustentabilidade.png" alt="Artigo 2" />
           <h3>Artigo: Sustentabilidade Corporativa</h3>
-          <a
-            target="_blank"
-            href="https://www.jusbrasil.com.br/artigos/esg-e-sustentabilidade-corporativa/2774189810?msockid=2bc5e13bb1856e5939d6f7bcb0fc6f1f"
-            >Estratégias para empresas responsáveis.</a
-          >
+          <a target="_blank"
+            href="https://www.jusbrasil.com.br/artigos/esg-e-sustentabilidade-corporativa/2774189810?msockid=2bc5e13bb1856e5939d6f7bcb0fc6f1f">Estratégias
+            para empresas responsáveis.</a>
         </div>
       </div>
     </section>
 
+    <!-- BOTÃO FLUTUANTE DE SELEÇÃO DE TEXTO -->
+    <div id="selection-reader">🔊 Ler seleção</div>
+
     <!-- Accessibility Features -->
-    <button
-      id="accessibility-btn"
-      aria-label="Abrir recursos de acessibilidade"
-    >
+    <button id="accessibility-btn" aria-label="Abrir recursos de acessibilidade">
       <i class="fa-solid fa-universal-access"></i>
     </button>
 
@@ -217,23 +210,41 @@
           <i class="fa-solid fa-xmark"></i>
         </button>
         <h2>Recursos de Acessibilidade</h2>
+
         <div class="accessibility-grid">
+
+          <!-- Leitura em Áudio -->
           <div class="access-feature audio-controls">
             <i class="fa-solid fa-headphones"></i>
             <span>Leitura em Áudio</span>
 
             <div class="audio-buttons">
-              <button id="audio-start" aria-label="Iniciar"><i class="fa-solid fa-play"></i></button>
-              <button id="audio-pause" aria-label="Pausar"><i class="fa-solid fa-pause"></i></button>
-              <button id="audio-resume" aria-label="Continuar"><i class="fa-solid fa-forward"></i></button>
-              <button id="audio-stop" aria-label="Parar"><i class="fa-solid fa-stop"></i></button>
+              <button id="audio-start" class="tooltip" data-tooltip="Iniciar leitura"><i
+                  class="fa-solid fa-play"></i></button>
+              <button id="audio-pause" class="tooltip" data-tooltip="Pausar leitura"><i
+                  class="fa-solid fa-pause"></i></button>
+              <button id="audio-resume" class="tooltip" data-tooltip="Continuar leitura"><i
+                  class="fa-solid fa-forward"></i></button>
+              <button id="audio-stop" class="tooltip" data-tooltip="Parar leitura"><i
+                  class="fa-solid fa-stop"></i></button>
+            </div>
+
+            <!-- Controle de velocidade -->
+            <div class="speed-control">
+              <button data-speed="0.8">0.8x</button>
+              <button data-speed="1">1x</button>
+              <button data-speed="1.2">1.2x</button>
+              <button data-speed="1.5">1.5x</button>
             </div>
           </div>
+
+          <!-- Google Translate -->
           <div class="access-feature">
             <i class="fa-solid fa-language"></i>
-            <span></span>
+            <span>Tradutor</span>
             <div id="google_translate_element"></div>
           </div>
+
         </div>
       </div>
     </div>
@@ -278,216 +289,244 @@
         </div>
       </div>
     </section>
-
-    <!-- Footer -->
-    <footer>
-      <div class="footer-container">
-        <div class="footer-logo">
-          <img src="/img/logo branca.svg" alt="Ezra Logo" />
-        </div>
-        <div class="footer-links">
-          <a href="#">Home</a>
-          <a href="vagas.html">Vagas</a>
-          <a href="artigos.html">Artigos</a>
-          <a href="contato.html">Contato</a>
-        </div>
-        <div class="footer-social">
-          <a target="_blank" href="#"><i class="fa-brands fa-linkedin"></i></a>
-          <a target="_blank" href="#"><i class="fa-brands fa-instagram"></i></a>
-          <a target="_blank" href="#"><i class="fa-brands fa-facebook"></i></a>
-        </div>
-        <div class="footer-cert">
-          <img src="img/Design sem nome.png" alt="B-Corp Certificado" />
-          <span>B-Corp & Sustentabilidade</span>
-        </div>
+  </main>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="/img/logo branca.svg" alt="Ezra Logo" />
       </div>
-      <div class="footer-copy">
-        &copy; 2025 Ezra. Todos os direitos reservados.
+      <div class="footer-links">
+        <a href="#">Home</a>
+        <a href="vagas.html">Vagas</a>
+        <a href="artigos.html">Artigos</a>
+        <a href="contato.html">Contato</a>
       </div>
-      <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-          <div class="vw-plugin-top-wrapper"></div>
-        </div>
+      <div class="footer-social">
+        <a target="_blank" href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a target="_blank" href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a target="_blank" href="#"><i class="fa-brands fa-facebook"></i></a>
       </div>
-    </footer>
+      <div class="footer-cert">
+        <img src="img/Design sem nome.png" alt="B-Corp Certificado" />
+        <span>B-Corp & Sustentabilidade</span>
+      </div>
+    </div>
+    <div class="footer-copy">
+      &copy; 2025 Ezra. Todos os direitos reservados.
+    </div>
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+  </footer>
 
-    <script>
-      // Header shrink on scroll
-      window.addEventListener("scroll", function () {
-        const header = document.getElementById("premium-header");
-        if (window.scrollY > 50) {
-          header.classList.add("scrolled");
-        } else {
-          header.classList.remove("scrolled");
+  <script src="js/index.js"></script>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget("https://vlibras.gov.br/app");
+  </script>
+  <script>
+  /* ============================================
+    VARIÁVEIS GERAIS
+  ============================================ */
+  let falaAtual = null;
+  let velocidade = 1;
+  let elementosDestacados = [];
+  let textoSelecionado = "";
+
+  /* ============================================
+    REMOVER DESTAQUES
+  ============================================ */
+  function removerDestaques() {
+    elementosDestacados.forEach(span => span.outerHTML = span.innerText);
+    elementosDestacados = [];
+  }
+
+  /* ============================================
+    PEGAR APENAS TEXTO LIDO (SEM NAVBAR)
+  ============================================ */
+  function getReadableText() {
+    const containers = document.querySelectorAll("main, article, section, p, h1, h2, h3, h4, h5, h6");
+
+    let textoFinal = [];
+
+    containers.forEach(el => {
+      if (el.offsetParent === null) return;
+
+      const clone = el.cloneNode(true);
+
+      // REMOVE MODAIS / POPUPS / ELEMENTOS OCULTOS
+      clone.querySelectorAll(
+        "#perfil-modal, #login-modal, .modal, .popup, .hidden, [aria-hidden='true']"
+      ).forEach(n => n.remove());
+
+      // REMOVE ELEMENTOS NÃO-LIDOS
+      clone.querySelectorAll("button, a, svg, img, .no-read").forEach(n => n.remove());
+
+      const texto = clone.innerText.trim();
+
+      if (texto.length > 5) {
+        textoFinal.push(texto + ". ");
+      }
+    });
+
+    return textoFinal.join("");
+  }
+
+  /* ============================================
+    QUEBRAR TEXTO EM FRASES (ANTI-CORTE)
+  ============================================ */
+  function splitSentences(text) {
+    return text.match(/[^.!?]+[.!?]+/g) || [text];
+  }
+
+  /* ============================================
+    DESTAQUE PALAVRA POR PALAVRA
+  ============================================ */
+  function destacarPalavra(palavra) {
+    removerDestaques();
+    if (!palavra.trim()) return;
+
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      const idx = node.nodeValue.toLowerCase().indexOf(palavra.toLowerCase());
+
+      if (idx !== -1) {
+        const before = node.nodeValue.slice(0, idx);
+        const word = node.nodeValue.slice(idx, idx + palavra.length);
+        const after = node.nodeValue.slice(idx + palavra.length);
+
+        const span = document.createElement("span");
+        span.className = "highlight-reading";
+        span.textContent = word;
+
+        const afterNode = node.splitText(idx);
+        afterNode.nodeValue = after;
+        node.parentNode.insertBefore(span, afterNode);
+
+        elementosDestacados.push(span);
+        span.scrollIntoView({ behavior: "smooth", block: "center" });
+        break;
+      }
+    }
+  }
+
+  /* ============================================
+    LER TEXTO (SEM TRAVAR, SEM CORTAR)
+  ============================================ */
+  function iniciarLeituraTexto(textoCompleto) {
+    speechSynthesis.cancel();
+    removerDestaques();
+
+    const frases = splitSentences(textoCompleto);
+    let index = 0;
+
+    function lerProxima() {
+      if (index >= frases.length) return;
+
+      const frase = frases[index];
+      const utter = new SpeechSynthesisUtterance(frase);
+
+      utter.lang = "pt-BR";
+      utter.rate = velocidade;
+
+      utter.onboundary = (e) => {
+        if (e.name === "word") {
+          const palavra = frase.substring(e.charIndex, e.charIndex + e.charLength);
+          destacarPalavra(palavra);
         }
-      });
-      // hero roller
-      const rollerText = document.getElementById("roller-text");
-      const words = ["Ezra", "EFICIENTES", "MODERNOS", "PROFISSIONAIS"];
-      let index = 0;
-      let isChanging = false;
+      };
 
-      function changeWord() {
-        if (isChanging) return; // evita sobreposição de animações
-        isChanging = true;
+      utter.onend = () => {
+        removerDestaques();
+        index++;
+        lerProxima();
+      };
 
-        rollerText.classList.remove("fade-in");
-        rollerText.classList.add("fade-out");
+      falaAtual = utter;
+      speechSynthesis.speak(utter);
+    }
 
-        setTimeout(() => {
-          index = (index + 1) % words.length;
-          rollerText.textContent = words[index];
-          rollerText.classList.remove("fade-out");
-          rollerText.classList.add("fade-in");
+    lerProxima();
+  }
 
-          // tempo especial para "Ezra" (fica mais tempo na tela)
-          const delay = words[index] === "Ezra" ? 5000 : 2500;
+  /* ============================================
+    BOTÕES DO POPUP
+  ============================================ */
+  document.getElementById("audio-start").addEventListener("click", () => {
+    const selecao = window.getSelection().toString().trim();
+    const texto = selecao || getReadableText();
+    iniciarLeituraTexto(texto);
+  });
 
-          setTimeout(() => {
-            isChanging = false;
-            changeWord();
-          }, delay);
-        }, 800); // tempo da animação de saída
-      }
+  document.getElementById("audio-pause").addEventListener("click", () => speechSynthesis.pause());
+  document.getElementById("audio-resume").addEventListener("click", () => speechSynthesis.resume());
+  document.getElementById("audio-stop").addEventListener("click", () => {
+    speechSynthesis.cancel();
+    removerDestaques();
+  });
 
-      // inicia a rotação
-      setTimeout(() => {
-        rollerText.classList.add("fade-in");
-        setTimeout(changeWord, 4000); // Ezra inicial já começa com delay maior
-      }, 500);
-      // account icon roller
-      const accountIcon = document.querySelector(".account-icon a");
-      const rollerCadastrar = document.querySelector(".roller-cadastrar");
-      const rollerEntrar = document.querySelector(".roller-entrar");
-      const roller = document.querySelector(".account-text-roller");
-      let intervalId;
-      let showingCadastrar = true;
+  /* ============================================
+    CONTROLE DE VELOCIDADE
+  ============================================ */
+  document.querySelectorAll(".speed-control button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      velocidade = parseFloat(btn.dataset.speed);
+      if (falaAtual) falaAtual.rate = velocidade;
+    });
+  });
 
-      function rollText() {
-        if (showingCadastrar) {
-          rollerCadastrar.style.transform = "translateY(0)";
-          rollerEntrar.style.transform = "translateY(100%)";
-        } else {
-          rollerCadastrar.style.transform = "translateY(-100%)";
-          rollerEntrar.style.transform = "translateY(0)";
-        }
-        showingCadastrar = !showingCadastrar;
-      }
+  /* ============================================
+    BOTÃO FLUTUANTE PARA TEXTO SELECIONADO
+  ============================================ */
+  const selBtn = document.getElementById("selection-reader");
 
-      accountIcon.addEventListener("mouseenter", () => {
-        roller.style.opacity = 1;
-        rollerCadastrar.style.transition =
-          "transform 0.5s cubic-bezier(.77,0,.18,1)";
-        rollerEntrar.style.transition =
-          "transform 0.5s cubic-bezier(.77,0,.18,1)";
-        rollText(); // Start immediately
-        intervalId = setInterval(rollText, 2000);
-      });
+  document.addEventListener("mouseup", () => {
+    let texto = window.getSelection().toString().trim();
 
-      accountIcon.addEventListener("mouseleave", () => {
-        clearInterval(intervalId);
-        roller.style.opacity = 0;
-        rollerCadastrar.style.transform = "translateY(0)";
-        rollerEntrar.style.transform = "translateY(100%)";
-        showingCadastrar = true;
-      });
+    if (texto.length > 0) {
+      textoSelecionado = texto;
 
-      // Initialize positions
-      rollerCadastrar.style.transform = "translateY(0)";
-      rollerEntrar.style.transform = "translateY(100%)";
+      const rect = window.getSelection().getRangeAt(0).getBoundingClientRect();
+      selBtn.style.left = rect.left + window.scrollX + "px";
+      selBtn.style.top = rect.top + window.scrollY - 40 + "px";
+      selBtn.style.display = "block";
+    } else {
+      selBtn.style.display = "none";
+    }
+  });
 
-      function animateCountUp(el, target) {
-        let count = 0;
-        const speed = Math.ceil(target / 60);
-        function update() {
-          count += speed;
-          if (count > target) count = target;
-          el.textContent = "+" + count.toLocaleString();
-          if (count < target) requestAnimationFrame(update);
-        }
-        update();
-      }
+  selBtn.addEventListener("click", () => {
+    iniciarLeituraTexto(textoSelecionado);
+    selBtn.style.display = "none";
+  });
 
-      document.querySelectorAll(".impact-number").forEach((el) => {
-        const target = parseInt(el.getAttribute("data-count"), 10);
-        animateCountUp(el, target);
-      });
+  /* ============================================
+    POPUP
+  ============================================ */
+  const popup = document.getElementById("accessibility-popup");
+  document.getElementById("accessibility-btn").onclick = () => popup.classList.remove("hidden");
+  document.getElementById("close-popup").onclick = () => popup.classList.add("hidden");
+  popup.addEventListener("click", (e) => { if (e.target === popup) popup.classList.add("hidden"); });
 
-      // Acessibilidade popup
-      const popup = document.getElementById("accessibility-popup");
-      const openBtn = document.getElementById("accessibility-btn");
-      const closeBtn = document.getElementById("close-popup");
+  /* ============================================
+    GOOGLE TRANSLATE
+  ============================================ */
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      { pageLanguage: "pt", includedLanguages: "en,es,fr,de" },
+      "google_translate_element"
+    );
+  }
+  </script>
 
-      openBtn.addEventListener("click", () => {
-        popup.classList.remove("hidden");
-      });
+  <script type="text/javascript"
+    src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
 
-      closeBtn.addEventListener("click", () => {
-        popup.classList.add("hidden");
-      });
-
-      popup.addEventListener("click", (e) => {
-        if (e.target === popup) {
-          popup.classList.add("hidden");
-        }
-      });
-
-      // Google Translate
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement(
-          {
-            pageLanguage: "pt",
-            includedLanguages: "en,es,fr,de",
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-          },
-          "google_translate_element"
-        );
-      }
-    </script>
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script>
-      new window.VLibras.Widget("https://vlibras.gov.br/app");
-    </script>
-    <script>
-      let falaAtual = null;
-
-      function iniciarLeitura() {
-        speechSynthesis.cancel();
-        const texto = document.body.innerText;
-
-        falaAtual = new SpeechSynthesisUtterance(texto);
-        falaAtual.lang = "pt-BR";
-        falaAtual.rate = 1;
-        falaAtual.pitch = 1;
-
-        speechSynthesis.speak(falaAtual);
-      }
-
-      function pausarLeitura() {
-        if (speechSynthesis.speaking && !speechSynthesis.paused) {
-          speechSynthesis.pause();
-        }
-      }
-
-      function continuarLeitura() {
-        if (speechSynthesis.paused) {
-          speechSynthesis.resume();
-        }
-      }
-
-      function pararLeitura() {
-        speechSynthesis.cancel();
-      }
-
-      document.getElementById("audio-start").addEventListener("click", iniciarLeitura);
-      document.getElementById("audio-pause").addEventListener("click", pausarLeitura);
-      document.getElementById("audio-resume").addEventListener("click", continuarLeitura);
-      document.getElementById("audio-stop").addEventListener("click", pararLeitura);
-    </script>
-    <script
-      type="text/javascript"
-      src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-    ></script>
-  </body>
 </html>

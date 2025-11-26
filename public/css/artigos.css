@@ -330,10 +330,12 @@ main h1{
 /* ===== Artigos ===== */
 .articles-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: 2.5rem;
-  margin-bottom: 3rem;
+  margin: 3rem auto;
   padding: 0 1rem;
+  max-width: 1400px;
+  width: 100%;
 }
 
 .article-card {
@@ -343,7 +345,8 @@ main h1{
   padding: 2.2rem 1.7rem 2rem 1.7rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  text-align: center;
   transition: var(--transition);
   border-top: 4px solid var(--gold);
   animation: slideUp 0.8s ease;
@@ -354,6 +357,13 @@ main h1{
   box-shadow: var(--shadow-hover);
   transform: translateY(-6px) scale(1.02);
   border-top: 4px solid var(--gold-light);
+}
+
+.article-card img {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
 }
 
 .article-card h2 {
@@ -367,20 +377,25 @@ main h1{
 
 .article-card p {
   color: var(--brown);
-  font-size: 1.05rem;
   margin-bottom: 1.5rem;
-  font-family: var(--font-header);
+  flex: 1;
 }
 
 .article-card .btn {
-  align-self: flex-end;
-  margin-top: auto;
-  text-decoration: none;
-  font-size: 1rem;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: var(--white);
   padding: 0.7rem 1.5rem;
   border-radius: 6px;
-  box-shadow: none;
-  color: var(--gold);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.article-card .btn:hover {
+  background: var(--brown);
+  transform: translateY(-3px);
 }
 
 .article-card .btn:focus {

@@ -63,7 +63,7 @@ body {
   height: 80px;
   background: #000;
   color: #fff;
-  font-header: "Inter", "Segoe UI", Arial, sans-serif;  
+  font-header: "Inter", "Segoe UI", Arial, sans-serif;
   z-index: 1000;
   width: 100%;
   top: 0;
@@ -241,14 +241,15 @@ body {
   background-color: #f8d7da;
 }
 
-perfil-modal {
+/* ===== Pop-up de Perfil ===== */
+.perfil-modal {
   display: none;
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.5);
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  z-index: 499;
 }
 
 .perfil-content {
@@ -258,6 +259,7 @@ perfil-modal {
   width: 350px;
   text-align: center;
   position: relative;
+  z-index: 500;
 }
 
 .close {
@@ -457,7 +459,7 @@ nav ul li a:hover {
   text-align: center;
   transition: transform 0.6s ease, opacity 0.6s ease;
   font-size: 5rem;
-  font-family: var(--font-body); 
+  font-family: var(--font-body);
   font-weight: 800;
   letter-spacing: 1px;
   border-radius: 10px;
@@ -725,7 +727,7 @@ nav ul li a:hover {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 32px;
   max-width: 1000px;
-  align-items: stretch; 
+  align-items: stretch;
   margin: 0 auto;
 }
 .job-card {
@@ -955,6 +957,9 @@ nav ul li a:hover {
 }
 
 /* Accessibility Features */
+/* =============================
+   BOTÃO PRINCIPAL
+============================= */
 #accessibility-btn {
   position: fixed;
   bottom: 2rem;
@@ -980,14 +985,15 @@ nav ul li a:hover {
   transform: scale(1.1);
 }
 
-/* Remove o quadrado branco */
 #accessibility-btn:focus,
 #accessibility-btn:active {
   outline: none;
   background: #96754d;
 }
 
-/* Popup overlay (fundo escurecido) */
+/* =============================
+   POPUP
+============================= */
 .accessibility-popup {
   position: fixed;
   inset: 0;
@@ -999,13 +1005,11 @@ nav ul li a:hover {
   transition: opacity 0.3s ease;
   opacity: 1;
 }
-
 .accessibility-popup.hidden {
   opacity: 0;
   pointer-events: none;
 }
 
-/* Conteúdo central */
 .popup-content {
   background: #ffffff;
   border-radius: 1rem;
@@ -1018,19 +1022,12 @@ nav ul li a:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   animation: fadeIn 0.3s ease;
 }
-
 @keyframes fadeIn {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+  from {transform: scale(0.9); opacity: 0;}
+  to {transform: scale(1); opacity: 1;}
 }
 
-/* Botão de fechar */
+/* Botão fechar */
 #close-popup {
   position: absolute;
   top: 1rem;
@@ -1040,46 +1037,35 @@ nav ul li a:hover {
   font-size: 1.5rem;
   cursor: pointer;
   color: #222;
-  transition: color 0.3s ease;
 }
-
 #close-popup:hover {
   color: #96754d;
 }
 
-/* Itens */
+/* GRID */
 .accessibility-grid {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
   margin-top: 1.5rem;
 }
-
 .access-feature {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 0.8rem;
   color: #373643;
   font-weight: 500;
-  transition: transform 0.3s ease;
 }
-
 .access-feature i {
   color: #96754d;
   font-size: 1.5rem;
 }
 
-.access-feature:hover {
-  transform: scale(1.05);
-}
-
-/* --- BLOCO DE LEITURA --- */
-
+/* =============================
+   BLOCO DE ÁUDIO
+============================= */
 .audio-controls {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
   background: #ffffff15;
   padding: 15px;
   border-radius: 12px;
@@ -1087,44 +1073,109 @@ nav ul li a:hover {
   border: 1px solid #ffffff25;
 }
 
-.audio-controls i {
-  font-size: 24px;
-  margin-bottom: -5px;
-}
-
 .audio-buttons {
   display: flex;
   justify-content: center;
   gap: 12px;
 }
-
 .audio-buttons button {
   width: 42px;
   height: 42px;
   border-radius: 50%;
   border: none;
-  background: #ffffff20;
+  background: #96754d;
   color: white;
   cursor: pointer;
   font-size: 18px;
-  transition: all 0.2s ease;
+  transition: 0.2s;
 }
-
-/* Hover */
+.audio-buttons button i {
+  font-size: 20px;
+  color: #ffffff;
+  pointer-events: none;
+}
 .audio-buttons button:hover {
-  background: #ffffff35;
-  transform: translateY(-3px);
+  transform: scale(1.1);
 }
 
-/* Clique */
-.audio-buttons button:active {
-  transform: scale(0.85);
+/* Tooltip */
+.tooltip {
+  position: relative;
+}
+.tooltip:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  box-shadow: 0 0 6px rgba(0,0,0,0.3);
+}
+.tooltip:hover::before {
+  content: "";
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #000 transparent transparent transparent;
 }
 
-/* Acessibilidade – foco */
-.audio-buttons button:focus {
-  outline: 2px solid #00aaff;
+/* =============================
+   CONTROLE DE VELOCIDADE
+============================= */
+.speed-control {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
 }
+.speed-control button {
+  background: #eeeeee;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+.speed-control button:hover {
+  background: #96754d;
+  color: white;
+}
+
+/* =============================
+   DESTAQUE DE LEITURA (KARAOKÊ)
+============================= */
+.highlight-reading {
+  background: yellow;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+/* =============================
+   BOTÃO FLUTUANTE DE SELEÇÃO
+============================= */
+#selection-reader {
+  position: absolute;
+  background: #96754d;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  display: none;
+  cursor: pointer;
+  font-size: 14px;
+  z-index: 99999;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+#selection-reader:hover { transform: scale(1.1); }
+
 
 /* Testimonials */
 .testimonials {
