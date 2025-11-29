@@ -13,7 +13,15 @@ const recommendRoutes = require("./routes/recommend");
 const app = express();
 const PORT = 3000;
 
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:3000", // SEU SITE
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
+
+app.set("trust proxy", 1);
+
 app.use(express.json());
 app.use(
   session({
@@ -25,7 +33,9 @@ app.use(
       ttl: 60 * 60, // 1 hora
     }),
     cookie: {
-      maxAge: 1000 * 60 * 60, // 1 hora
+      maxAge: 1000 * 60 * 60,
+      ttpOnly: true,
+      sameSite: "lax"
     },
   })
 );
@@ -119,11 +129,12 @@ app.post("/api/auth/login", async (req, res) => {
       return res.status(401).json({ error: "Senha incorreta!" });
     }
 
-    req.session.user = {
-      id: user._id,
-      nome: user.nome,
-      email: user.email,
-    };
+req.session.user = {
+  id: user._id.toString(),
+  nome: user.nome,
+  email: user.email
+};
+
 
     const token = jwt.sign(
       { id: user._id, email: user.email },
@@ -142,16 +153,30 @@ app.post("/api/auth/login", async (req, res) => {
   }
 });
 
-app.get("/api/perfil", authenticateToken, async (req, res) => {
+app.get("/api/perfil", async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select("-senha");
-    if (!user)
+    // Verifica se o usuário está logado na sessão
+    if (!req.session.user) {
+      return res.status(401).json({ error: "Não autenticado" });
+    }
+
+    // Busca o usuário no banco
+    const user = await User.findById(req.session.user.id).select("-senha");
+
+    if (!user) {
       return res.status(404).json({ error: "Usuário não encontrado!" });
+    }
+
     res.json(user);
+
   } catch (err) {
+    console.error("Erro ao carregar perfil:", err);
     res.status(500).json({ error: "Erro ao carregar perfil." });
   }
 });
+
+
+
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const MODEL_NAME = "gemini-1.5-flash";
@@ -168,8 +193,34 @@ app.post("/api/chatbot", async (req, res) => {
   }
 });
 
+app.get("/api/getUserId", (req, res) => {
+  // 1: Prioridade para sessão
+  if (req.session.user) {
+    return res.json({ userId: req.session.user.id });
+  }
+
+  // 2: Token (Authorization: Bearer xxx)
+  const authHeader = req.headers["authorization"];
+  if (authHeader) {
+    const token = authHeader.split(" ")[1];
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      return res.json({ userId: decoded.id });
+    } catch (err) {
+      return res.status(401).json({ error: "Token inválido" });
+    }
+  }
+
+  // Sem nada → não autenticado
+  return res.status(401).json({ error: "Não autenticado" });
+});
+
+
 app.use("/api/recommend", recommendRoutes);
+
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
+
+

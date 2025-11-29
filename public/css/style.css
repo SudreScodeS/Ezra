@@ -818,7 +818,7 @@ nav ul li a:hover {
 }
 .content-card img {
   width: 100%;
-  max-width: 180px;
+  height: 180px;
   border-radius: 8px;
   margin-bottom: 12px;
   box-shadow: 0 2px 8px rgba(150, 117, 77, 0.08);
@@ -1216,8 +1216,8 @@ nav ul li a:hover {
   font-size: 1.05rem;
   transition: box-shadow 0.3s, transform 0.3s;
   position: relative;
-  display: none;
-}
+
+ }
 .testimonial-card img {
   width: 56px;
   height: 56px;

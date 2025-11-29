@@ -1,151 +1,3 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Artigos - Ezra</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link rel="icon" href="/img/logo icone.svg" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/artigos.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-</head>
-<body>
-<header class="premium-header" id="premium-header">
-      <nav class="premium-nav" aria-label="Menu principal">
-        <a href="index.html">Home</a>
-        <a href="vagas.html">Vagas</a>
-        <a href="cursos.html">Cursos</a>
-        <a href="artigos.html">Artigos</a>
-      </nav>
-      <div class="logo">
-        <img src="/img/logo.svg" alt="Logo Ezra" />
-      </div>
-      <div class="premium-actions">
-        <a href="https://linkedin.com" title="LinkedIn" target="_blank"
-          ><i class="fa-brands fa-linkedin"></i
-        ></a>
-        <a href="https://instagram.com/ezrac.orp" title="Instagram" target="_blank">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-              <div class="account-icon">
-        <a id="account-link">
-          <i class="fa-solid fa-user" id="account-icon-user"></i>
-
-          <span id="user-nome" class="user-nome-text" style="display: none;"></span>
-
-          <span class="account-text-roller" id="login-roller">
-            <span class="roller-text roller-cadastrar">Cadastrar</span>
-            <span class="roller-text roller-entrar">Entrar</span>
-          </span>
-        </a>
-      </div>
-
-    </div>
-  </header>
-  <main>
-    <div id="perfil-modal" class="perfil-modal">
-      <div class="perfil-content">
-        <span id="close-modal" class="close">&times;</span>
-        <h2>Perfil do Usuário</h2>
-        <p><strong>Nome:</strong> <span id="perfil-nome"></span></p>
-        <p><strong>Email:</strong> <span id="perfil-email"></span></p>
-        <p><strong>Skills:</strong> <span id="perfil-skills"></span></p>
-        <p>
-          <strong>Experiência:</strong> <span id="perfil-experiencia"></span>
-        </p>
-
-        <button id="logout-btn" class="logout-btn">Sair da Conta</button>
-      </div>
-    </div>
-    <h1>Artigos e Dicas</h1>
-
-    <div class="articles-grid">
-  <article class="article-card" aria-labelledby="artigo1">
-    <img src="/img/Curriculo (2).jpg" alt="Currículo" style="width: 300px; height: auto; border-radius: 10px;">
-    <h2 id="artigo1">Como Montar um Currículo Atraente</h2>
-    <p>Dicas práticas para criar um currículo que se destaque no mercado de trabalho atual.</p>
-    <a href="https://economia.uol.com.br/noticias/redacao/2019/12/11/curriculo-como-montar-fazer-o-que-colocar.htm?" class="btn">Ler Mais</a>
-  </article>
-
-  <article class="article-card" aria-labelledby="artigo2">
-    <img src="/img/Renda.jpg" alt="Renda Extra" style="width: 300px; height: auto; border-radius: 10px;">
-    <h2 id="artigo2">5 Formas de Gerar Renda Extra</h2>
-    <p>Estratégias comprovadas para aumentar sua renda com habilidades que você já tem.</p>
-    <a href="https://www.mobills.com.br/blog/ganhar-dinheiro/renda-extra/" class="btn">Ler Mais</a>
-  </article>
-
-  <article class="article-card" aria-labelledby="artigo3">
-    <img src="/img/Mercado.jpg" alt="Mercado de Trabalho 2025" style="width: 300px; height: auto; border-radius: 10px;">
-    <h2 id="artigo3">Mercado de Trabalho 2025</h2>
-    <p>Tendências e oportunidades nas áreas que mais crescem este ano.</p>
-    <a href="https://www.ipea.gov.br/cartadeconjuntura/index.php/2025/05/indicadores-mensais-do-mercado-de-trabalho-marco-de-2025/" class="btn">Ler Mais</a>
-  </article>
-
-  <article class="article-card" aria-labelledby="artigo4">
-    <img src="/img/TI.jpg" alt="Carreira em TI" style="width: 300px; height: auto; border-radius: 10px;">
-    <h2 id="artigo4">Guia de Carreira em TI</h2>
-    <p>Como começar e evoluir na área de tecnologia da informação.</p>
-    <a href="https://tiinside.com.br/16/10/2024/setor-de-ti-no-brasil-registra-crescimento-de-11-e-busca-por-talentos-qualificados/" class="btn">Ler Mais</a>
-  </article>
-
-  <article class="article-card" aria-labelledby="artigo5">
-    <img src="/img/WorkHome.jpg" alt="Trabalho Remoto" style="width: 300px; height: auto; border-radius: 10px;">
-    <h2 id="artigo5">Trabalho Remoto: Melhores Práticas</h2>
-    <p>Como ser produtivo e manter o equilíbrio trabalhando de casa.</p>
-    <a href="https://sebrae.com.br/sites/PortalSebrae/artigos/trabalho-remoto-nas-empresas-e-uma-conquista-da-transformacao-digital%2Ce010ac941b896810VgnVCM1000001b00320aRCRD" class="btn">Ler Mais</a>
-  </article>
-
-  <article class="article-card" aria-labelledby="artigo6">
-    <img src="/img/Entrevista.jpg" alt="Entrevistas de Emprego" style="width: 300px; height: auto; border-radius: 10px;">
-    <h2 id="artigo6">Entrevistas: O Que os Recrutadores Buscam</h2>
-    <p>Prepare-se para destacar-se em processos seletivos competitivos.</p>
-    <a href="https://exame.com/carreira/estes-fatores-influenciam-os-recrutadores-na-hora-de-escolher-um-candidato/" class="btn">Ler Mais</a>
-  </article>
-</div>
-
-  </main>
-
-    <footer>
-      <div class="footer-container">
-        <div class="footer-logo">
-          <img src="img/logo branca.svg" alt="Ezra Logo" />
-        </div>
-        <div class="footer-links">
-          <a href="#">Home</a>
-          <a href="#jobs">Vagas</a>
-          <a href="#articles">Artigos</a>
-          <a href="#contact">Contato</a>
-        </div>
-        <div class="footer-social">
-          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#"><i class="fa-brands fa-facebook"></i></a>
-        </div>
-        <div class="footer-cert">
-          <img src="img/Design sem nome.png" alt="B-Corp Certificado" />
-          <span>B-Corp & Sustentabilidade</span>
-        </div>
-      </div>
-      <div class="footer-copy">
-        &copy; 2025 Ezra. Todos os direitos reservados.
-      </div>
-                <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-          <div class="vw-plugin-top-wrapper"></div>
-        </div>
-      </div>
-    </footer>
-
-  <script>
 class AuthManager {
   constructor() {
     this.token = localStorage.getItem("authToken");
@@ -216,6 +68,41 @@ document.addEventListener("DOMContentLoaded", () => {
     header.classList.toggle("scrolled", window.scrollY > 50);
   });
 
+  /* ---------------- HERO ROLLER ---------------- */
+  const rollerText = document.getElementById("roller-text");
+  if (rollerText) {
+    const words = ["Ezra", "EFICIENTES", "MODERNOS", "PROFISSIONAIS"];
+    let index = 0;
+    let isChanging = false;
+
+    function changeWord() {
+      if (isChanging) return;
+      isChanging = true;
+
+      rollerText.classList.remove("fade-in");
+      rollerText.classList.add("fade-out");
+
+      setTimeout(() => {
+        index = (index + 1) % words.length;
+        rollerText.textContent = words[index];
+        rollerText.classList.add("fade-in");
+        rollerText.classList.remove("fade-out");
+
+        const delay = words[index] === "Ezra" ? 5000 : 2500;
+
+        setTimeout(() => {
+          isChanging = false;
+          changeWord();
+        }, delay);
+      }, 800);
+    }
+
+    setTimeout(() => {
+      rollerText.classList.add("fade-in");
+      setTimeout(changeWord, 4000);
+    }, 500);
+  }
+
   /* ---------------- ACCOUNT ICON ROLLER ---------------- */
   const accountIcon = document.querySelector(".account-icon a");
   const rollerCadastrar = document.querySelector(".roller-cadastrar");
@@ -253,6 +140,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     rollerCadastrar.style.transform = "translateY(0)";
     rollerEntrar.style.transform = "translateY(100%)";
+  }
+
+  /* ---------------- ANIMATION COUNT ---------------- */
+  document.querySelectorAll(".impact-number").forEach((el) => {
+    const target = parseInt(el.getAttribute("data-count"), 10);
+    if (!isNaN(target)) {
+      animateCountUp(el, target);
+    }
+  });
+
+  function animateCountUp(el, target) {
+    let count = 0;
+    const speed = Math.ceil(target / 60);
+
+    function update() {
+      count += speed;
+      if (count > target) count = target;
+      el.textContent = "+" + count.toLocaleString();
+      if (count < target) requestAnimationFrame(update);
+    }
+    update();
   }
 
   /* ---------------- ACESSIBILIDADE ---------------- */
@@ -363,12 +271,164 @@ auth.updateUserUI = function () {
   if (nomeEl) nomeEl.textContent = this.nome.toUpperCase();
   updateLoginDisplay();
 };
-</script>
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    </script>
-        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script>
-      new window.VLibras.Widget("https://vlibras.gov.br/app");
-    </script>
-</body>
-</html>
+
+rollerCadastrar.style.transform = "translateY(0)";
+rollerEntrar.style.transform = "translateY(100%)";
+
+function animateCountUp(el, target) {
+  let count = 0;
+  const speed = Math.ceil(target / 60);
+  function update() {
+    count += speed;
+    if (count > target) count = target;
+    el.textContent = "+" + count.toLocaleString();
+    if (count < target) requestAnimationFrame(update);
+  }
+  update();
+}
+document.querySelectorAll(".impact-number").forEach((el) => {
+  const target = parseInt(el.getAttribute("data-count"), 10);
+  animateCountUp(el, target);
+});
+
+// Simple testimonial carousel
+let testimonialIndex = 0;
+const testimonials = document.querySelectorAll(".testimonial-card");
+function showTestimonial(idx) {
+  testimonials.forEach((card, i) => {
+    card.style.display = i === idx ? "flex" : "none";
+  });
+}
+showTestimonial(testimonialIndex);
+setInterval(() => {
+  testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+  showTestimonial(testimonialIndex);
+}, 4000);
+
+async function buscarVagasIA() {
+  const resultadoEl = document.getElementById("resultadoIA");
+  resultadoEl.innerHTML = "<p>Buscando vagas...</p>";
+
+  const token = localStorage.getItem("authToken");
+
+  // Constrói headers usando token se existir
+  const baseHeaders = { "Content-Type": "application/json" };
+  const headersWithToken = token ? { ...baseHeaders, Authorization: `Bearer ${token}` } : baseHeaders;
+
+  // Primeiro: tenta obter userId, preferindo token, mas enviando cookies também (credentials: 'include')
+  let resUser;
+  try {
+    resUser = await fetch("/api/getUserId", {
+      method: "GET",
+      headers: headersWithToken,
+      credentials: "include", // garante envio de cookies de sessão
+    });
+  } catch (err) {
+    resultadoEl.innerHTML = `<p style="color:red;">Erro de rede ao verificar sessão: ${err.message}</p>`;
+    return;
+  }
+
+  // Se deu 401 e havia token, pode ser que o token esteja inválido → limpar token e tentar com apenas cookie
+  if (resUser.status === 401 && token) {
+    localStorage.removeItem("authToken");
+    try {
+      resUser = await fetch("/api/getUserId", {
+        method: "GET",
+        headers: baseHeaders,
+        credentials: "include",
+      });
+    } catch (err) {
+      resultadoEl.innerHTML = `<p style="color:red;">Erro de rede ao verificar sessão: ${err.message}</p>`;
+      return;
+    }
+  }
+
+  if (resUser.status === 401) {
+    resultadoEl.innerHTML = `<p style="color:red;">Você precisa estar logado para usar a IA de vagas!</p>`;
+    return;
+  }
+
+  if (!resUser.ok) {
+    const errData = await resUser.json().catch(() => ({}));
+    resultadoEl.innerHTML = `<p style="color:red;">Erro ao obter usuário: ${errData.error || resUser.statusText}</p>`;
+    return;
+  }
+
+  const { userId } = await resUser.json();
+
+  // Chama recomendação, enviando token se existir e cookies também
+  let res;
+  try {
+    res = await fetch("/api/recommend", {
+      method: "POST",
+      headers: token ? { ...baseHeaders, Authorization: `Bearer ${token}` } : baseHeaders,
+      credentials: "include",
+      body: JSON.stringify({ userId }),
+    });
+  } catch (err) {
+    resultadoEl.innerHTML = `<p style="color:red;">Erro de rede ao buscar recomendações: ${err.message}</p>`;
+    return;
+  }
+
+  const data = await res.json().catch(() => ({}));
+
+  if (!res.ok) {
+    resultadoEl.innerHTML = `<p style="color:red;">${data.error || "Erro ao buscar recomendações."}</p>`;
+    return;
+  }
+
+  if (data.error) {
+    resultadoEl.innerHTML = `<p style="color:red;">${data.error}</p>`;
+    return;
+  }
+
+  resultadoEl.innerHTML = `
+    <h3>Resultados da IA</h3>
+    <p>${data.explicacao || ""}</p>
+    <ul style="margin-top:1rem;">
+      ${(data.recomendacoes || [])
+        .map(
+          (v) => `
+            <li style="margin-bottom:1rem;">
+              <strong>${v.titulo}</strong> — ${v.compatibilidade}% de compatibilidade
+              <p>${v.descricao}</p>
+            </li>
+          `
+        )
+        .join("")}
+    </ul>
+  `;
+}
+
+
+// const btn = document.getElementById("chatbotBtn");
+// const box = document.getElementById("chatbotBox");
+// const chatArea = document.getElementById("chatArea");
+// const input = document.getElementById("chatInput");
+// const send = document.getElementById("sendChat");
+// let history = [];
+
+// btn.onclick = () =>
+//   (box.style.display = box.style.display === "none" ? "block" : "none");
+
+// async function sendMessage() {
+//   const message = input.value.trim();
+//   if (!message) return;
+//   chatArea.innerHTML += `<div><strong>Você:</strong> ${message}</div>`;
+//   input.value = "";
+
+//   const res = await fetch("/api/chatbot/ask", {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({ message, history }),
+//   });
+//   const data = await res.json();
+//   chatArea.innerHTML += `<div><strong>Ezra IA:</strong> ${data.response}</div>`;
+//   chatArea.scrollTop = chatArea.scrollHeight;
+//   history = data.history;
+// }
+
+// send.onclick = sendMessage;
+// input.addEventListener("keypress", (e) => {
+//   if (e.key === "Enter") sendMessage();
+// });

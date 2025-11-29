@@ -1,10 +1,17 @@
+
 const express = require('express');
 const axios = require('axios');
 const User = require('../models/User');
 const Job = require('../models/Job');
 const router = express.Router();
 
+
+
+
 router.post('/', async (req, res) => {
+
+  console.log("ID recebido pelo recommend:", req.body.userId);
+
   try {
     const userId = req.body.userId;
     const user = await User.findById(userId).select('skills experiencia');

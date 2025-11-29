@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vagas — Ezra | Conecte-se a Oportunidades com Impacto</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vagas — Ezra | Conecte-se a Oportunidades com Impacto</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link rel="icon" href="/img/logo icone.svg" />
+    <link rel="icon" href="/img/logo icone.svg" />
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
       rel="stylesheet"
@@ -33,313 +33,466 @@
         <a href="https://linkedin.com" title="LinkedIn" target="_blank"
           ><i class="fa-brands fa-linkedin"></i
         ></a>
-        <a href="https://instagram.com" title="Instagram" target="_blank"
+        <a href="https://instagram.com/ezrac.orp" title="Instagram" target="_blank"
           ><i class="fa-brands fa-instagram"></i
         ></a>
-        <div class="account-icon">
-          <a href="cadastro.html" title="Login / Criar conta">
-            <i class="fa-solid fa-user"></i>
-            <span class="account-text-roller">
-              <span class="roller-text roller-cadastrar">Cadastrar</span>
-              <span class="roller-text roller-entrar">Entrar</span>
-            </span>
-          </a>
-        </div>
+              <div class="account-icon">
+        <a id="account-link">
+          <i class="fa-solid fa-user" id="account-icon-user"></i>
+
+          <span id="user-nome" class="user-nome-text" style="display: none;"></span>
+
+          <span class="account-text-roller" id="login-roller">
+            <span class="roller-text roller-cadastrar">Cadastrar</span>
+            <span class="roller-text roller-entrar">Entrar</span>
+          </span>
+        </a>
       </div>
-    </header>
 
-  <!-- Hero / Intro Section -->
-  <section class="hero vagas-hero">
-    <div class="hero-content">
-      <h1 id="vagas-heading" class="vagas-title">Encontre a vaga ideal para você</h1>
-      <p>
-        Na Ezra, conectamos talentos a empresas comprometidas com inclusão, diversidade e responsabilidade social. Explore nossas oportunidades e dê o próximo passo na sua carreira.
-      </p>
     </div>
-  </section>
+  </header>
+  <main>
+    <div id="perfil-modal" class="perfil-modal">
+      <div class="perfil-content">
+        <span id="close-modal" class="close">&times;</span>
+        <h2>Perfil do Usuário</h2>
+        <p><strong>Nome:</strong> <span id="perfil-nome"></span></p>
+        <p><strong>Email:</strong> <span id="perfil-email"></span></p>
+        <p><strong>Skills:</strong> <span id="perfil-skills"></span></p>
+        <p>
+          <strong>Experiência:</strong> <span id="perfil-experiencia"></span>
+        </p>
 
-  <!-- Filtros de busca -->
-  <section class="about vagas-filters">
-    <div class="about-container">
-      <form class="filters" aria-label="Filtros de vagas">
-        <div class="filter-group">
-          <label for="area" class="filter-label">Área</label>
-          <select id="area" name="area" class="filter-select">
-            <option value="">Todas</option>
-            <option value="tecnologia">Tecnologia</option>
-            <option value="administrativo">Administrativo</option>
-            <option value="marketing">Marketing</option>
-            <option value="serviços">Serviços</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <label for="tipo" class="filter-label">Tipo de contrato</label>
-          <select id="tipo" name="tipo" class="filter-select">
-            <option value="">Todos</option>
-            <option value="clt">CLT</option>
-            <option value="pj">PJ</option>
-            <option value="freelancer">Freelancer</option>
-            <option value="estagio">Estágio</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <label for="local" class="filter-label">Localidade</label>
-          <input type="text" id="local" name="local" placeholder="Digite uma cidade" class="filter-input" />
-        </div>
-        <button class="btn">Buscar</button>
-      </form>
+        <button id="logout-btn" class="logout-btn">Sair da Conta</button>
+      </div>
     </div>
-  </section>
+      <section class="hero vagas-hero">
+        <div class="hero-content">
+          <h1 id="vagas-heading" class="vagas-title">
+            Encontre a vaga ideal para você
+          </h1>
+          <p>
+            Na Ezra, conectamos talentos a empresas comprometidas com inclusão,
+            diversidade e responsabilidade social. Explore nossas oportunidades
+            e dê o próximo passo na sua carreira.
+          </p>
+        </div>
+      </section>
 
-  <!-- Botão da IA -->
-<section class="ia-recommendation">
-  <div class="about-container" style="text-align: center; margin: 2rem 0;">
-    <button class="btn" onclick="buscarVagasIA()" style="background-color:#2c3e50; color:white; padding:1rem 2rem; border:none; border-radius:8px; cursor:pointer;">
-      🔍 Buscar Vagas com IA
+      <!-- Filtros de busca -->
+      <section class="about vagas-filters">
+        <div class="about-container">
+          <form class="filters" aria-label="Filtros de vagas">
+            <div class="filter-group">
+              <label for="area" class="filter-label">Área</label>
+              <select id="area" name="area" class="filter-select">
+                <option value="">Todas</option>
+                <option value="tecnologia">Tecnologia</option>
+                <option value="administrativo">Administrativo</option>
+                <option value="marketing">Marketing</option>
+                <option value="serviços">Serviços</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="tipo" class="filter-label">Tipo de contrato</label>
+              <select id="tipo" name="tipo" class="filter-select">
+                <option value="">Todos</option>
+                <option value="clt">CLT</option>
+                <option value="pj">PJ</option>
+                <option value="freelancer">Freelancer</option>
+                <option value="estagio">Estágio</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="local" class="filter-label">Localidade</label>
+              <input
+                type="text"
+                id="local"
+                name="local"
+                placeholder="Digite uma cidade"
+                class="filter-input"
+              />
+            </div>
+            <button class="btn">Buscar</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Botão da IA -->
+      <section class="ia-recommendation">
+        <div class="about-container" style="text-align: center; margin: 2rem 0">
+          <button
+            class="btn"
+            onclick="buscarVagasIA()"
+            style="
+              background-color: #2c3e50;
+              color: white;
+              padding: 1rem 2rem;
+              border: none;
+              border-radius: 8px;
+              cursor: pointer;
+            "
+          >
+            🔍 Buscar Vagas com IA
+          </button>
+          <div
+            id="resultadoIA"
+            style="margin-top: 2rem; text-align: left"
+          ></div>
+        </div>
+      </section>
+
+      <!-- Lista de vagas -->
+      <section class="jobs vagas-list">
+        <h2>Vagas em Destaque</h2>
+        <div class="jobs-grid">
+          <div class="job-card">
+            <h3>Desenvolvedor Front-End Júnior</h3>
+            <span class="job-company">Tech4All</span>
+            <p><strong>Local:</strong> São Paulo, SP (Híbrido)</p>
+            <p>
+              <strong>Descrição:</strong> Desenvolvimento de interfaces
+              acessíveis e responsivas. Valorizamos diversidade e inovação.
+            </p>
+            <a href="#" class="see-more btn">Ver detalhes</a>
+          </div>
+          <div class="job-card">
+            <h3>Analista de Marketing Digital</h3>
+            <span class="job-company">GreenGrow</span>
+            <p><strong>Local:</strong> Remoto</p>
+            <p>
+              <strong>Descrição:</strong> Planejamento de campanhas online com
+              foco em impacto social e responsabilidade ambiental.
+            </p>
+            <a href="#" class="see-more btn">Ver detalhes</a>
+          </div>
+          <div class="job-card">
+            <h3>Assistente Administrativo</h3>
+            <span class="job-company">Inclusiva RH</span>
+            <p><strong>Local:</strong> Belo Horizonte, MG</p>
+            <p>
+              <strong>Descrição:</strong> Apoio em processos internos. Vaga
+              afirmativa para pessoas com deficiência (PcD).
+            </p>
+            <a href="#" class="see-more btn">Ver detalhes</a>
+          </div>
+        </div>
+      </section>
+          <div id="selection-reader">🔊 Ler seleção</div>
+
+    <button id="accessibility-btn" aria-label="Abrir recursos de acessibilidade">
+      <i class="fa-solid fa-universal-access"></i>
     </button>
-    <div id="resultadoIA" style="margin-top:2rem; text-align:left;"></div>
-  </div>
-</section>
 
+    <div id="accessibility-popup" class="accessibility-popup hidden">
+      <div class="popup-content">
+        <button id="close-popup" aria-label="Fechar popup">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <h2>Recursos de Acessibilidade</h2>
 
-  <!-- Lista de vagas -->
-  <section class="jobs vagas-list">
-    <h2>Vagas em Destaque</h2>
-    <div class="jobs-grid">
-      <div class="job-card">
-        <h3>Desenvolvedor Front-End Júnior</h3>
-        <span class="job-company">Tech4All</span>
-        <p><strong>Local:</strong> São Paulo, SP (Híbrido)</p>
-        <p><strong>Descrição:</strong> Desenvolvimento de interfaces acessíveis e responsivas. Valorizamos diversidade e inovação.</p>
-        <a href="#" class="see-more btn">Ver detalhes</a>
-      </div>
-      <div class="job-card">
-        <h3>Analista de Marketing Digital</h3>
-        <span class="job-company">GreenGrow</span>
-        <p><strong>Local:</strong> Remoto</p>
-        <p><strong>Descrição:</strong> Planejamento de campanhas online com foco em impacto social e responsabilidade ambiental.</p>
-        <a href="#" class="see-more btn">Ver detalhes</a>
-      </div>
-      <div class="job-card">
-        <h3>Assistente Administrativo</h3>
-        <span class="job-company">Inclusiva RH</span>
-        <p><strong>Local:</strong> Belo Horizonte, MG</p>
-        <p><strong>Descrição:</strong> Apoio em processos internos. Vaga afirmativa para pessoas com deficiência (PcD).</p>
-        <a href="#" class="see-more btn">Ver detalhes</a>
+        <div class="accessibility-grid">
+
+          <div class="access-feature audio-controls">
+            <i class="fa-solid fa-headphones"></i>
+            <span>Leitura em Áudio</span>
+
+            <div class="audio-buttons">
+              <button id="audio-start" class="tooltip" data-tooltip="Iniciar leitura"><i
+                  class="fa-solid fa-play"></i></button>
+              <button id="audio-pause" class="tooltip" data-tooltip="Pausar leitura"><i
+                  class="fa-solid fa-pause"></i></button>
+              <button id="audio-resume" class="tooltip" data-tooltip="Continuar leitura"><i
+                  class="fa-solid fa-forward"></i></button>
+              <button id="audio-stop" class="tooltip" data-tooltip="Parar leitura"><i
+                  class="fa-solid fa-stop"></i></button>
+            </div>
+
+            <div class="speed-control">
+              <button data-speed="0.8">0.8x</button>
+              <button data-speed="1">1x</button>
+              <button data-speed="1.2">1.2x</button>
+              <button data-speed="1.5">1.5x</button>
+            </div>
+          </div>
+
+          <div class="access-feature">
+            <i class="fa-solid fa-language"></i>
+            <span>Tradutor</span>
+            <div id="google_translate_element"></div>
+          </div>
+
+        </div>
       </div>
     </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-logo">
-        <img src="img/logo branca.svg" alt="Ezra Logo" />
+    </main>
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="img/logo branca.svg" alt="Ezra Logo" />
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="vagas.html">Vagas</a>
+          <a href="artigos.html">Artigos</a>
+          <a href="contato.html">Contato</a>
+        </div>
+        <div class="footer-social">
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+        <div class="footer-cert">
+          <img src="img/Design sem nome.png" alt="B-Corp Certificado" />
+          <span>B-Corp & Sustentabilidade</span>
+        </div>
       </div>
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="vagas.html">Vagas</a>
-        <a href="artigos.html">Artigos</a>
-        <a href="contato.html">Contato</a>
+      <div class="footer-copy">
+        &copy; 2025 Ezra. Todos os direitos reservados.
       </div>
-      <div class="footer-social">
-        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-      </div>
-      <div class="footer-cert">
-        <img src="img/Design sem nome.png" alt="B-Corp Certificado" />
-        <span>B-Corp & Sustentabilidade</span>
-      </div>
-    </div>
-    <div class="footer-copy">
-      &copy; 2025 Ezra. Todos os direitos reservados.
-    </div>
-          <div vw class="enabled">
+      <div vw class="enabled">
         <div vw-access-button class="active"></div>
         <div vw-plugin-wrapper>
           <div class="vw-plugin-top-wrapper"></div>
         </div>
       </div>
-  </footer>
-
-  <script src="js/auth.js"></script>
-  <script src="js/jobs.js"></script>
-  <script>
-      // Header shrink on scroll
-  window.addEventListener("scroll", function () {
-    const header = document.getElementById("premium-header");
-    if (window.scrollY > 50) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
-  });
-
-      const accountIcon = document.querySelector(".account-icon a");
-  const rollerCadastrar = document.querySelector(".roller-cadastrar");
-  const rollerEntrar = document.querySelector(".roller-entrar");
-  const roller = document.querySelector(".account-text-roller");
-  let intervalId;
-  let showingCadastrar = true;
-
-  function rollText() {
-    if (showingCadastrar) {
-      rollerCadastrar.style.transform = "translateY(0)";
-      rollerEntrar.style.transform = "translateY(100%)";
-    } else {
-      rollerCadastrar.style.transform = "translateY(-100%)";
-      rollerEntrar.style.transform = "translateY(0)";
-    }
-    showingCadastrar = !showingCadastrar;
-  }
-
-  accountIcon.addEventListener("mouseenter", () => {
-    roller.style.opacity = 1;
-    rollerCadastrar.style.transition = "transform 0.5s cubic-bezier(.77,0,.18,1)";
-    rollerEntrar.style.transition = "transform 0.5s cubic-bezier(.77,0,.18,1)";
-    rollText(); // Start immediately
-    intervalId = setInterval(rollText, 2000);
-  });
-
-  accountIcon.addEventListener("mouseleave", () => {
-    clearInterval(intervalId);
-    roller.style.opacity = 0;
-    rollerCadastrar.style.transform = "translateY(0)";
-    rollerEntrar.style.transform = "translateY(100%)";
-    showingCadastrar = true;
-  });
-
-  // Initialize positions
-  rollerCadastrar.style.transform = "translateY(0)";
-  rollerEntrar.style.transform = "translateY(100%)";
-
-
-      function animateCountUp(el, target) {
-        let count = 0;
-        const speed = Math.ceil(target / 60);
-        function update() {
-          count += speed;
-          if (count > target) count = target;
-          el.textContent = "+" + count.toLocaleString();
-          if (count < target) requestAnimationFrame(update);
-        }
-        update();
-      }
-      document.querySelectorAll('.impact-number').forEach(el => {
-        const target = parseInt(el.getAttribute('data-count'), 10);
-        animateCountUp(el, target);
-      });
-
-      // Simple testimonial carousel
-      let testimonialIndex = 0;
-      const testimonials = document.querySelectorAll('.testimonial-card');
-      function showTestimonial(idx) {
-        testimonials.forEach((card, i) => {
-          card.style.display = i === idx ? 'flex' : 'none';
-        });
-      }
-      showTestimonial(testimonialIndex);
-      setInterval(() => {
-        testimonialIndex = (testimonialIndex + 1) % testimonials.length;
-        showTestimonial(testimonialIndex);
-      }, 4000);
-
-      async function buscarVagasIA() {
-  const token = localStorage.getItem('token'); // token do login salvo
-  if (!token) {
-    alert("Você precisa estar logado para usar a IA de vagas!");
-    return;
-  }
-
-  const userId = parseJwt(token).id; // decodifica o ID do usuário
-
-  const res = await fetch("/api/recommend", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ userId })
-  });
-
-  const data = await res.json();
-
-  if (data.error) {
-    document.getElementById("resultadoIA").innerHTML = `<p style="color:red;">${data.error}</p>`;
-    return;
-  }
-
-  document.getElementById("resultadoIA").innerHTML = `
-    <h3>Resultados da IA</h3>
-    <p>${data.explicacao}</p>
-    <ul style="margin-top:1rem;">
-      ${data.recomendacoes.map(v => `
-        <li style="margin-bottom:1rem;">
-          <strong>${v.titulo}</strong> — ${v.compatibilidade}% de compatibilidade
-          <p>${v.descricao}</p>
-        </li>
-      `).join('')}
-    </ul>
-  `;
-}
-
-// função para decodificar o JWT e pegar o userId
-function parseJwt(token) {
-  try {
-    return JSON.parse(atob(token.split('.')[1]));
-  } catch (e) {
-    return null;
-  }
-}
-
- const btn = document.getElementById('chatbotBtn');
-  const box = document.getElementById('chatbotBox');
-  const chatArea = document.getElementById('chatArea');
-  const input = document.getElementById('chatInput');
-  const send = document.getElementById('sendChat');
-  let history = [];
-
-  btn.onclick = () => box.style.display = box.style.display === 'none' ? 'block' : 'none';
-
-  async function sendMessage() {
-    const message = input.value.trim();
-    if (!message) return;
-    chatArea.innerHTML += `<div><strong>Você:</strong> ${message}</div>`;
-    input.value = '';
-
-    const res = await fetch('/api/chatbot/ask', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message, history })
-    });
-    const data = await res.json();
-    chatArea.innerHTML += `<div><strong>Ezra IA:</strong> ${data.response}</div>`;
-    chatArea.scrollTop = chatArea.scrollHeight;
-    history = data.history;
-  }
-
-  send.onclick = sendMessage;
-  input.addEventListener('keypress', e => {
-    if (e.key === 'Enter') sendMessage();
-  });
-    </script>
-        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    </footer>
+    <script src="js/jobs.js"></script>
+    <script src="js/vagas.js"></script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
       new window.VLibras.Widget("https://vlibras.gov.br/app");
     </script>
+    <script>
+        let falaAtual = null;
+  let velocidade = 1;
+  let elementosDestacados = [];
+  let textoSelecionado = "";
 
-    <button id="chatbotBtn" 
-  style="position: fixed; bottom: 30px; right: 30px; background-color: #2c3e50; color: white; border: none; border-radius: 50%; width: 60px; height: 60px; font-size: 1.5rem; cursor: pointer;">
-  💬
-</button>
+  function removerDestaques() {
+    elementosDestacados.forEach(span => span.outerHTML = span.innerText);
+    elementosDestacados = [];
+  }
 
-<div id="chatbotBox" 
-  style="display:none; position: fixed; bottom: 100px; right: 30px; width: 320px; height: 400px; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.2); border-radius: 10px; overflow: hidden;">
-  <div style="background:#2c3e50; color:white; padding:0.5rem; font-weight:bold;">Assistente Ezra IA</div>
-  <div id="chatArea" style="height:300px; overflow-y:auto; padding:0.5rem;"></div>
-  <div style="display:flex; border-top:1px solid #ccc;">
-    <input id="chatInput" type="text" placeholder="Pergunte algo..." style="flex:1; border:none; padding:0.5rem;">
-    <button id="sendChat" style="background:#3498db; border:none; color:white; padding:0.5rem 1rem;">Enviar</button>
-  </div>
-</div>
+  function getReadableText() {
+    const containers = document.querySelectorAll("main, article, section, p, h1, h2, h3, h4, h5, h6");
 
-</body>
+    let textoFinal = [];
+
+    containers.forEach(el => {
+      if (el.offsetParent === null) return;
+
+      const clone = el.cloneNode(true);
+      clone.querySelectorAll(
+        "#perfil-modal, #login-modal, .modal, .popup, .hidden, [aria-hidden='true']"
+      ).forEach(n => n.remove());
+
+      clone.querySelectorAll("button, a, svg, img, .no-read").forEach(n => n.remove());
+
+      const texto = clone.innerText.trim();
+
+      if (texto.length > 5) {
+        textoFinal.push(texto + ". ");
+      }
+    });
+
+    return textoFinal.join("");
+  }
+
+  function splitSentences(text) {
+    return text.match(/[^.!?]+[.!?]+/g) || [text];
+  }
+
+  function destacarPalavra(palavra) {
+    removerDestaques();
+    if (!palavra.trim()) return;
+
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      const idx = node.nodeValue.toLowerCase().indexOf(palavra.toLowerCase());
+
+      if (idx !== -1) {
+        const before = node.nodeValue.slice(0, idx);
+        const word = node.nodeValue.slice(idx, idx + palavra.length);
+        const after = node.nodeValue.slice(idx + palavra.length);
+
+        const span = document.createElement("span");
+        span.className = "highlight-reading";
+        span.textContent = word;
+
+        const afterNode = node.splitText(idx);
+        afterNode.nodeValue = after;
+        node.parentNode.insertBefore(span, afterNode);
+
+        elementosDestacados.push(span);
+        span.scrollIntoView({ behavior: "smooth", block: "center" });
+        break;
+      }
+    }
+  }
+
+
+  function iniciarLeituraTexto(textoCompleto) {
+    speechSynthesis.cancel();
+    removerDestaques();
+
+    const frases = splitSentences(textoCompleto);
+    let index = 0;
+
+    function lerProxima() {
+      if (index >= frases.length) return;
+
+      const frase = frases[index];
+      const utter = new SpeechSynthesisUtterance(frase);
+
+      utter.lang = "pt-BR";
+      utter.rate = velocidade;
+
+      utter.onboundary = (e) => {
+        if (e.name === "word") {
+          const palavra = frase.substring(e.charIndex, e.charIndex + e.charLength);
+          destacarPalavra(palavra);
+        }
+      };
+
+      utter.onend = () => {
+        removerDestaques();
+        index++;
+        lerProxima();
+      };
+
+      falaAtual = utter;
+      speechSynthesis.speak(utter);
+    }
+
+    lerProxima();
+  }
+
+  document.getElementById("audio-start").addEventListener("click", () => {
+    const selecao = window.getSelection().toString().trim();
+    const texto = selecao || getReadableText();
+    iniciarLeituraTexto(texto);
+  });
+
+  document.getElementById("audio-pause").addEventListener("click", () => speechSynthesis.pause());
+  document.getElementById("audio-resume").addEventListener("click", () => speechSynthesis.resume());
+  document.getElementById("audio-stop").addEventListener("click", () => {
+    speechSynthesis.cancel();
+    removerDestaques();
+  });
+
+  document.querySelectorAll(".speed-control button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      velocidade = parseFloat(btn.dataset.speed);
+      if (falaAtual) falaAtual.rate = velocidade;
+    });
+  });
+
+  const selBtn = document.getElementById("selection-reader");
+
+  document.addEventListener("mouseup", () => {
+    let texto = window.getSelection().toString().trim();
+
+    if (texto.length > 0) {
+      textoSelecionado = texto;
+
+      const rect = window.getSelection().getRangeAt(0).getBoundingClientRect();
+      selBtn.style.left = rect.left + window.scrollX + "px";
+      selBtn.style.top = rect.top + window.scrollY - 40 + "px";
+      selBtn.style.display = "block";
+    } else {
+      selBtn.style.display = "none";
+    }
+  });
+
+  selBtn.addEventListener("click", () => {
+    iniciarLeituraTexto(textoSelecionado);
+    selBtn.style.display = "none";
+  });
+
+  const popup = document.getElementById("accessibility-popup");
+  document.getElementById("accessibility-btn").onclick = () => popup.classList.remove("hidden");
+  document.getElementById("close-popup").onclick = () => popup.classList.add("hidden");
+  popup.addEventListener("click", (e) => { if (e.target === popup) popup.classList.add("hidden"); });
+
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      { pageLanguage: "pt", includedLanguages: "en,es,fr,de" },
+      "google_translate_element"
+    );
+  }
+    </script>
+
+    <!-- <button
+      id="chatbotBtn"
+      style="
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #2c3e50;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+        cursor: pointer;
+      "
+    >
+      💬
+    </button>
+
+    <div
+      id="chatbotBox"
+      style="
+        display: none;
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        width: 320px;
+        height: 400px;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        overflow: hidden;
+      "
+    >
+      <div
+        style="
+          background: #2c3e50;
+          color: white;
+          padding: 0.5rem;
+          font-weight: bold;
+        "
+      >
+        Assistente Ezra IA
+      </div>
+      <div
+        id="chatArea"
+        style="height: 300px; overflow-y: auto; padding: 0.5rem"
+      ></div>
+      <div style="display: flex; border-top: 1px solid #ccc">
+        <input
+          id="chatInput"
+          type="text"
+          placeholder="Pergunte algo..."
+          style="flex: 1; border: none; padding: 0.5rem"
+        />
+        <button
+          id="sendChat"
+          style="
+            background: #3498db;
+            border: none;
+            color: white;
+            padding: 0.5rem 1rem;
+          "
+        >
+          Enviar
+        </button>
+      </div>
+    </div> -->
+  </body>
 </html>

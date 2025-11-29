@@ -1,6 +1,6 @@
 class AuthManager {
   constructor() {
-    this.token = localStorage.getItem("authToken");
+    // this.token = localStorage.getItem("authToken");
     this.nome = localStorage.getItem("userName") || "Visitante";
   }
 
@@ -105,7 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const resposta = await fetch("/api/perfil", {
-        headers: { Authorization: `Bearer ${token}` },
+        method: "GET",
+        credentials: "include", // obrigatório para enviar o cookie da sessão
       });
 
       const user = await resposta.json();
@@ -137,12 +138,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-document.getElementById("logout-btn").addEventListener("click", () => {
-  localStorage.removeItem("authToken");
-  localStorage.removeItem("userName");
-  auth.logout();
-  document.getElementById("perfil-modal").style.display = "none";
-  alert("Você saiu da conta.");
+  document.getElementById("logout-btn").addEventListener("click", () => {
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("userName");
+    auth.logout();
+    document.getElementById("perfil-modal").style.display = "none";
+    alert("Você saiu da conta.");
+  });
 });
-});
-

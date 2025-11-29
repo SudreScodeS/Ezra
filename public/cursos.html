@@ -32,22 +32,39 @@
         <a href="https://linkedin.com" title="LinkedIn" target="_blank"
           ><i class="fa-brands fa-linkedin"></i
         ></a>
-        <a href="https://instagram.com" title="Instagram" target="_blank"
+        <a href="https://www.instagram.com/ezrac.orp/" title="Instagram" target="_blank"
           ><i class="fa-brands fa-instagram"></i
         ></a>
-        <div class="account-icon">
-          <a href="cadastro.html" title="Login / Criar conta">
-            <i class="fa-solid fa-user"></i>
-            <span class="account-text-roller">
-              <span class="roller-text roller-cadastrar">Cadastrar</span>
-              <span class="roller-text roller-entrar">Entrar</span>
-            </span>
-          </a>
-        </div>
-      </div>
-    </header>
+              <div class="account-icon">
+        <a id="account-link">
+          <i class="fa-solid fa-user" id="account-icon-user"></i>
 
-    <main>
+          <span id="user-nome" class="user-nome-text" style="display: none;"></span>
+
+          <span class="account-text-roller" id="login-roller">
+            <span class="roller-text roller-cadastrar">Cadastrar</span>
+            <span class="roller-text roller-entrar">Entrar</span>
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+  <main>
+    <div id="perfil-modal" class="perfil-modal">
+      <div class="perfil-content">
+        <span id="close-modal" class="close">&times;</span>
+        <h2>Perfil do Usuário</h2>
+        <p><strong>Nome:</strong> <span id="perfil-nome"></span></p>
+        <p><strong>Email:</strong> <span id="perfil-email"></span></p>
+        <p><strong>Skills:</strong> <span id="perfil-skills"></span></p>
+        <p>
+          <strong>Experiência:</strong> <span id="perfil-experiencia"></span>
+        </p>
+
+        <button id="logout-btn" class="logout-btn">Sair da Conta</button>
+      </div>
+    </div>
       <section class="hero">
         <h1>Capacite-se com os Cursos Ezra</h1>
         <p>Desenvolva novas habilidades e impulsione sua carreira com nossos cursos gratuitos e acessíveis.</p>
@@ -165,99 +182,223 @@
     </footer>
 
   <script>
-  // Header shrink on scroll
-  window.addEventListener("scroll", function () {
+class AuthManager {
+  constructor() {
+    this.token = localStorage.getItem("authToken");
+    this.nome = localStorage.getItem("userName") || "Visitante";
+  }
+
+  async login(email, senha) {
+    const res = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, senha }),
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "Falha no login");
+
+    localStorage.setItem("authToken", data.token);
+    localStorage.setItem("userName", data.nome);
+    this.token = data.token;
+    this.nome = data.nome;
+
+    this.updateUserUI();
+    alert(data.message);
+  }
+
+  async register(userData) {
+    const res = await fetch("/api/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    });
+
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || "Erro ao cadastrar");
+
+    localStorage.setItem("authToken", data.token);
+    localStorage.setItem("userName", data.nome);
+    this.token = data.token;
+    this.nome = data.nome;
+
+    this.updateUserUI();
+    alert(data.message);
+  }
+
+  logout() {
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("userName");
+    this.token = null;
+    this.nome = "Visitante";
+    this.updateUserUI();
+  }
+
+  updateUserUI() {
+    const nomeEl = document.querySelector("#user-nome");
+    if (nomeEl) nomeEl.textContent = this.nome.toUpperCase();
+  }
+}
+
+const auth = new AuthManager();
+
+document.addEventListener("DOMContentLoaded", () => {
+  auth.updateUserUI();
+
+  /* ---------------- HEADER SHRINK ---------------- */
+  window.addEventListener("scroll", () => {
     const header = document.getElementById("premium-header");
-    if (window.scrollY > 50) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
+    if (!header) return;
+    header.classList.toggle("scrolled", window.scrollY > 50);
   });
 
+  /* ---------------- ACCOUNT ICON ROLLER ---------------- */
   const accountIcon = document.querySelector(".account-icon a");
   const rollerCadastrar = document.querySelector(".roller-cadastrar");
   const rollerEntrar = document.querySelector(".roller-entrar");
   const roller = document.querySelector(".account-text-roller");
-  let intervalId;
-  let showingCadastrar = true;
 
-  function rollText() {
-    if (showingCadastrar) {
+  if (accountIcon && rollerCadastrar && rollerEntrar && roller) {
+    let intervalId;
+    let showingCadastrar = true;
+
+    function rollText() {
+      if (showingCadastrar) {
+        rollerCadastrar.style.transform = "translateY(0)";
+        rollerEntrar.style.transform = "translateY(100%)";
+      } else {
+        rollerCadastrar.style.transform = "translateY(-100%)";
+        rollerEntrar.style.transform = "translateY(0)";
+      }
+      showingCadastrar = !showingCadastrar;
+    }
+
+    accountIcon.addEventListener("mouseenter", () => {
+      roller.style.opacity = 1;
+      rollText();
+      intervalId = setInterval(rollText, 2000);
+    });
+
+    accountIcon.addEventListener("mouseleave", () => {
+      clearInterval(intervalId);
+      roller.style.opacity = 0;
       rollerCadastrar.style.transform = "translateY(0)";
       rollerEntrar.style.transform = "translateY(100%)";
-    } else {
-      rollerCadastrar.style.transform = "translateY(-100%)";
-      rollerEntrar.style.transform = "translateY(0)";
-    }
-    showingCadastrar = !showingCadastrar;
-  }
+      showingCadastrar = true;
+    });
 
-  accountIcon.addEventListener("mouseenter", () => {
-    roller.style.opacity = 1;
-    rollerCadastrar.style.transition = "transform 0.5s cubic-bezier(.77,0,.18,1)";
-    rollerEntrar.style.transition = "transform 0.5s cubic-bezier(.77,0,.18,1)";
-    rollText(); // Start immediately
-    intervalId = setInterval(rollText, 2000);
-  });
-
-  accountIcon.addEventListener("mouseleave", () => {
-    clearInterval(intervalId);
-    roller.style.opacity = 0;
     rollerCadastrar.style.transform = "translateY(0)";
     rollerEntrar.style.transform = "translateY(100%)";
-    showingCadastrar = true;
-  });
-
-  // Initialize positions
-  rollerCadastrar.style.transform = "translateY(0)";
-  rollerEntrar.style.transform = "translateY(100%)";
-
-  function animateCountUp(el, target) {
-    let count = 0;
-    const speed = Math.ceil(target / 60);
-    function update() {
-      count += speed;
-      if (count > target) count = target;
-      el.textContent = "+" + count.toLocaleString();
-      if (count < target) requestAnimationFrame(update);
-    }
-    update();
   }
 
-  document.querySelectorAll(".impact-number").forEach((el) => {
-    const target = parseInt(el.getAttribute("data-count"), 10);
-    animateCountUp(el, target);
-  });
-
-  // Acessibilidade popup
+  /* ---------------- ACESSIBILIDADE ---------------- */
   const popup = document.getElementById("accessibility-popup");
   const openBtn = document.getElementById("accessibility-btn");
   const closeBtn = document.getElementById("close-popup");
 
-  openBtn.addEventListener("click", () => {
-    popup.classList.remove("hidden");
-  });
+  if (popup && openBtn && closeBtn) {
+    openBtn.addEventListener("click", () => popup.classList.remove("hidden"));
+    closeBtn.addEventListener("click", () => popup.classList.add("hidden"));
 
-  closeBtn.addEventListener("click", () => {
-    popup.classList.add("hidden");
-  });
-
-  popup.addEventListener("click", (e) => {
-    if (e.target === popup) {
-      popup.classList.add("hidden");
-    }
-  });
-
-  // Google Translate
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'pt',
-      includedLanguages: 'en,es,fr,de',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-    }, 'google_translate_element');
+    popup.addEventListener("click", (e) => {
+      if (e.target === popup) popup.classList.add("hidden");
+    });
   }
 
+  /* ---------------- PERFIL MODAL ---------------- */
+  const userNome = document.getElementById("user-nome");
+  const logoutBtn = document.getElementById("logout-btn");
+
+  if (userNome) {
+    userNome.addEventListener("click", async () => {
+      const token = localStorage.getItem("authToken");
+      if (!token) return;
+
+      try {
+        const resposta = await fetch("/api/perfil", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+
+        const user = await resposta.json();
+
+        if (resposta.ok) {
+          document.getElementById("perfil-nome").textContent = user.nome;
+          document.getElementById("perfil-email").textContent = user.email;
+          document.getElementById("perfil-skills").textContent = user.skills || "Não informado";
+          document.getElementById("perfil-experiencia").textContent = user.experiencia || "Não informado";
+
+          document.getElementById("perfil-modal").style.display = "flex";
+        }
+      } catch (err) {
+        console.error("Erro ao carregar perfil:", err);
+      }
+    });
+  }
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      auth.logout();
+      document.getElementById("perfil-modal").style.display = "none";
+      alert("Você saiu da conta.");
+    });
+  }
+
+  const closeModal = document.getElementById("close-modal");
+  if (closeModal) {
+    closeModal.addEventListener("click", () => {
+      document.getElementById("perfil-modal").style.display = "none";
+    });
+  }
+
+  window.addEventListener("click", (e) => {
+    const modal = document.getElementById("perfil-modal");
+    if (e.target === modal) modal.style.display = "none";
+  });
+});
+
+/* Google Translate callback */
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    {
+      pageLanguage: "pt",
+      includedLanguages: "en,es,fr,de",
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    },
+    "google_translate_element"
+  );
+}
+function updateLoginDisplay() {
+  const nome = localStorage.getItem("userName");
+  const userNomeEl = document.getElementById("user-nome");
+  const roller = document.getElementById("login-roller");
+  const icon = document.getElementById("account-icon-user");
+  const link = document.getElementById("account-link");
+
+  if (nome) {
+    // Usuário logado → mostrar nome
+    userNomeEl.textContent = nome.toUpperCase();
+    userNomeEl.style.display = "inline";
+    roller.style.display = "none";     // Esconde "Cadastrar / Entrar"
+    icon.style.display = "none";       // Esconde o ícone
+    link.href = "#";                   // Evita redirecionar para cadastro
+  } else {
+    // Usuário deslogado → mostrar opções de login
+    userNomeEl.style.display = "none";
+    roller.style.display = "inline-block";
+    icon.style.display = "inline";
+    link.href = "cadastro.html";
+  }
+}
+
+// Chama ao carregar a página
+document.addEventListener("DOMContentLoaded", updateLoginDisplay);
+
+// Chama sempre que logar ou deslogar
+auth.updateUserUI = function () {
+  const nomeEl = document.querySelector("#user-nome");
+  if (nomeEl) nomeEl.textContent = this.nome.toUpperCase();
+  updateLoginDisplay();
+};
   // Smooth scroll to cursos section
   const btnVerCursos = document.querySelector('.hero .btn');
   btnVerCursos.addEventListener('click', function(e) {
