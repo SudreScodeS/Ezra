@@ -64,7 +64,7 @@ router.post('/', async (req, res) => {
     // ✓ Call Python AI Service
     let response;
     try {
-      response = await axios.post(`${pythonURL}`, {
+      response = await axios.post("https://ezra-ai.onrender.com/analyze", {
         skills: user.skills,
         experiencia: user.experiencia,
         vagas: vagasFormatadas
