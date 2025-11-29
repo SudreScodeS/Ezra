@@ -1217,8 +1217,8 @@ nav ul li a:hover {
   width: 100%;        /* Fills the container width */
 }
 .testimonial-card img {
-  width: 56px;
-  height: 56px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 10px;
