@@ -1191,11 +1191,12 @@ nav ul li a:hover {
   font-weight: 700;
 }
 .testimonial-carousel {
-  display: grid;
+display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 32px;
+  gap: 40px; /* <--- This evenly spaces all the cards */
   max-width: 1000px;
   margin: 0 auto;
+  padding: 20px 0; /* Optional: space above and below the grid */
 }
 
 .testimonial-card {
