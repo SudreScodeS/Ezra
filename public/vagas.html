@@ -1,42 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vagas — Ezra | Conecte-se a Oportunidades com Impacto</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="icon" href="/img/logo icone.svg" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/vagas.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-  </head>
-  <body>
-    <!-- Header -->
-    <header class="premium-header" id="premium-header">
-      <nav class="premium-nav" aria-label="Menu principal">
-        <a href="index.html">Home</a>
-        <a href="vagas.html">Vagas</a>
-        <a href="cursos.html">Cursos</a>
-        <a href="artigos.html">Artigos</a>
-      </nav>
-      <div class="logo">
-        <img src="/img/logo.svg" alt="Logo Ezra" />
-      </div>
-      <div class="premium-actions">
-        <a href="https://linkedin.com" title="LinkedIn" target="_blank"
-          ><i class="fa-brands fa-linkedin"></i
-        ></a>
-        <a href="https://instagram.com/ezrac.orp" title="Instagram" target="_blank"
-          ><i class="fa-brands fa-instagram"></i
-        ></a>
-              <div class="account-icon">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vagas — Ezra | Conecte-se a Oportunidades com Impacto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" href="/img/logo icone.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/vagas.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="premium-header" id="premium-header">
+    <nav class="premium-nav" aria-label="Menu principal">
+      <a href="index.html">Home</a>
+      <a href="vagas.html">Vagas</a>
+      <a href="cursos.html">Cursos</a>
+      <a href="artigos.html">Artigos</a>
+    </nav>
+    <div class="logo">
+      <img src="/img/logo.svg" alt="Logo Ezra" />
+    </div>
+    <div class="premium-actions">
+      <a href="https://linkedin.com" title="LinkedIn" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://instagram.com/ezrac.orp" title="Instagram" target="_blank"><i
+          class="fa-brands fa-instagram"></i></a>
+      <div class="account-icon">
         <a id="account-link">
           <i class="fa-solid fa-user" id="account-icon-user"></i>
 
@@ -66,119 +60,104 @@
         <button id="logout-btn" class="logout-btn">Sair da Conta</button>
       </div>
     </div>
-      <section class="hero vagas-hero">
-        <div class="hero-content">
-          <h1 id="vagas-heading" class="vagas-title">
-            Encontre a vaga ideal para você
-          </h1>
+    <section class="hero vagas-hero">
+      <div class="hero-content">
+        <h1 id="vagas-heading" class="vagas-title">
+          Encontre a vaga ideal para você
+        </h1>
+        <p>
+          Na Ezra, conectamos talentos a empresas comprometidas com inclusão,
+          diversidade e responsabilidade social. Explore nossas oportunidades
+          e dê o próximo passo na sua carreira.
+        </p>
+      </div>
+    </section>
+
+    <!-- Filtros de busca -->
+    <section class="about vagas-filters">
+      <div class="about-container">
+        <form class="filters" aria-label="Filtros de vagas">
+          <div class="filter-group">
+            <label for="area" class="filter-label">Área</label>
+            <select id="area" name="area" class="filter-select">
+              <option value="">Todas</option>
+              <option value="tecnologia">Tecnologia</option>
+              <option value="administrativo">Administrativo</option>
+              <option value="marketing">Marketing</option>
+              <option value="serviços">Serviços</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="tipo" class="filter-label">Tipo de contrato</label>
+            <select id="tipo" name="tipo" class="filter-select">
+              <option value="">Todos</option>
+              <option value="clt">CLT</option>
+              <option value="pj">PJ</option>
+              <option value="freelancer">Freelancer</option>
+              <option value="estagio">Estágio</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="local" class="filter-label">Localidade</label>
+            <input type="text" id="local" name="local" placeholder="Digite uma cidade" class="filter-input" />
+          </div>
+          <button class="btn">Buscar</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Botão da IA -->
+    <section class="ia-recommendation">
+      <div class="ia-container">
+        <div class="ia-header">
+          <h2>Encontre Vagas com Inteligência Artificial</h2>
+          <p>Deixe nossa IA analisar seu perfil e recomendar as melhores oportunidades para você</p>
+        </div>
+        <button class="btn-ia" onclick="buscarVagasIA()">
+          <span class="icon">🔍</span>
+          <span class="text">Buscar Vagas com IA</span>
+        </button>
+        <div id="resultadoIA" class="ia-results"></div>
+      </div>
+    </section>
+
+    <!-- Lista de vagas -->
+    <section class="jobs vagas-list">
+      <h2>Vagas em Destaque</h2>
+      <div class="jobs-grid">
+        <div class="job-card">
+          <h3>Desenvolvedor Front-End Júnior</h3>
+          <span class="job-company">Tech4All</span>
+          <p><strong>Local:</strong> São Paulo, SP (Híbrido)</p>
           <p>
-            Na Ezra, conectamos talentos a empresas comprometidas com inclusão,
-            diversidade e responsabilidade social. Explore nossas oportunidades
-            e dê o próximo passo na sua carreira.
+            <strong>Descrição:</strong> Desenvolvimento de interfaces
+            acessíveis e responsivas. Valorizamos diversidade e inovação.
           </p>
+          <a href="#" class="see-more btn">Ver detalhes</a>
         </div>
-      </section>
-
-      <!-- Filtros de busca -->
-      <section class="about vagas-filters">
-        <div class="about-container">
-          <form class="filters" aria-label="Filtros de vagas">
-            <div class="filter-group">
-              <label for="area" class="filter-label">Área</label>
-              <select id="area" name="area" class="filter-select">
-                <option value="">Todas</option>
-                <option value="tecnologia">Tecnologia</option>
-                <option value="administrativo">Administrativo</option>
-                <option value="marketing">Marketing</option>
-                <option value="serviços">Serviços</option>
-              </select>
-            </div>
-            <div class="filter-group">
-              <label for="tipo" class="filter-label">Tipo de contrato</label>
-              <select id="tipo" name="tipo" class="filter-select">
-                <option value="">Todos</option>
-                <option value="clt">CLT</option>
-                <option value="pj">PJ</option>
-                <option value="freelancer">Freelancer</option>
-                <option value="estagio">Estágio</option>
-              </select>
-            </div>
-            <div class="filter-group">
-              <label for="local" class="filter-label">Localidade</label>
-              <input
-                type="text"
-                id="local"
-                name="local"
-                placeholder="Digite uma cidade"
-                class="filter-input"
-              />
-            </div>
-            <button class="btn">Buscar</button>
-          </form>
+        <div class="job-card">
+          <h3>Analista de Marketing Digital</h3>
+          <span class="job-company">GreenGrow</span>
+          <p><strong>Local:</strong> Remoto</p>
+          <p>
+            <strong>Descrição:</strong> Planejamento de campanhas online com
+            foco em impacto social e responsabilidade ambiental.
+          </p>
+          <a href="#" class="see-more btn">Ver detalhes</a>
         </div>
-      </section>
-
-      <!-- Botão da IA -->
-      <section class="ia-recommendation">
-        <div class="about-container" style="text-align: center; margin: 2rem 0">
-          <button
-            class="btn"
-            onclick="buscarVagasIA()"
-            style="
-              background-color: #2c3e50;
-              color: white;
-              padding: 1rem 2rem;
-              border: none;
-              border-radius: 8px;
-              cursor: pointer;
-            "
-          >
-            🔍 Buscar Vagas com IA
-          </button>
-          <div
-            id="resultadoIA"
-            style="margin-top: 2rem; text-align: left"
-          ></div>
+        <div class="job-card">
+          <h3>Assistente Administrativo</h3>
+          <span class="job-company">Inclusiva RH</span>
+          <p><strong>Local:</strong> Belo Horizonte, MG</p>
+          <p>
+            <strong>Descrição:</strong> Apoio em processos internos. Vaga
+            afirmativa para pessoas com deficiência (PcD).
+          </p>
+          <a href="#" class="see-more btn">Ver detalhes</a>
         </div>
-      </section>
-
-      <!-- Lista de vagas -->
-      <section class="jobs vagas-list">
-        <h2>Vagas em Destaque</h2>
-        <div class="jobs-grid">
-          <div class="job-card">
-            <h3>Desenvolvedor Front-End Júnior</h3>
-            <span class="job-company">Tech4All</span>
-            <p><strong>Local:</strong> São Paulo, SP (Híbrido)</p>
-            <p>
-              <strong>Descrição:</strong> Desenvolvimento de interfaces
-              acessíveis e responsivas. Valorizamos diversidade e inovação.
-            </p>
-            <a href="#" class="see-more btn">Ver detalhes</a>
-          </div>
-          <div class="job-card">
-            <h3>Analista de Marketing Digital</h3>
-            <span class="job-company">GreenGrow</span>
-            <p><strong>Local:</strong> Remoto</p>
-            <p>
-              <strong>Descrição:</strong> Planejamento de campanhas online com
-              foco em impacto social e responsabilidade ambiental.
-            </p>
-            <a href="#" class="see-more btn">Ver detalhes</a>
-          </div>
-          <div class="job-card">
-            <h3>Assistente Administrativo</h3>
-            <span class="job-company">Inclusiva RH</span>
-            <p><strong>Local:</strong> Belo Horizonte, MG</p>
-            <p>
-              <strong>Descrição:</strong> Apoio em processos internos. Vaga
-              afirmativa para pessoas com deficiência (PcD).
-            </p>
-            <a href="#" class="see-more btn">Ver detalhes</a>
-          </div>
-        </div>
-      </section>
-          <div id="selection-reader">🔊 Ler seleção</div>
+      </div>
+    </section>
+    <div id="selection-reader">🔊 Ler seleção</div>
 
     <button id="accessibility-btn" aria-label="Abrir recursos de acessibilidade">
       <i class="fa-solid fa-universal-access"></i>
@@ -225,208 +204,208 @@
         </div>
       </div>
     </div>
-    </main>
-    <!-- Footer -->
-    <footer>
-      <div class="footer-container">
-        <div class="footer-logo">
-          <img src="img/logo branca.svg" alt="Ezra Logo" />
-        </div>
-        <div class="footer-links">
-          <a href="index.html">Home</a>
-          <a href="vagas.html">Vagas</a>
-          <a href="artigos.html">Artigos</a>
-          <a href="contato.html">Contato</a>
-        </div>
-        <div class="footer-social">
-          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#"><i class="fa-brands fa-facebook"></i></a>
-        </div>
-        <div class="footer-cert">
-          <img src="img/Design sem nome.png" alt="B-Corp Certificado" />
-          <span>B-Corp & Sustentabilidade</span>
-        </div>
+  </main>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="img/logo branca.svg" alt="Ezra Logo" />
       </div>
-      <div class="footer-copy">
-        &copy; 2025 Ezra. Todos os direitos reservados.
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="vagas.html">Vagas</a>
+        <a href="artigos.html">Artigos</a>
+        <a href="contato.html">Contato</a>
       </div>
-      <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-          <div class="vw-plugin-top-wrapper"></div>
-        </div>
+      <div class="footer-social">
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
       </div>
-    </footer>
-    <script src="js/jobs.js"></script>
-    <script src="js/vagas.js"></script>
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script>
-      new window.VLibras.Widget("https://vlibras.gov.br/app");
-    </script>
-    <script>
-        let falaAtual = null;
-  let velocidade = 1;
-  let elementosDestacados = [];
-  let textoSelecionado = "";
+      <div class="footer-cert">
+        <img src="img/Design sem nome.png" alt="B-Corp Certificado" />
+        <span>B-Corp & Sustentabilidade</span>
+      </div>
+    </div>
+    <div class="footer-copy">
+      &copy; 2025 Ezra. Todos os direitos reservados.
+    </div>
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/jobs.js"></script>
+  <script src="js/vagas.js"></script>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget("https://vlibras.gov.br/app");
+  </script>
+  <script>
+    let falaAtual = null;
+    let velocidade = 1;
+    let elementosDestacados = [];
+    let textoSelecionado = "";
 
-  function removerDestaques() {
-    elementosDestacados.forEach(span => span.outerHTML = span.innerText);
-    elementosDestacados = [];
-  }
-
-  function getReadableText() {
-    const containers = document.querySelectorAll("main, article, section, p, h1, h2, h3, h4, h5, h6");
-
-    let textoFinal = [];
-
-    containers.forEach(el => {
-      if (el.offsetParent === null) return;
-
-      const clone = el.cloneNode(true);
-      clone.querySelectorAll(
-        "#perfil-modal, #login-modal, .modal, .popup, .hidden, [aria-hidden='true']"
-      ).forEach(n => n.remove());
-
-      clone.querySelectorAll("button, a, svg, img, .no-read").forEach(n => n.remove());
-
-      const texto = clone.innerText.trim();
-
-      if (texto.length > 5) {
-        textoFinal.push(texto + ". ");
-      }
-    });
-
-    return textoFinal.join("");
-  }
-
-  function splitSentences(text) {
-    return text.match(/[^.!?]+[.!?]+/g) || [text];
-  }
-
-  function destacarPalavra(palavra) {
-    removerDestaques();
-    if (!palavra.trim()) return;
-
-    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-
-    while (walker.nextNode()) {
-      const node = walker.currentNode;
-      const idx = node.nodeValue.toLowerCase().indexOf(palavra.toLowerCase());
-
-      if (idx !== -1) {
-        const before = node.nodeValue.slice(0, idx);
-        const word = node.nodeValue.slice(idx, idx + palavra.length);
-        const after = node.nodeValue.slice(idx + palavra.length);
-
-        const span = document.createElement("span");
-        span.className = "highlight-reading";
-        span.textContent = word;
-
-        const afterNode = node.splitText(idx);
-        afterNode.nodeValue = after;
-        node.parentNode.insertBefore(span, afterNode);
-
-        elementosDestacados.push(span);
-        span.scrollIntoView({ behavior: "smooth", block: "center" });
-        break;
-      }
+    function removerDestaques() {
+      elementosDestacados.forEach(span => span.outerHTML = span.innerText);
+      elementosDestacados = [];
     }
-  }
 
+    function getReadableText() {
+      const containers = document.querySelectorAll("main, article, section, p, h1, h2, h3, h4, h5, h6");
 
-  function iniciarLeituraTexto(textoCompleto) {
-    speechSynthesis.cancel();
-    removerDestaques();
+      let textoFinal = [];
 
-    const frases = splitSentences(textoCompleto);
-    let index = 0;
+      containers.forEach(el => {
+        if (el.offsetParent === null) return;
 
-    function lerProxima() {
-      if (index >= frases.length) return;
+        const clone = el.cloneNode(true);
+        clone.querySelectorAll(
+          "#perfil-modal, #login-modal, .modal, .popup, .hidden, [aria-hidden='true']"
+        ).forEach(n => n.remove());
 
-      const frase = frases[index];
-      const utter = new SpeechSynthesisUtterance(frase);
+        clone.querySelectorAll("button, a, svg, img, .no-read").forEach(n => n.remove());
 
-      utter.lang = "pt-BR";
-      utter.rate = velocidade;
+        const texto = clone.innerText.trim();
 
-      utter.onboundary = (e) => {
-        if (e.name === "word") {
-          const palavra = frase.substring(e.charIndex, e.charIndex + e.charLength);
-          destacarPalavra(palavra);
+        if (texto.length > 5) {
+          textoFinal.push(texto + ". ");
         }
-      };
+      });
 
-      utter.onend = () => {
-        removerDestaques();
-        index++;
-        lerProxima();
-      };
-
-      falaAtual = utter;
-      speechSynthesis.speak(utter);
+      return textoFinal.join("");
     }
 
-    lerProxima();
-  }
+    function splitSentences(text) {
+      return text.match(/[^.!?]+[.!?]+/g) || [text];
+    }
 
-  document.getElementById("audio-start").addEventListener("click", () => {
-    const selecao = window.getSelection().toString().trim();
-    const texto = selecao || getReadableText();
-    iniciarLeituraTexto(texto);
-  });
+    function destacarPalavra(palavra) {
+      removerDestaques();
+      if (!palavra.trim()) return;
 
-  document.getElementById("audio-pause").addEventListener("click", () => speechSynthesis.pause());
-  document.getElementById("audio-resume").addEventListener("click", () => speechSynthesis.resume());
-  document.getElementById("audio-stop").addEventListener("click", () => {
-    speechSynthesis.cancel();
-    removerDestaques();
-  });
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
 
-  document.querySelectorAll(".speed-control button").forEach(btn => {
-    btn.addEventListener("click", () => {
-      velocidade = parseFloat(btn.dataset.speed);
-      if (falaAtual) falaAtual.rate = velocidade;
+      while (walker.nextNode()) {
+        const node = walker.currentNode;
+        const idx = node.nodeValue.toLowerCase().indexOf(palavra.toLowerCase());
+
+        if (idx !== -1) {
+          const before = node.nodeValue.slice(0, idx);
+          const word = node.nodeValue.slice(idx, idx + palavra.length);
+          const after = node.nodeValue.slice(idx + palavra.length);
+
+          const span = document.createElement("span");
+          span.className = "highlight-reading";
+          span.textContent = word;
+
+          const afterNode = node.splitText(idx);
+          afterNode.nodeValue = after;
+          node.parentNode.insertBefore(span, afterNode);
+
+          elementosDestacados.push(span);
+          span.scrollIntoView({ behavior: "smooth", block: "center" });
+          break;
+        }
+      }
+    }
+
+
+    function iniciarLeituraTexto(textoCompleto) {
+      speechSynthesis.cancel();
+      removerDestaques();
+
+      const frases = splitSentences(textoCompleto);
+      let index = 0;
+
+      function lerProxima() {
+        if (index >= frases.length) return;
+
+        const frase = frases[index];
+        const utter = new SpeechSynthesisUtterance(frase);
+
+        utter.lang = "pt-BR";
+        utter.rate = velocidade;
+
+        utter.onboundary = (e) => {
+          if (e.name === "word") {
+            const palavra = frase.substring(e.charIndex, e.charIndex + e.charLength);
+            destacarPalavra(palavra);
+          }
+        };
+
+        utter.onend = () => {
+          removerDestaques();
+          index++;
+          lerProxima();
+        };
+
+        falaAtual = utter;
+        speechSynthesis.speak(utter);
+      }
+
+      lerProxima();
+    }
+
+    document.getElementById("audio-start").addEventListener("click", () => {
+      const selecao = window.getSelection().toString().trim();
+      const texto = selecao || getReadableText();
+      iniciarLeituraTexto(texto);
     });
-  });
 
-  const selBtn = document.getElementById("selection-reader");
+    document.getElementById("audio-pause").addEventListener("click", () => speechSynthesis.pause());
+    document.getElementById("audio-resume").addEventListener("click", () => speechSynthesis.resume());
+    document.getElementById("audio-stop").addEventListener("click", () => {
+      speechSynthesis.cancel();
+      removerDestaques();
+    });
 
-  document.addEventListener("mouseup", () => {
-    let texto = window.getSelection().toString().trim();
+    document.querySelectorAll(".speed-control button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        velocidade = parseFloat(btn.dataset.speed);
+        if (falaAtual) falaAtual.rate = velocidade;
+      });
+    });
 
-    if (texto.length > 0) {
-      textoSelecionado = texto;
+    const selBtn = document.getElementById("selection-reader");
 
-      const rect = window.getSelection().getRangeAt(0).getBoundingClientRect();
-      selBtn.style.left = rect.left + window.scrollX + "px";
-      selBtn.style.top = rect.top + window.scrollY - 40 + "px";
-      selBtn.style.display = "block";
-    } else {
+    document.addEventListener("mouseup", () => {
+      let texto = window.getSelection().toString().trim();
+
+      if (texto.length > 0) {
+        textoSelecionado = texto;
+
+        const rect = window.getSelection().getRangeAt(0).getBoundingClientRect();
+        selBtn.style.left = rect.left + window.scrollX + "px";
+        selBtn.style.top = rect.top + window.scrollY - 40 + "px";
+        selBtn.style.display = "block";
+      } else {
+        selBtn.style.display = "none";
+      }
+    });
+
+    selBtn.addEventListener("click", () => {
+      iniciarLeituraTexto(textoSelecionado);
       selBtn.style.display = "none";
+    });
+
+    const popup = document.getElementById("accessibility-popup");
+    document.getElementById("accessibility-btn").onclick = () => popup.classList.remove("hidden");
+    document.getElementById("close-popup").onclick = () => popup.classList.add("hidden");
+    popup.addEventListener("click", (e) => { if (e.target === popup) popup.classList.add("hidden"); });
+
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        { pageLanguage: "pt", includedLanguages: "en,es,fr,de" },
+        "google_translate_element"
+      );
     }
-  });
+  </script>
 
-  selBtn.addEventListener("click", () => {
-    iniciarLeituraTexto(textoSelecionado);
-    selBtn.style.display = "none";
-  });
-
-  const popup = document.getElementById("accessibility-popup");
-  document.getElementById("accessibility-btn").onclick = () => popup.classList.remove("hidden");
-  document.getElementById("close-popup").onclick = () => popup.classList.add("hidden");
-  popup.addEventListener("click", (e) => { if (e.target === popup) popup.classList.add("hidden"); });
-
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement(
-      { pageLanguage: "pt", includedLanguages: "en,es,fr,de" },
-      "google_translate_element"
-    );
-  }
-    </script>
-
-    <!-- <button
+  <!-- <button
       id="chatbotBtn"
       style="
         position: fixed;
@@ -494,5 +473,6 @@
         </button>
       </div>
     </div> -->
-  </body>
+</body>
+
 </html>

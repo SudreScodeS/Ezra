@@ -9,6 +9,8 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const recommendRoutes = require("./routes/recommend");
+const User = require("./models/User");
+const Job = require("./models/Job");
 
 const app = express();
 const PORT = 3000;
@@ -34,7 +36,7 @@ app.use(
     }),
     cookie: {
       maxAge: 1000 * 60 * 60,
-      ttpOnly: true,
+      httpOnly: true,
       sameSite: "lax"
     },
   })
@@ -45,17 +47,6 @@ mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => console.log("MongoDB conectado com sucesso!"))
   .catch((err) => console.error("Erro ao conectar MongoDB:", err));
-
-const UserSchema = new mongoose.Schema({
-  nome: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  senha: { type: String, required: true },
-  skills: { type: String },
-  experiencia: { type: String },
-  criadoEm: { type: Date, default: Date.now },
-});
-
-const User = mongoose.model("User", UserSchema);
 
 const authenticateToken = (req, res, next) => {
   const token = req.headers["authorization"]?.split(" ")[1];
@@ -129,11 +120,11 @@ app.post("/api/auth/login", async (req, res) => {
       return res.status(401).json({ error: "Senha incorreta!" });
     }
 
-req.session.user = {
-  id: user._id.toString(),
-  nome: user.nome,
-  email: user.email
-};
+    req.session.user = {
+      id: user._id.toString(),
+      nome: user.nome,
+      email: user.email
+    };
 
 
     const token = jwt.sign(

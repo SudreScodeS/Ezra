@@ -311,6 +311,9 @@ async function buscarVagasIA() {
 
   const token = localStorage.getItem("authToken");
 
+  console.log("=== FRONTEND: Iniciando busca de vagas com IA ===");
+  console.log("Token disponível:", !!token);
+
   // Constrói headers usando token se existir
   const baseHeaders = { "Content-Type": "application/json" };
   const headersWithToken = token ? { ...baseHeaders, Authorization: `Bearer ${token}` } : baseHeaders;
@@ -318,18 +321,22 @@ async function buscarVagasIA() {
   // Primeiro: tenta obter userId, preferindo token, mas enviando cookies também (credentials: 'include')
   let resUser;
   try {
+    console.log("📡 Chamando /api/getUserId...");
     resUser = await fetch("/api/getUserId", {
       method: "GET",
       headers: headersWithToken,
       credentials: "include", // garante envio de cookies de sessão
     });
+    console.log("✓ /api/getUserId respondeu com status:", resUser.status);
   } catch (err) {
+    console.error("❌ Erro de rede em /api/getUserId:", err.message);
     resultadoEl.innerHTML = `<p style="color:red;">Erro de rede ao verificar sessão: ${err.message}</p>`;
     return;
   }
 
   // Se deu 401 e havia token, pode ser que o token esteja inválido → limpar token e tentar com apenas cookie
   if (resUser.status === 401 && token) {
+    console.warn("⚠️ Token inválido (401), tentando apenas com cookies...");
     localStorage.removeItem("authToken");
     try {
       resUser = await fetch("/api/getUserId", {
@@ -337,35 +344,46 @@ async function buscarVagasIA() {
         headers: baseHeaders,
         credentials: "include",
       });
+      console.log("✓ Retry /api/getUserId respondeu com status:", resUser.status);
     } catch (err) {
+      console.error("❌ Erro de rede em retry /api/getUserId:", err.message);
       resultadoEl.innerHTML = `<p style="color:red;">Erro de rede ao verificar sessão: ${err.message}</p>`;
       return;
     }
   }
 
   if (resUser.status === 401) {
+    console.error("❌ Não autenticado (401)");
     resultadoEl.innerHTML = `<p style="color:red;">Você precisa estar logado para usar a IA de vagas!</p>`;
     return;
   }
 
   if (!resUser.ok) {
     const errData = await resUser.json().catch(() => ({}));
+    console.error("❌ Erro ao obter usuário:", errData.error || resUser.statusText);
     resultadoEl.innerHTML = `<p style="color:red;">Erro ao obter usuário: ${errData.error || resUser.statusText}</p>`;
     return;
   }
 
-  const { userId } = await resUser.json();
+  const userData = await resUser.json();
+  const { userId } = userData;
+
+  console.log("✓ userId obtido:", userId);
+  console.log("   (Comprimento esperado: 24, Atual:", userId?.length || "undefined", ")");
 
   // Chama recomendação, enviando token se existir e cookies também
   let res;
   try {
+    console.log("📤 Chamando /api/recommend com userId:", userId);
     res = await fetch("/api/recommend", {
       method: "POST",
       headers: token ? { ...baseHeaders, Authorization: `Bearer ${token}` } : baseHeaders,
       credentials: "include",
       body: JSON.stringify({ userId }),
     });
+    console.log("✓ /api/recommend respondeu com status:", res.status);
   } catch (err) {
+    console.error("❌ Erro de rede em /api/recommend:", err.message, "Code:", err.code);
     resultadoEl.innerHTML = `<p style="color:red;">Erro de rede ao buscar recomendações: ${err.message}</p>`;
     return;
   }
@@ -373,29 +391,35 @@ async function buscarVagasIA() {
   const data = await res.json().catch(() => ({}));
 
   if (!res.ok) {
-    resultadoEl.innerHTML = `<p style="color:red;">${data.error || "Erro ao buscar recomendações."}</p>`;
+    console.error("❌ /api/recommend respondeu com erro:", data.error || res.statusText);
+    resultadoEl.innerHTML = `<p style="color:red;">❌ ${data.error || "Erro ao buscar recomendações."}</p>`;
     return;
   }
 
   if (data.error) {
-    resultadoEl.innerHTML = `<p style="color:red;">${data.error}</p>`;
+    resultadoEl.innerHTML = `<p style="color:red;">❌ ${data.error}</p>`;
     return;
   }
 
+  // Render with beautiful styling
   resultadoEl.innerHTML = `
-    <h3>Resultados da IA</h3>
+    <h3>✨ Resultados da IA</h3>
     <p>${data.explicacao || ""}</p>
-    <ul style="margin-top:1rem;">
+    <ul>
       ${(data.recomendacoes || [])
-        .map(
-          (v) => `
-            <li style="margin-bottom:1rem;">
-              <strong>${v.titulo}</strong> — ${v.compatibilidade}% de compatibilidade
+      .map(
+        (v, index) => `
+            <li data-compatibility="${v.compatibilidade}% compatível">
+              <strong>${index + 1}. ${v.titulo}</strong>
+              <p><strong>Compatibilidade:</strong> <span style="color: var(--gold); font-weight: 700;">${v.compatibilidade}%</span></p>
               <p>${v.descricao}</p>
+              ${v.requisitos && v.requisitos.length > 0 ? `
+                <p><strong>Requisitos:</strong> ${v.requisitos.join(', ')}</p>
+              ` : ''}
             </li>
           `
-        )
-        .join("")}
+      )
+      .join("")}
     </ul>
   `;
 }
