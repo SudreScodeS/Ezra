@@ -4,6 +4,7 @@ const axios = require('axios');
 const User = require('../models/User');
 const Job = require('../models/Job');
 const router = express.Router();
+const pythonURL = process.env.PYTHON_AI_URL;
 
 router.post('/', async (req, res) => {
   try {
@@ -63,7 +64,7 @@ router.post('/', async (req, res) => {
     // ✓ Call Python AI Service
     let response;
     try {
-      response = await axios.post('http://127.0.0.1:5000/analyze', {
+      response = await axios.post(`${pythonURL}`, {
         skills: user.skills,
         experiencia: user.experiencia,
         vagas: vagasFormatadas
