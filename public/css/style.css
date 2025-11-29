@@ -1192,10 +1192,9 @@ nav ul li a:hover {
 }
 .testimonial-carousel {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, auto);
-  gap: 40px; /* Adjust the value as desired for vertical spacing */
-  max-width: 600px; /* Optional: controls max width for better focus */
+  grid-template-columns: repeat(4, 1fr); /* 4 columns of equal width */
+  gap: 40px; /* space between cards (adjust as needed) */
+  max-width: 1200px; /* optional: sets a nice width for 4 cards, adjust as needed */
   margin: 0 auto;
   padding: 20px 0;
 }
